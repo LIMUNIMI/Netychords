@@ -1,0 +1,604 @@
+﻿<Window x:Class="Netychords.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" WindowStyle="None" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized" Width="1366.222" Height="768.762">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/Backgrounds/DarkWood.png" TileMode="Tile" />
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="219*" />
+            <ColumnDefinition Width="1147*" />
+        </Grid.ColumnDefinitions>
+
+        <Border VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="20,60,10,0" Width="Auto" Height="Auto" BorderThickness="4" BorderBrush="White" Grid.Column="0">
+            <Border.Background>
+                <ImageBrush ImageSource="/Images/Backgrounds/LightWood.jpg" TileMode="Tile" />
+            </Border.Background>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40*" />
+                    <RowDefinition Height="40*" />
+                    <RowDefinition Height="40*" />
+                    <RowDefinition Height="30*" />
+                    <RowDefinition Height="30*" />
+                    <RowDefinition Height="45*" />
+                    <RowDefinition Height="209*" />
+                    <RowDefinition Height="30*" />
+                    <RowDefinition Height="58*" />
+                    <RowDefinition Height="58*" />
+                    <RowDefinition Height="40*" />
+                    <RowDefinition Height="25*" />
+                    <RowDefinition Height="25*" />
+                    <RowDefinition Height="25*" />
+                </Grid.RowDefinitions>
+
+                <!-- START AND BLOWMETER -->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="1" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="5,5,5,5">
+                        <Button x:Name="btnStart" Foreground="White" Content="Start" Click="StartNetytar"  Width="Auto" Height="Auto"  FontFamily="Magneto" FontSize="20" IsCancel="True" VerticalAlignment="Stretch">
+                            <Button.Background>
+                                <ImageBrush ImageSource="Images/Backgrounds/MidWood.png" TileMode="Tile" Stretch="None"></ImageBrush>
+                            </Button.Background>
+                        </Button>
+                    </Border>
+                    <Border Grid.Column="0" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="5,5,5,5">
+                        <Button Name="btnExit" Foreground="White" Click="BtnExit_Click" Content="Exit" Width="Auto" Height="Auto" FontFamily="Magneto" FontSize="22" IsCancel="True">
+                            <!-- tobii:Behaviors.IsGazeAware="True" -->
+
+                            <Button.Background>
+                                <ImageBrush ImageSource="Images/Backgrounds/MidWood.png" TileMode="Tile" Stretch="None"></ImageBrush>
+                            </Button.Background>
+                        </Button>
+                    </Border>
+                </Grid>
+
+                <!-- MIDI CHANNEL SELECTOR -->
+                <Grid Grid.Row="1" Margin="5,1,5,1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width = "1*" />
+                        <ColumnDefinition Width = "1*" />
+                        <ColumnDefinition Width = "1*" />
+                    </Grid.ColumnDefinitions>
+                    <Border Background="Black" Grid.Column="0" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="1,1,1,1">
+                        <Button x:Name="btnMIDIchMinus" Foreground="White" Content="t"  Width="Auto" Height="Auto" Margin="0,1,1,0" FontFamily="Wingdings 3" FontSize="20" IsCancel="True" Click="BtnMIDIchMinus_Click">
+                            <Button.Background>
+                                <ImageBrush ImageSource="Images/Backgrounds/DarkWood.png" TileMode="Tile" Stretch="None"></ImageBrush>
+                            </Button.Background>
+                        </Button>
+                    </Border>
+                    <Border Background="Black" Grid.Column="1" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="1,1,1,1">
+                        <TextBlock Name="lblMIDIch" Margin="0,10,0,0" Background="Black" Foreground="LightCoral" FontFamily="Digital-7 Italic" FontSize="25" TextAlignment="Center" Text="MP1">
+                        </TextBlock>
+                    </Border>
+                    <Border Background="Black" Grid.Column="2" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="1,1,1,1">
+                        <Button x:Name="btnMIDIchPlus" Foreground="White" Content="u"  Width="Auto" Height="Auto" FontFamily="Wingdings 3" FontSize="20" IsCancel="True" Click="BtnMIDIchPlus_Click">
+                            <Button.Background>
+                                <ImageBrush ImageSource="Images/Backgrounds/DarkWood.png" TileMode="Tile" Stretch="None"></ImageBrush>
+                            </Button.Background>
+                        </Button>
+                    </Border>
+                </Grid>
+
+                <Grid Grid.Row="2" Margin="5,5,5,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width = "0*" />
+                        <ColumnDefinition Width="58*" />
+                        <ColumnDefinition Width = "57*" />
+                        <ColumnDefinition Width = "57*" />
+                    </Grid.ColumnDefinitions>
+                    <Border Visibility="Visible" Background="Black" Grid.Column="0" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="1,2,0.6,2.985" Grid.ColumnSpan="2">
+                        <Button Name="btnSensorPortMinus" Foreground="White" Content="t"  Width="Auto" Height="Auto" Margin="0,0,0,0" FontFamily="Wingdings 3" FontSize="20" IsCancel="True" Click="BtnSensorPortMinus_Click">
+                            <Button.Background>
+                                <ImageBrush ImageSource="Images/Backgrounds/DarkWood.png" TileMode="Tile" Stretch="None"></ImageBrush>
+                            </Button.Background>
+                        </Button>
+                    </Border>
+                    <Border Visibility="Visible" Background="Black" Grid.Column="2" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="1.4,2,1.462,2.985">
+                        <TextBlock Name="txtSensorPort"  Background="Black" Foreground="LightCoral" FontFamily="Digital-7 Italic" FontSize="25" TextAlignment="Center" Text="">
+                        </TextBlock>
+                    </Border>
+                    <Border Visibility="Visible"  Background="Black" Grid.Column="3" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="0.538,2,1.323,2.985">
+                        <Button Name="btnSensorPortPlus" Foreground="White" Content="u" Width="Auto" Height="Auto" Margin="0,0,0,0" FontFamily="Wingdings 3" FontSize="20" IsCancel="True" Click="BtnSensorPortPlus_Click">
+                            <Button.Background>
+                                <ImageBrush ImageSource="Images/Backgrounds/DarkWood.png" TileMode="Tile" Stretch="None"></ImageBrush>
+                            </Button.Background>
+                        </Button>
+                    </Border>
+                </Grid>
+
+                <Grid Grid.Row="3" Margin="5,1,5,1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width = "1*" />
+                        <ColumnDefinition Width = "1*" />
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="lstNoteChanger" Grid.Column="0" Margin="5,5,5,5" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" SelectionChanged="LstNoteChanger_SelectionChanged" Background="Black" Foreground="Black">
+                        <ComboBoxItem Name="C">
+                            C
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            C#
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            D
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            D#
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            E
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            F
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            F#
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            G
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            G#
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            A
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            A#
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            B
+                        </ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="lstReeds" Grid.Column="2" Margin="5,5,5,5" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" SelectionChanged="LstOctaveChanger_SelectionChanged" Background="Black" Foreground="Black">
+                        <CheckBox x:Name="one" Checked="one_Checked" Unchecked="one_Unchecked">
+                            1
+                        </CheckBox>
+                        <CheckBox x:Name="two" Checked="two_Checked" Unchecked="two_Unchecked">
+                            2
+                        </CheckBox>
+                        <CheckBox x:Name="three" Checked="three_Checked" Unchecked="three_Unchecked">
+                            3
+                        </CheckBox>
+                        <CheckBox x:Name="four" Checked="four_Checked" Unchecked="four_Unchecked">
+                            4
+                        </CheckBox>
+                        <CheckBox x:Name="five" Checked="five_Checked" Unchecked="five_Unchecked">
+                            5
+                        </CheckBox>
+                    </ComboBox>
+                </Grid>
+
+                <Grid Grid.Row="4" Margin="5,1,5,1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width = "1*" />
+                        <ColumnDefinition Width = "1*" />
+                    </Grid.ColumnDefinitions>
+                    <Border Background="Black" Grid.Column="0" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="1,1,1,1">
+                        <TextBlock Name="lblIsPlaying" Margin="0,10,0,0" Background="Black" Foreground="LightCoral" FontFamily="Digital-7 Italic" FontSize="25" TextAlignment="Center" Text="">
+                        </TextBlock>
+                    </Border>
+                    <Border Background="Black" Grid.Column="1" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="1,1,1,1">
+                        <TextBlock Name="lblPlayedNote" Margin="0,10,0,0" Background="Black" Foreground="LightCoral" FontFamily="Digital-7 Italic" FontSize="25" TextAlignment="Center" Text="">
+                        </TextBlock>
+                    </Border>
+                </Grid>
+
+                <Grid Grid.Row="5" Margin="5,1,5,1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width = "1*" />
+                        <ColumnDefinition Width = "1*" />
+                        <ColumnDefinition Width = "1*" />
+                    </Grid.ColumnDefinitions>
+                    <Border Background="Black" Grid.Column="0" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="30" Margin="0,0,0,0">
+                        <TextBlock Name="falseMargin" Margin="0,5,0,0" Background="Black" Foreground="LightCoral" FontFamily="Digital-7 Italic" FontSize="12" TextAlignment="Center" Text="Vertical">
+                        </TextBlock>
+                    </Border>
+                    <Border HorizontalAlignment="Stretch" Margin="0,0,4,0" Width="Auto" Height="20" BorderThickness="0" BorderBrush="White" Grid.Column="1" Grid.RowSpan="2">
+                        <Slider Name="Margins" Maximum="1" Minimum="0" IsSnapToTickEnabled="True" TickFrequency="1" TickPlacement="None" ValueChanged="Margins_ValueChanged" Value="1" HorizontalAlignment="Left" Margin="0,0,-0.2,0" Width="53" />
+                    </Border>
+                    <Border Background="Black" Grid.Column="2" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="30" Margin="0,0,0,0">
+                        <TextBlock Name="trueMargin" Margin="0,5,0,0" Background="Black" Foreground="LightGreen" FontFamily="Digital-7 Italic" FontSize="12" TextAlignment="Center" Text="Grid">
+                        </TextBlock>
+                    </Border>
+                </Grid>
+                <Grid Grid.Row="6" Margin="5,1,5,1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width = "1*" />
+                        <ColumnDefinition Width = "1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <ListBox x:Name="lstLayout" Grid.Column="0" Margin="5,1,5,1" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" SelectionChanged="LstLayout_SelectionChanged"  Background="Black" Foreground="WhiteSmoke">
+                            <ListBoxItem>
+                                Stradella
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                Fifth Circle
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                Arbitrary
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                Pop
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                Rock
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                Jazz
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                Only Major
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                Diatonic_3
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                Diatonic_4
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                Flower
+                            </ListBoxItem>
+                        </ListBox>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height = "1*" />
+                            <RowDefinition Height = "1*" />
+                            <RowDefinition Height = "1*" />
+                            <RowDefinition Height = "1*" />
+                            <RowDefinition Height = "1*" />
+                            <RowDefinition Height = "1*" />
+                            <RowDefinition Height = "1*" />
+                            <RowDefinition Height = "1*" />
+                            <RowDefinition Height = "1*" />
+                            <RowDefinition Height = "1*" />
+                            <RowDefinition Height = "1*" />
+                            <RowDefinition Height = "1*" />
+                        </Grid.RowDefinitions>
+                        <ComboBox Name="FirstRow" Grid.Row="0" Width="Auto" Height="Auto" IsEnabled="False" FontSize="10" SelectionChanged="SelectorRow_SelectionChanged" />
+                        <ComboBox Name="SecondRow" Grid.Row="1" Width="Auto" Height="Auto" IsEnabled="False" FontSize="10" SelectionChanged="SelectorRow_SelectionChanged" />
+                        <ComboBox Name="ThirdRow" Grid.Row="2" Width="Auto" Height="Auto" IsEnabled="False" FontSize="10" SelectionChanged="SelectorRow_SelectionChanged" />
+                        <ComboBox Name="FourthRow" Grid.Row="3" Width="Auto" Height="Auto" IsEnabled="False" FontSize="10" SelectionChanged="SelectorRow_SelectionChanged" />
+                        <ComboBox Name="FifthRow" Grid.Row="4" Width="Auto" Height="Auto" IsEnabled="False" FontSize="10" SelectionChanged="SelectorRow_SelectionChanged" />
+                        <ComboBox Name="SixthRow" Grid.Row="5" Width="Auto" Height="Auto" IsEnabled="False" FontSize="10" SelectionChanged="SelectorRow_SelectionChanged" />
+                        <ComboBox Name="SeventhRow" Grid.Row="6" Width="Auto" Height="Auto" IsEnabled="False" FontSize="10" SelectionChanged="SelectorRow_SelectionChanged" />
+                        <ComboBox Name="EighthRow" Grid.Row="7" Width="Auto" Height="Auto" IsEnabled="False" FontSize="10" SelectionChanged="SelectorRow_SelectionChanged" />
+                        <ComboBox Name="NinthRow" Grid.Row="8" Width="Auto" Height="Auto" IsEnabled="False" FontSize="10" SelectionChanged="SelectorRow_SelectionChanged" />
+                        <ComboBox Name="TenthRow" Grid.Row="9" Width="Auto" Height="Auto" IsEnabled="False" FontSize="10" SelectionChanged="SelectorRow_SelectionChanged" />
+                        <ComboBox Name="EleventhRow" Grid.Row="10" Width="Auto" Height="Auto" IsEnabled="False" FontSize="10" SelectionChanged="SelectorRow_SelectionChanged" />
+                        <Button x:Name="arbitraryStart" Grid.Row="11" Foreground="White" Content="Start"  Width="Auto" Height="Auto" Margin="0,1,1,0" FontSize="10" IsCancel="True" IsEnabled="False" Click="ArbitraryStart_Click">
+                            <Button.Background>
+                                <ImageBrush ImageSource="Images/Backgrounds/DarkWood.png" TileMode="Tile" Stretch="None"></ImageBrush>
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="7" Margin="5,1,5,1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width = "1*" />
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="lstFeedbackModeChanger" Grid.Column="0" Margin="5,5,5,5" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" SelectionChanged="lstFeedbackModeChanger_SelectionChanged" Background="Black" Foreground="Black">
+                        <ComboBoxItem>
+                            Bars
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            HalfButton
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            DeadZone
+                        </ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+                <Grid Grid.Row="8" Grid.RowSpan="2" Margin="5,1,5,1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width = "2.5*" />
+                        <ColumnDefinition Width = "1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <Border HorizontalAlignment="Stretch" Width="Auto" Height="auto" BorderThickness="0" BorderBrush="White" Grid.Row="0" Grid.Column="0">
+                        <Slider Name="sldCenterZone" Maximum="10" Minimum="1" TickPlacement="None" TickFrequency="1" Value="0" ValueChanged="centerZone_ValueChanged" />
+                    </Border>
+                    <Border Background="Black" Grid.Column="1" Grid.Row="0" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="30" Margin="0,0,0,0">
+                        <TextBlock Name="centerValue" Margin="0,5,0,0" Background="Black" Foreground="LightGreen" FontFamily="Digital-7 Italic" FontSize="12" TextAlignment="Center" Text="">
+                        </TextBlock>
+                    </Border>
+
+                    <Border HorizontalAlignment="Stretch" Width="Auto" Height="Auto" BorderThickness="0" BorderBrush="White" Grid.Column="0" Grid.Row="1">
+                        <Slider Name="centerPitchZone" Maximum="40" Minimum="10" TickPlacement="None" TickFrequency="1" Value="0" />
+                    </Border>
+                    <Border Background="Black" Grid.Column="1" Grid.Row="1" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto">
+                        <TextBlock Name="centerPitchValue" Margin="0,5,0,0" Background="Black" Foreground="LightGreen" FontFamily="Digital-7 Italic" FontSize="12" TextAlignment="Center" Text="">
+                        </TextBlock>
+                    </Border>
+
+                    <Border HorizontalAlignment="Stretch" Width="Auto" Height="Auto" BorderThickness="0" BorderBrush="White" Grid.Column="0" Grid.Row="2">
+                        <Slider Name="sldDistance" Thumb.DragCompleted="sldDistance_DragCompleted" Minimum="160" Maximum="400" TickPlacement="None" TickFrequency="1" Value="0" />
+                    </Border>
+                    <Border Background="Black" Grid.Column="1" Grid.Row="2" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto">
+                        <TextBlock Name="sldDistanceValue" Margin="0,5,0,0" Background="Black" Foreground="LightGreen" FontFamily="Digital-7 Italic" FontSize="12" TextAlignment="Center" Text="">
+                        </TextBlock>
+                    </Border>
+                    <Grid Grid.Row="3" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Button
+                        Name="btnOnlyDiatonic"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Width="Auto"
+                        Height="27"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Top"
+                        BorderBrush="White"
+                        BorderThickness="2"
+                        Click="btnOnlyDiatonic_Click">
+                            <Button.Background>
+                                <ImageBrush
+                                ImageSource="Images/Backgrounds/MidWood.png"
+                                Stretch="None"
+                                TileMode="Tile" />
+                            </Button.Background>
+                        </Button>
+                        <Border
+                            Name="indOnlyDiatonic"
+                            Grid.Column="1"
+                            Width="20"
+                            Height="20"
+                            Margin="4,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Stretch"
+                            Background="Black"
+                            BorderBrush="White"
+                            BorderThickness="2"
+                            CornerRadius="10" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="22,0,0,0"
+                            Content="Only diatonic"
+                            FontFamily="Magneto"
+                            FontSize="15"
+                            Foreground="White" />
+                    </Grid>
+
+                    <Grid Grid.Row="4" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Button
+                        Name="btnBlinkPlay"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Width="Auto"
+                        Height="27"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Top"
+                        BorderBrush="White"
+                        BorderThickness="2"
+                        Click="btnBlinkPlay_Click">
+                            <Button.Background>
+                                <ImageBrush
+                                ImageSource="Images/Backgrounds/MidWood.png"
+                                Stretch="None"
+                                TileMode="Tile" />
+                            </Button.Background>
+                        </Button>
+                        <Border
+                            Name="indBlinkPlay"
+                            Grid.Column="1"
+                            Width="20"
+                            Height="20"
+                            Margin="4,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Stretch"
+                            Background="Black"
+                            BorderBrush="White"
+                            BorderThickness="2"
+                            CornerRadius="10" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="22,0,0,0"
+                            Content="Blink play"
+                            FontFamily="Magneto"
+                            FontSize="15"
+                            Foreground="White" />
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="9" Margin="5,1,5,1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width = "61*" />
+                        <ColumnDefinition Width = "7*" />
+                        <ColumnDefinition Width="17*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                </Grid>
+
+                <Grid Grid.Row="10" Margin="5,5,5,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width = "1*" />
+                        <ColumnDefinition Width = "1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto">
+                        <Button x:Name="btnCentering" Foreground="White" Content="Center" Click="BtnCenter_Click"  Width="Auto" Height="Auto" FontFamily="Magneto" FontSize="20" IsCancel="True">
+                            <Button.Background>
+                                <ImageBrush ImageSource="Images/Backgrounds/MidWood.png" TileMode="Tile" Stretch="None"></ImageBrush>
+                            </Button.Background>
+                        </Button>
+                    </Border>
+                    <Border Background="Black" Grid.Column="1" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="50" Margin="1,1,1,1">
+                        <TextBlock Name="lblYaw" Margin="0,10,0,0" Background="Black" Foreground="LightCoral" FontFamily="Digital-7 Italic" FontSize="25" TextAlignment="Center" Text="">
+                        </TextBlock>
+                    </Border>
+                </Grid>
+
+                <Grid Grid.Row="11" Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button
+                        Name="btnSustain"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Width="Auto"
+                        Height="27"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Top"
+                        BorderBrush="White"
+                        BorderThickness="2"
+                        Click="btnSustain_Click">
+                        <Button.Background>
+                            <ImageBrush
+                                ImageSource="Images/Backgrounds/MidWood.png"
+                                Stretch="None"
+                                TileMode="Tile" />
+                        </Button.Background>
+                    </Button>
+                    <Border
+                            Name="indSustain"
+                            Grid.Column="1"
+                            Width="20"
+                            Height="20"
+                            Margin="4,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Stretch"
+                            Background="Black"
+                            BorderBrush="White"
+                            BorderThickness="2"
+                            CornerRadius="10" />
+                    <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="22,0,0,0"
+                            Content="Sustain"
+                            FontFamily="Magneto"
+                            FontSize="15"
+                            Foreground="White" />
+                </Grid>
+
+                <Grid Grid.Row="12" Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button
+                        Name="btnAutoStrum"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Width="Auto"
+                        HorizontalAlignment="Stretch"
+                        BorderBrush="White"
+                        BorderThickness="2"
+                        Click="btnAutoStrum_Click" Grid.ColumnSpan="2" Margin="0,0,128.6,-1.4" Height="27" VerticalAlignment="Bottom" RenderTransformOrigin="0.502,0.5">
+                        <Button.Background>
+                            <ImageBrush
+                                ImageSource="Images/Backgrounds/MidWood.png"
+                                Stretch="None"
+                                TileMode="Tile" />
+                        </Button.Background>
+                    </Button>
+                    <Border
+                            Name="indAutoStrum"
+                            Grid.Column="1"
+                            Width="20"
+                            Height="20"
+                            Margin="4,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Stretch"
+                            Background="Black"
+                            BorderBrush="White"
+                            BorderThickness="2"
+                            CornerRadius="10" />
+                    <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="22,0,0,0"
+                            Content="Auto strum"
+                            FontFamily="Magneto"
+                            FontSize="15"
+                            Foreground="White" />
+                </Grid>
+
+                <!-- Autostrum bar -->
+                <Grid Grid.Row="13" Grid.RowSpan="2" Margin="5,1,5,1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width = "2.5*" />
+                        <ColumnDefinition Width = "1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Border HorizontalAlignment="Stretch" Width="Auto" Height="Auto" BorderThickness="0" BorderBrush="White" Grid.Column="0" Grid.Row="2">
+                        <Slider Name="sldAutoStrum" ValueChanged="sldAutoStrum_ValueChanged"     Minimum="50" Maximum="250" IsSnapToTickEnabled="True" TickPlacement="None" TickFrequency="1" Value="120" />
+                    </Border>
+                    <Border Background="Black" Grid.Column="1" Grid.Row="2" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto">
+                        <TextBlock Name="indAutoStrumValue" Margin="0,5,0,0" Background="Black" Foreground="LightGreen" FontFamily="Digital-7 Italic" FontSize="12" TextAlignment="Center" Text="">
+                        </TextBlock>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <Border VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10,60,20,0" Width="Auto" Height="Auto" BorderThickness="4" BorderBrush="White" Grid.Column="1">
+            <Border.Background>
+                <ImageBrush ImageSource="Images/Backgrounds/LightWood.jpg" TileMode="Tile" />
+            </Border.Background>
+
+            <TabControl x:Name="tabSolo" Margin="0,0,0,0" SelectionChanged="TabSolo_SelectionChanged">
+                <TabItem x:Name="tabNetychords"  Header="Netychords" Visibility="Collapsed">
+                    <Grid>
+                        <Grid.Background>
+                            <SolidColorBrush Color="Black"></SolidColorBrush>
+                        </Grid.Background>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="12*" />
+                        </Grid.RowDefinitions>
+                        <ScrollViewer x:Name="scrlNetychords" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,0" Width="Auto" Height="Auto" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" Grid.Row="0">
+                            <Canvas x:Name="canvasNetychords" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,0" Width="2000" Height="2000" MouseMove="CanvasNetytchords_MouseMove">
+                                <Canvas.Background>
+
+                                    <SolidColorBrush Color="Black" Opacity="0" />
+                                </Canvas.Background>
+                            </Canvas>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Border>
+
+        <Label x:Name="lblRhythm" Content="Settings" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" FontFamily="/Netychords;component/Fonts/#Magneto" FontSize="28" Foreground="White" Height="44" Width="162" />
+        <Label x:Name="lblSolo" Content="Netychords" HorizontalAlignment="Right" Margin="0,5,5,0" VerticalAlignment="Top" FontFamily="Magneto" FontSize="28" Foreground="White" Grid.Column="1" Height="44" Width="200" />
+    </Grid>
+</Window>

@@ -1,0 +1,11 @@
+#Git ignored folder
+obj/
+bin/
+.vs/
+.vs/Netychords/v16/.suo
+.vs/Netychords/v16/.suo
+bin/Debug/Netytar.exe
+bin/Debug/Netytar.pdb
+obj/Debug/Netychords.csprojAssemblyReference.cache
+obj/Debug/Netytar.exe
+obj/Debug/Netytar.pdb
