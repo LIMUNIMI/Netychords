@@ -1,0 +1,334 @@
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\Tobii.EyeX.Client.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\Libraries\Tobii.Interaction.Net.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\Libraries\Tobii.Interaction.Model.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\Netytar.exe.config
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\Netytar.exe
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\Netytar.pdb
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\EyeTribe.ClientSdk.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\NAudio.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\NeeqDMIs.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\Newtonsoft.Json.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\RawInputProcessor.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\Tobii.Interaction.Model.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\Tobii.Interaction.Net.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\WpfAnimatedGif.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\ArduinoDriver.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\ArduinoUploader.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\RJCP.SerialPortStream.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\IntelHexFormatReader.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\NeeqDMIs.pdb
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\NeeqDMIs.dll.config
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\NAudio.xml
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\Newtonsoft.Json.xml
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\WpfAnimatedGif.pdb
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\WpfAnimatedGif.xml
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\RJCP.SerialPortStream.pdb
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\bin\Debug\RJCP.SerialPortStream.xml
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\obj\Debug\Netychords.csprojAssemblyReference.cache
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\obj\Debug\Netytar.exe.config
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\obj\Debug\MainWindow.baml
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\obj\Debug\MainWindow.g.cs
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\obj\Debug\App.g.cs
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\obj\Debug\Netytar_Content.g.cs
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\obj\Debug\Netytar_MarkupCompile.cache
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\obj\Debug\Netytar.g.resources
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\obj\Debug\Netytar.Properties.Resources.resources
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\obj\Debug\Netychords.csproj.GenerateResource.cache
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\obj\Debug\Netychords.csproj.CoreCompileInputs.cache
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\obj\Debug\Netychords.csproj.CopyComplete
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\obj\Debug\Netytar.exe
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\obj\Debug\Netytar.pdb
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\Tobii.EyeX.Client.dll
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\Libraries\Tobii.Interaction.Net.dll
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\Libraries\Tobii.Interaction.Model.dll
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\Netytar.exe.config
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\Netytar.exe
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\Netytar.pdb
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\EyeTribe.ClientSdk.dll
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\NAudio.dll
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\NeeqDMIs.dll
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\RawInputProcessor.dll
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\Tobii.Interaction.Model.dll
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\Tobii.Interaction.Net.dll
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\WpfAnimatedGif.dll
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\ArduinoDriver.dll
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\ArduinoUploader.dll
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\RJCP.SerialPortStream.dll
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\IntelHexFormatReader.dll
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\NeeqDMIs.pdb
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\NeeqDMIs.dll.config
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\NAudio.xml
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\WpfAnimatedGif.pdb
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\WpfAnimatedGif.xml
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\RJCP.SerialPortStream.pdb
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\bin\Debug\RJCP.SerialPortStream.xml
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\obj\Debug\Netychords.csprojAssemblyReference.cache
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\obj\Debug\Netytar.exe.config
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\obj\Debug\MainWindow.baml
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\obj\Debug\MainWindow.g.cs
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\obj\Debug\App.g.cs
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\obj\Debug\Netytar_Content.g.cs
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\obj\Debug\Netytar_MarkupCompile.cache
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\obj\Debug\Netytar.g.resources
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\obj\Debug\Netytar.Properties.Resources.resources
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\obj\Debug\Netychords.csproj.GenerateResource.cache
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\obj\Debug\Netychords.csproj.CoreCompileInputs.cache
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\obj\Debug\Netychords.csproj.CopyComplete
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\obj\Debug\Netytar.exe
+C:\Users\Matteo\Documents\GitHub\Netychords-remote\Netychords\Netytar\obj\Debug\Netytar.pdb
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\Tobii.EyeX.Client.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\Libraries\Tobii.Interaction.Net.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\Libraries\Tobii.Interaction.Model.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\Netytar.exe.config
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\Netytar.exe
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\Netytar.pdb
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\EyeTribe.ClientSdk.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\NAudio.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\NeeqDMIs.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\RawInputProcessor.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\Tobii.Interaction.Model.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\Tobii.Interaction.Net.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\WpfAnimatedGif.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\ArduinoDriver.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\ArduinoUploader.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\RJCP.SerialPortStream.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\IntelHexFormatReader.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\NeeqDMIs.pdb
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\NeeqDMIs.dll.config
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\NAudio.xml
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\WpfAnimatedGif.pdb
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\WpfAnimatedGif.xml
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\RJCP.SerialPortStream.pdb
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\RJCP.SerialPortStream.xml
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\obj\Debug\Netychords.csprojAssemblyReference.cache
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\obj\Debug\MainWindow.baml
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\obj\Debug\MainWindow.g.cs
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\obj\Debug\App.g.cs
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\obj\Debug\Netytar_Content.g.cs
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\obj\Debug\Netytar_MarkupCompile.cache
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\obj\Debug\Netytar.g.resources
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\obj\Debug\Netytar.Properties.Resources.resources
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\obj\Debug\Netychords.csproj.GenerateResource.cache
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\obj\Debug\Netychords.csproj.CoreCompileInputs.cache
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\obj\Debug\Netychords.csproj.CopyComplete
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\obj\Debug\Netytar.exe
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\obj\Debug\Netytar.pdb
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\Tobii.EyeX.Client.dll
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\Libraries\Tobii.Interaction.Net.dll
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\Libraries\Tobii.Interaction.Model.dll
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\Netytar.exe.config
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\Netytar.exe
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\Netytar.pdb
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\EyeTribe.ClientSdk.dll
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\NAudio.dll
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\NeeqDMIs.dll
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\RawInputProcessor.dll
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\Tobii.Interaction.Model.dll
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\Tobii.Interaction.Net.dll
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\WpfAnimatedGif.dll
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\ArduinoDriver.dll
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\ArduinoUploader.dll
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\RJCP.SerialPortStream.dll
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\IntelHexFormatReader.dll
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\NeeqDMIs.pdb
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\NeeqDMIs.dll.config
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\NAudio.xml
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\WpfAnimatedGif.pdb
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\WpfAnimatedGif.xml
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\RJCP.SerialPortStream.pdb
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\RJCP.SerialPortStream.xml
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\obj\Debug\Netychords.csprojAssemblyReference.cache
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\obj\Debug\MainWindow.baml
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\obj\Debug\MainWindow.g.cs
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\obj\Debug\App.g.cs
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\obj\Debug\Netytar_Content.g.cs
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\obj\Debug\Netytar_MarkupCompile.cache
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\obj\Debug\Netytar.g.resources
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\obj\Debug\Netytar.Properties.Resources.resources
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\obj\Debug\Netychords.csproj.GenerateResource.cache
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\obj\Debug\Netychords.csproj.CoreCompileInputs.cache
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\obj\Debug\Netychords.csproj.CopyComplete
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\obj\Debug\Netytar.exe
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\obj\Debug\Netytar.pdb
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\Microsoft.Win32.Registry.dll
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\NLog.dll
+C:\Users\Matteo\Desktop\GitHub\Netychords\Netytar\bin\Debug\NLog.xml
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\Microsoft.Win32.Registry.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\NLog.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\Netytar\bin\Debug\NLog.xml
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\Tobii.EyeX.Client.dll
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\Libraries\Tobii.Interaction.Net.dll
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\Libraries\Tobii.Interaction.Model.dll
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\Netytar.exe.config
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\Netytar.exe
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\Netytar.pdb
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\ArduinoDriver.dll
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\ArduinoUploader.dll
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\EyeTribe.ClientSdk.dll
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\IntelHexFormatReader.dll
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\Microsoft.Win32.Registry.dll
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\NAudio.dll
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\NeeqDMIs.dll
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\NLog.dll
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\RawInputProcessor.dll
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\RJCP.SerialPortStream.dll
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\Tobii.Interaction.Model.dll
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\Tobii.Interaction.Net.dll
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\WpfAnimatedGif.dll
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\NeeqDMIs.pdb
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\NeeqDMIs.dll.config
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\NAudio.xml
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\NLog.xml
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\RJCP.SerialPortStream.pdb
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\RJCP.SerialPortStream.xml
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\WpfAnimatedGif.pdb
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\bin\Debug\WpfAnimatedGif.xml
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\obj\Debug\Netychords.csprojAssemblyReference.cache
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\obj\Debug\MainWindow.baml
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\obj\Debug\MainWindow.g.cs
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\obj\Debug\App.g.cs
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\obj\Debug\Netytar_Content.g.cs
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\obj\Debug\Netytar_MarkupCompile.cache
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\obj\Debug\Netytar.g.resources
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\obj\Debug\Netytar.Properties.Resources.resources
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\obj\Debug\Netychords.csproj.GenerateResource.cache
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\obj\Debug\Netychords.csproj.CoreCompileInputs.cache
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\obj\Debug\Netychords.csproj.CopyComplete
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\obj\Debug\Netytar.exe
+C:\Users\Matteo\Desktop\Yoppolo\Netychords\Netytar\obj\Debug\Netytar.pdb
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\Tobii.EyeX.Client.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\Libraries\Tobii.Interaction.Net.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\Libraries\Tobii.Interaction.Model.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\Netytar.exe.config
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\Netytar.exe
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\Netytar.pdb
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\ArduinoDriver.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\ArduinoUploader.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\EyeTribe.ClientSdk.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\IntelHexFormatReader.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\Microsoft.Win32.Registry.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\NAudio.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\NeeqDMIs.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\Newtonsoft.Json.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\NLog.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\RawInputProcessor.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\RJCP.SerialPortStream.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\Tobii.Interaction.Model.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\Tobii.Interaction.Net.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\WpfAnimatedGif.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\NeeqDMIs.pdb
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\NeeqDMIs.dll.config
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\NAudio.xml
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\Newtonsoft.Json.xml
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\NLog.xml
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\RJCP.SerialPortStream.pdb
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\RJCP.SerialPortStream.xml
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\WpfAnimatedGif.pdb
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\bin\Debug\WpfAnimatedGif.xml
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\obj\Debug\Netychords.csprojAssemblyReference.cache
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\obj\Debug\MainWindow.baml
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\obj\Debug\MainWindow.g.cs
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\obj\Debug\App.g.cs
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\obj\Debug\Netytar_Content.g.cs
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\obj\Debug\Netytar_MarkupCompile.cache
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\obj\Debug\Netytar.g.resources
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\obj\Debug\Netytar.Properties.Resources.resources
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\obj\Debug\Netychords.csproj.GenerateResource.cache
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\obj\Debug\Netychords.csproj.CoreCompileInputs.cache
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\obj\Debug\Netychords.csproj.CopyComplete
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\obj\Debug\Netytar.exe
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\Netytar\obj\Debug\Netytar.pdb
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\Tobii.EyeX.Client.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\Libraries\Tobii.Interaction.Net.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\Libraries\Tobii.Interaction.Model.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\ArduinoDriver.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\ArduinoUploader.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\EyeTribe.ClientSdk.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\IntelHexFormatReader.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\Microsoft.Win32.Registry.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\NAudio.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\NeeqDMIs.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\NLog.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\RawInputProcessor.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\RJCP.SerialPortStream.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\Tobii.Interaction.Model.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\Tobii.Interaction.Net.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\WpfAnimatedGif.dll
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\NeeqDMIs.pdb
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\NeeqDMIs.dll.config
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\NAudio.xml
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\NLog.xml
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\RJCP.SerialPortStream.pdb
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\RJCP.SerialPortStream.xml
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\WpfAnimatedGif.pdb
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\WpfAnimatedGif.xml
+C:\Users\Matteo\Documents\GitHub\Netychords\obj\Debug\Netychords.csprojAssemblyReference.cache
+C:\Users\Matteo\Documents\GitHub\Netychords\obj\Debug\MainWindow.baml
+C:\Users\Matteo\Documents\GitHub\Netychords\obj\Debug\MainWindow.g.cs
+C:\Users\Matteo\Documents\GitHub\Netychords\obj\Debug\App.g.cs
+C:\Users\Matteo\Documents\GitHub\Netychords\obj\Debug\Netychords.csproj.GenerateResource.cache
+C:\Users\Matteo\Documents\GitHub\Netychords\obj\Debug\Netychords.csproj.CoreCompileInputs.cache
+C:\Users\Matteo\Documents\GitHub\Netychords\obj\Debug\Netychords.csproj.CopyComplete
+C:\Users\Matteo\Documents\GitHub\Netychords\obj\Debug\Netychords_Content.g.cs
+C:\Users\Matteo\Documents\GitHub\Netychords\obj\Debug\Netychords_MarkupCompile.cache
+C:\Users\Matteo\Documents\GitHub\Netychords\obj\Debug\Netychords.g.resources
+C:\Users\Matteo\Documents\GitHub\Netychords\obj\Debug\Netychords.Properties.Resources.resources
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\Netychords.exe.config
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\Netychords.exe
+C:\Users\Matteo\Documents\GitHub\Netychords\bin\Debug\Netychords.pdb
+C:\Users\Matteo\Documents\GitHub\Netychords\obj\Debug\Netychords.exe
+C:\Users\Matteo\Documents\GitHub\Netychords\obj\Debug\Netychords.pdb
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\Tobii.EyeX.Client.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\Libraries\Tobii.Interaction.Net.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\Libraries\Tobii.Interaction.Model.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\Netychords.exe.config
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\Netychords.exe
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\Netychords.pdb
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\ArduinoDriver.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\ArduinoUploader.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\EyeTribe.ClientSdk.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\IntelHexFormatReader.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\Microsoft.Win32.Registry.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\NAudio.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\NeeqDMIs.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\Newtonsoft.Json.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\NLog.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\RawInputProcessor.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\RJCP.SerialPortStream.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\Tobii.Interaction.Model.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\Tobii.Interaction.Net.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\WpfAnimatedGif.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\NAudio.Midi.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\NAudio.Core.dll
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\NeeqDMIs.pdb
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\NeeqDMIs.dll.config
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\NAudio.xml
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\Newtonsoft.Json.xml
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\NLog.xml
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\RJCP.SerialPortStream.pdb
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\RJCP.SerialPortStream.xml
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\WpfAnimatedGif.pdb
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\bin\Debug\WpfAnimatedGif.xml
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\obj\Debug\Netychords.csproj.AssemblyReference.cache
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\obj\Debug\MainWindow.baml
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\obj\Debug\MainWindow.g.cs
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\obj\Debug\App.g.cs
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\obj\Debug\Netychords_Content.g.cs
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\obj\Debug\Netychords_MarkupCompile.cache
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\obj\Debug\Netychords.g.resources
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\obj\Debug\Netychords.Properties.Resources.resources
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\obj\Debug\Netychords.csproj.GenerateResource.cache
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\obj\Debug\Netychords.csproj.CoreCompileInputs.cache
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\obj\Debug\Netychords.csproj.CopyComplete
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\obj\Debug\Netychords.exe
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords\obj\Debug\Netychords.pdb

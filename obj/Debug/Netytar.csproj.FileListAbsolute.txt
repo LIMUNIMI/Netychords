@@ -1,0 +1,129 @@
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\Tobii.EyeX.Client.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\Libraries\Tobii.Interaction.Net.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\Libraries\Tobii.Interaction.Model.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\Netytar.exe.config
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\Netytar.exe
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\Netytar.pdb
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\EyeTribe.ClientSdk.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\NAudio.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\NeeqDMIs.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\Newtonsoft.Json.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\RawInputProcessor.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\Tobii.Interaction.Model.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\Tobii.Interaction.Net.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\WpfAnimatedGif.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\ArduinoDriver.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\ArduinoUploader.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\NLog.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\RJCP.SerialPortStream.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\IntelHexFormatReader.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\NeeqDMIs.pdb
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\NAudio.xml
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\Newtonsoft.Json.xml
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\WpfAnimatedGif.pdb
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\WpfAnimatedGif.xml
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\NLog.xml
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\RJCP.SerialPortStream.pdb
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\bin\Debug\RJCP.SerialPortStream.xml
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\obj\Debug\Netytar.csprojAssemblyReference.cache
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\obj\Debug\MainWindow.baml
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\obj\Debug\MainWindow.g.cs
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\obj\Debug\App.g.cs
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\obj\Debug\Netytar_Content.g.cs
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\obj\Debug\Netytar_MarkupCompile.cache
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\obj\Debug\Netytar.g.resources
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\obj\Debug\Netytar.Properties.Resources.resources
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\obj\Debug\Netytar.csproj.GenerateResource.cache
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\obj\Debug\Netytar.csproj.CopyComplete
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\obj\Debug\Netytar.exe
+C:\root_X542U\Frammenti software\Visual Studio Projects\NETYTAR_RIPRISTINO\Netytar\obj\Debug\Netytar.pdb
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\bin\Debug\Tobii.EyeX.Client.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\bin\Debug\Libraries\Tobii.Interaction.Net.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\bin\Debug\Libraries\Tobii.Interaction.Model.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\bin\Debug\Netytar.exe.config
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\bin\Debug\Netytar.exe
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\bin\Debug\Netytar.pdb
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\bin\Debug\EyeTribe.ClientSdk.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\bin\Debug\NAudio.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\bin\Debug\NeeqDMIs.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\bin\Debug\Newtonsoft.Json.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\bin\Debug\RawInputProcessor.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\bin\Debug\Tobii.Interaction.Model.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\bin\Debug\Tobii.Interaction.Net.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\bin\Debug\WpfAnimatedGif.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\bin\Debug\ArduinoDriver.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\bin\Debug\ArduinoUploader.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\bin\Debug\NLog.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\bin\Debug\IntelHexFormatReader.dll
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\bin\Debug\NeeqDMIs.pdb
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\bin\Debug\NeeqDMIs.dll.config
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\bin\Debug\NAudio.xml
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\bin\Debug\Newtonsoft.Json.xml
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\bin\Debug\WpfAnimatedGif.pdb
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\bin\Debug\WpfAnimatedGif.xml
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\bin\Debug\NLog.xml
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\obj\Debug\Netytar.csprojAssemblyReference.cache
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\obj\Debug\MainWindow.baml
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\obj\Debug\MainWindow.g.cs
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\obj\Debug\App.g.cs
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\obj\Debug\Netytar_Content.g.cs
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\obj\Debug\Netytar_MarkupCompile.cache
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\obj\Debug\Netytar.g.resources
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\obj\Debug\Netytar.Properties.Resources.resources
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\obj\Debug\Netytar.csproj.GenerateResource.cache
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\obj\Debug\Netytar.csproj.CopyComplete
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\obj\Debug\Netytar.exe
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar\obj\Debug\Netytar.pdb
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\Tobii.EyeX.Client.dll
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\Libraries\Tobii.Interaction.Net.dll
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\Libraries\Tobii.Interaction.Model.dll
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\Netytar.exe.config
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\Netytar.exe
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\Netytar.pdb
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\EyeTribe.ClientSdk.dll
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\NAudio.dll
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\NeeqDMIs.dll
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\RawInputProcessor.dll
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\Tobii.Interaction.Model.dll
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\Tobii.Interaction.Net.dll
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\WpfAnimatedGif.dll
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\ArduinoDriver.dll
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\ArduinoUploader.dll
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\NLog.dll
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\IntelHexFormatReader.dll
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\NeeqDMIs.pdb
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\NeeqDMIs.dll.config
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\NAudio.xml
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\WpfAnimatedGif.pdb
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\WpfAnimatedGif.xml
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\NLog.xml
+C:\Users\Matteo\Desktop\Netychords\Netytar\obj\Debug\Netytar.csprojAssemblyReference.cache
+C:\Users\Matteo\Desktop\Netychords\Netytar\obj\Debug\MainWindow.baml
+C:\Users\Matteo\Desktop\Netychords\Netytar\obj\Debug\MainWindow.g.cs
+C:\Users\Matteo\Desktop\Netychords\Netytar\obj\Debug\App.g.cs
+C:\Users\Matteo\Desktop\Netychords\Netytar\obj\Debug\Netytar_Content.g.cs
+C:\Users\Matteo\Desktop\Netychords\Netytar\obj\Debug\Netytar_MarkupCompile.cache
+C:\Users\Matteo\Desktop\Netychords\Netytar\obj\Debug\Netytar.g.resources
+C:\Users\Matteo\Desktop\Netychords\Netytar\obj\Debug\Netytar.Properties.Resources.resources
+C:\Users\Matteo\Desktop\Netychords\Netytar\obj\Debug\Netytar.csproj.GenerateResource.cache
+C:\Users\Matteo\Desktop\Netychords\Netytar\obj\Debug\Netytar.csproj.CoreCompileInputs.cache
+C:\Users\Matteo\Desktop\Netychords\Netytar\obj\Debug\Netytar.csproj.CopyComplete
+C:\Users\Matteo\Desktop\Netychords\Netytar\obj\Debug\Netytar.exe
+C:\Users\Matteo\Desktop\Netychords\Netytar\obj\Debug\Netytar.pdb
+C:\Users\Matteo\Desktop\Netychords\Netytar\obj\Debug\Netytar.exe.config
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\RJCP.SerialPortStream.dll
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\RJCP.SerialPortStream.pdb
+C:\Users\Matteo\Desktop\Netychords\Netytar\bin\Debug\RJCP.SerialPortStream.xml
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\obj\Debug\Netytar.csprojAssemblyReference.cache
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\obj\Debug\Netytar.exe.config
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\obj\Debug\MainWindow.baml
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\obj\Debug\MainWindow.g.cs
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\obj\Debug\App.g.cs
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\obj\Debug\Netytar_Content.g.cs
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\obj\Debug\Netytar_MarkupCompile.cache
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\obj\Debug\Netytar.g.resources
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\obj\Debug\Netytar.Properties.Resources.resources
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\obj\Debug\Netytar.csproj.GenerateResource.cache
+C:\root_X542U\Frammenti software\Visual Studio Projects\Netytar_netychords\Netytar\obj\Debug\Netytar.csproj.CoreCompileInputs.cache
