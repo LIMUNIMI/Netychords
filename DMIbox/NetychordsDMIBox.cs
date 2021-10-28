@@ -4,7 +4,6 @@ using NeeqDMIs.Headtracking.NeeqHT;
 using NeeqDMIs.Keyboard;
 using NeeqDMIs.MicroLibrary;
 using NeeqDMIs.Music;
-using Netychords.Surface;
 using Netychords.Utils;
 using System;
 using System.Collections.Generic;
@@ -17,7 +16,12 @@ namespace Netychords
     /// </summary>
     public class NetychordsDMIBox : NeeqDMIs.DMIBox
     {
+        public NetychordsDMIBox() : base()
+        {
+
+        }
         public KeyboardModule KeyboardModule;
+        public bool Mute { get; set; } = true;
         public EyetrackerModels Eyetracker { get; set; } = EyetrackerModels.Tobii;
         public MainWindow MainWindow { get; set; }
 
@@ -35,8 +39,6 @@ namespace Netychords
 
         public List<int> reeds = new List<int>();
 
-        public bool strummed = false;
-
         private MidiChord chord = new MidiChord(MidiNotes.C4, ChordType.Major);
 
         private bool keyDown = false;
@@ -52,38 +54,7 @@ namespace Netychords
             get { return chord; }
             set
             {
-                try // LOL TODO TOFIX (generava problemi)
-                {
-                    if (keyboardEmulator)
-                    {
-                        if (!(value.chordType == chord.chordType && value.rootNote == chord.rootNote))
-                        {
-                            if (keyDown)
-                            {
-                                //StopChord(chord);
-                                //PlayChord(value);
-                                //isPlaying = "Playing";
-                                //isEndedStrum = false;
-                            }
-                            else
-                            {
-                                StopChord(chord);
-                                isPlaying = "";
-                            }
-                            chord = value;
-                        }
-                    }
-                    else
-                    {
-                        if (!(value.chordType == chord.chordType && value.rootNote == chord.rootNote))
-                        {
-                            chord = value;
-                        }
-                    }
-                }
-                catch
-                {
-                }
+                chord = value;
             }
         }
 
@@ -96,9 +67,9 @@ namespace Netychords
                 {
                     if (!R.UserSettings.KeyboardSustain)
                     {
-                        StopChord(chord);
+                        StopNotes();
                     }
-                    
+
                     keyDown = value;
                     isPlaying = "";
                 }
@@ -154,55 +125,58 @@ namespace Netychords
 
         public void PlayChord(MidiChord chord)
         {
-            List<int> notes = new List<int>();
-            int minInterval;
-            int maxInterval;
-
-            for (int i = 0; i < chord.interval.Count; i++)
+            if (!Mute)
             {
-                int thisNote = (int)chord.rootNote + chord.interval[i];
+                List<int> notes = new List<int>();
+                int minInterval;
+                int maxInterval;
 
-                for (int j = 0; j < 5; j++)
+                for (int i = 0; i < chord.interval.Count; i++)
                 {
-                    minInterval = 36 + j * 12;
-                    maxInterval = 47 + j * 12;
+                    int thisNote = (int)chord.rootNote + chord.interval[i];
 
-                    if (reeds.Contains(j))
+                    for (int j = 0; j < 5; j++)
                     {
-                        if ((thisNote + (j + 1) * 12 <= maxInterval && thisNote + (j + 1) * 12 >= minInterval))
+                        minInterval = 36 + j * 12;
+                        maxInterval = 47 + j * 12;
+
+                        if (reeds.Contains(j))
                         {
-                            if (!(notes.Contains((int)chord.rootNote + chord.interval[i] + (j + 1) * 12)))
+                            if ((thisNote + (j + 1) * 12 <= maxInterval && thisNote + (j + 1) * 12 >= minInterval))
                             {
-                                notes.Add((int)chord.rootNote + chord.interval[i] + (j + 1) * 12);
+                                if (!(notes.Contains((int)chord.rootNote + chord.interval[i] + (j + 1) * 12)))
+                                {
+                                    notes.Add((int)chord.rootNote + chord.interval[i] + (j + 1) * 12);
+                                }
                             }
-                        }
-                        if (thisNote + j * 12 <= maxInterval && thisNote + j * 12 >= minInterval)
-                        {
-                            if (!(notes.Contains((int)chord.rootNote + chord.interval[i] + j * 12)))
+                            if (thisNote + j * 12 <= maxInterval && thisNote + j * 12 >= minInterval)
                             {
-                                notes.Add((int)chord.rootNote + chord.interval[i] + j * 12);
+                                if (!(notes.Contains((int)chord.rootNote + chord.interval[i] + j * 12)))
+                                {
+                                    notes.Add((int)chord.rootNote + chord.interval[i] + j * 12);
+                                }
                             }
-                        }
-                        if (thisNote + (j - 1) * 12 <= maxInterval && thisNote + (j - 1) * 12 >= minInterval)
-                        {
-                            if (!(notes.Contains((int)chord.rootNote + chord.interval[i] + (j - 1) * 12)))
+                            if (thisNote + (j - 1) * 12 <= maxInterval && thisNote + (j - 1) * 12 >= minInterval)
                             {
-                                notes.Add((int)chord.rootNote + chord.interval[i] + (j - 1) * 12);
+                                if (!(notes.Contains((int)chord.rootNote + chord.interval[i] + (j - 1) * 12)))
+                                {
+                                    notes.Add((int)chord.rootNote + chord.interval[i] + (j - 1) * 12);
+                                }
                             }
                         }
                     }
                 }
-            }
 
-            if (!(reeds.Count == 0))
-            {
-                int min = reeds.Min();
-                notes.Add((int)chord.rootNote + (min - 1) * 12);
-            }
+                if (!(reeds.Count == 0))
+                {
+                    int min = reeds.Min();
+                    notes.Add((int)chord.rootNote + (min - 1) * 12);
+                }
 
-            for (int i = 0; i < notes.Count; i++)
-            {
-                MidiModule.PlayNote(notes[i], velocity);
+                for (int i = 0; i < notes.Count; i++)
+                {
+                    MidiModule.PlayNote(notes[i], velocity);
+                }
             }
         }
 
@@ -213,11 +187,28 @@ namespace Netychords
             Velocity = 127;
         }
 
-        public void StopChord(MidiChord chord)
+        public void StopNotes()
         {
             for (int i = 12; i < 128; i++)
             {
                 MidiModule.StopNote(i);
+            }
+        }
+
+        public void KeyNodeChange(MidiChord newChord)
+        {
+            if(!(newChord.chordType == chord.chordType && newChord.rootNote == chord.rootNote))
+            {
+                chord = newChord;
+                switch (R.UserSettings.KeyChangeMode)
+                {
+                    case KeyChangeModes.StopOnChanges:
+                        StopNotes();
+                        break;
+                    case KeyChangeModes.Sustain:
+                        //
+                        break;
+                }
             }
         }
 
@@ -254,6 +245,10 @@ namespace Netychords
         private bool isStartedStrum = false;
         private double lastYaw = 0;
         //private DateTime startingTime;
+
+        private MicroTimer autoStrumTimer;
+
+        private bool autoStrumStarted = false;
 
         public enum DirectionStrum
         {
@@ -348,7 +343,7 @@ namespace Netychords
 
                                 if (lastChord != null)
                                 {
-                                    StopChord(lastChord);
+                                    StopNotes();
                                 }
                                 PlayChord(Chord);
                                 lastChord = Chord;
@@ -370,7 +365,7 @@ namespace Netychords
                                 Velocity = midiVelocity;
                                 if (lastChord != null)
                                 {
-                                    StopChord(lastChord);
+                                    StopNotes();
                                 }
                                 PlayChord(Chord);
                                 lastChord = Chord;
@@ -385,8 +380,6 @@ namespace Netychords
             }
         }
 
-        private MicroTimer autoStrumTimer;
-        private bool autoStrumStarted = false;
         public void StartAutostrum(int bpm)
         {
             if (!autoStrumStarted)
@@ -398,13 +391,6 @@ namespace Netychords
 
                 autoStrumStarted = true;
             }
-            
-        }
-
-        private void AutoStrumTimer_MicroTimerElapsed(object sender, MicroTimerEventArgs e)
-        {
-            StopChord(chord);
-            PlayChord(chord);
         }
 
         public void StopAutostrum()
@@ -414,6 +400,12 @@ namespace Netychords
                 autoStrumTimer.Abort();
                 autoStrumStarted = false;
             }
+        }
+
+        private void AutoStrumTimer_MicroTimerElapsed(object sender, MicroTimerEventArgs e)
+        {
+            StopNotes();
+            PlayChord(chord);
         }
 
         #endregion HeadSensor

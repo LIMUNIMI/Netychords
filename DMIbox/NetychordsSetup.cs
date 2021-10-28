@@ -29,7 +29,7 @@ namespace Netychords.DMIBox
             // MIDI
             R.NDB.MidiModule = new MidiModuleNAudio(1, 1);
             MidiDeviceFinder midiDeviceFinder = new MidiDeviceFinder(R.NDB.MidiModule);
-            midiDeviceFinder.SetToLastDevice();
+            //midiDeviceFinder.SetToLastDevice();
 
             // EYETRACKER
             //if(R.NDB.Eyetracker == EyetrackerModels.Tobii)
@@ -59,19 +59,23 @@ namespace Netychords.DMIBox
             R.NDB.KeyboardModule.KeyboardBehaviors.Add(new KBautoScroller());
             R.NDB.KeyboardModule.KeyboardBehaviors.Add(new KBstopAutoScroller());
             R.NDB.KeyboardModule.KeyboardBehaviors.Add(new KBautoStrum());
+            R.NDB.KeyboardModule.KeyboardBehaviors.Add(new KBcenterHeadTracker());
+            R.NDB.KeyboardModule.KeyboardBehaviors.Add(new KBmute());
+            R.NDB.KeyboardModule.KeyboardBehaviors.Add(new KBsmute());
 
             R.NDB.HeadTrackerModule.Behaviors.Add(new HSreadSerial());
 
             //R.NDB.TobiiModule.BlinkBehaviors.Add(new BBDoubleCloseStopChords());
-            R.NDB.TobiiModule.BlinkBehaviors.Add(new BBDoubleClosePlayChord());
+            R.NDB.TobiiModule.BlinkBehaviors.Add(new BBLeftCloseStopNotes());
+            //R.NDB.TobiiModule.BlinkBehaviors.Add(new BBDoubleClosePlayChord());
+            
 
             //SURFACE
             R.NDB.AutoScroller = new AutoScroller(R.NDB.MainWindow.scrlNetychords, 0, 200, new PointFilterMAExpDecaying(0.1f));
 
             R.NDB.NetychordsSurface = new NetychordsSurface(R.NDB.MainWindow.canvasNetychords);
+            R.NDB.NetychordsSurface.HtFeedbackModule = new HTFeedbackModule(R.NDB.NetychordsSurface.Canvas, HTFeedbackModule.HTFeedbackModes.Bars);
             R.NDB.NetychordsSurface.DrawButtons();
-
-            R.NDB.NetychordsSurface.HtFeedbackModule = new HTFeedbackModule(R.NDB.NetychordsSurface.Canvas, HTFeedbackModule.HTFeedbackModes.DeadZone);
 
             R.NDB.NetychordsSurface.HighLightMode = NetychordsSurfaceHighlightModes.CurrentNote;
         }

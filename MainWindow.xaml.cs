@@ -1,5 +1,4 @@
-﻿using NeeqDMIs.Eyetracking.PointFilters;
-using NeeqDMIs.Music;
+﻿using NeeqDMIs.Music;
 using Netychords.DMIBox;
 using Netychords.Surface;
 using Netychords.Utils;
@@ -25,7 +24,6 @@ namespace Netychords
         private DateTime clicked;
         private bool clickedButton = false;
         private bool netychordsStarted = false;
-        private int sensorPort = 1;
         private DispatcherTimer updater;
 
         public MainWindow()
@@ -36,8 +34,8 @@ namespace Netychords
             // Initializing dispatcher timer, i.e. the timer that updates every graphical value in
             // the interface.
             updater = new DispatcherTimer();
-            updater.Interval = new TimeSpan(6000);
-            updater.Tick += UpdateWindow;
+            updater.Interval = new TimeSpan(1000); //OLD 6000
+            updater.Tick += UpdateTimedVisuals;
             updater.Start();
         }
 
@@ -45,12 +43,12 @@ namespace Netychords
 
         public int SensorPort
         {
-            get { return sensorPort; }
+            get { return R.UserSettings.SensorPort; }
             set
             {
                 if (value > 0)
                 {
-                    sensorPort = value;
+                    R.UserSettings.SensorPort = value;
                 }
             }
         }
@@ -85,6 +83,7 @@ namespace Netychords
         {
             R.NDB.HTData.CalibrateCenter();
             R.NDB.CalibrationHeadSensor();
+            UpdateButtonVisuals();
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)
@@ -96,12 +95,13 @@ namespace Netychords
         {
             if (netychordsStarted)
             {
-                R.NDB.MidiModule.OutDevice--;
-                lblMIDIch.Text = "MP" + R.NDB.MidiModule.OutDevice.ToString();
-                clicked = DateTime.Now;
-                clickedButton = true;
-                btnMIDIchMinus.IsEnabled = false;
-                CheckMidiPort();
+                R.UserSettings.MIDIPort--;
+                R.NDB.MidiModule.OutDevice = R.UserSettings.MIDIPort;
+                //lblMIDIch.Text = "MP" + R.NDB.MidiModule.OutDevice.ToString();
+                //clicked = DateTime.Now;
+                //clickedButton = true;
+                //btnMIDIchMinus.IsEnabled = false;
+                UpdateButtonVisuals();
             }
         }
 
@@ -109,13 +109,13 @@ namespace Netychords
         {
             if (netychordsStarted)
             {
-                R.NDB.MidiModule.OutDevice++;
-                lblMIDIch.Text = "MP" + R.NDB.MidiModule.OutDevice.ToString();
-                clicked = DateTime.Now;
-                clickedButton = true;
-                btnMIDIchPlus.IsEnabled = false;
-
-                CheckMidiPort();
+                R.UserSettings.MIDIPort++;
+                R.NDB.MidiModule.OutDevice = R.UserSettings.MIDIPort;
+                //lblMIDIch.Text = "MP" + R.NDB.MidiModule.OutDevice.ToString();
+                //clicked = DateTime.Now;
+                //clickedButton = true;
+                //btnMIDIchPlus.IsEnabled = false;
+                UpdateButtonVisuals();
             }
         }
 
@@ -125,9 +125,7 @@ namespace Netychords
             {
                 SensorPort--;
                 UpdateSensorConnection();
-                clicked = DateTime.Now;
-                clickedButton = true;
-                btnSensorPortMinus.IsEnabled = false;
+                UpdateButtonVisuals();
             }
         }
 
@@ -137,9 +135,7 @@ namespace Netychords
             {
                 SensorPort++;
                 UpdateSensorConnection();
-                clicked = DateTime.Now;
-                clickedButton = true;
-                btnSensorPortPlus.IsEnabled = false;
+                UpdateButtonVisuals();
             }
         }
 
@@ -411,19 +407,20 @@ namespace Netychords
 
                 //LoadSettingsToIndicators();
             }
-            else
-            {
-                canvasNetychords.Children.Clear();
-                //R.NDB.AutoScroller = new AutoScroller(R.NDB.MainWindow.scrlNetychords, 0, 100, new PointFilterMAExpDecaying(0.1f));
-                R.NDB.NetychordsSurface.firstChord = MidiChord.StandardAbsStringToChordFactory(R.UserSettings.FirstNote, R.NDB.octaveNumber, ChordType.Major);
+            //else
+            //{
+            //    canvasNetychords.Children.Clear();
+            //    //R.NDB.AutoScroller = new AutoScroller(R.NDB.MainWindow.scrlNetychords, 0, 100, new PointFilterMAExpDecaying(0.1f));
+            //    R.NDB.NetychordsSurface.firstChord = MidiChord.StandardAbsStringToChordFactory(R.UserSettings.FirstNote, R.NDB.octaveNumber, ChordType.Major);
 
-                R.NDB.NetychordsSurface = new NetychordsSurface(R.NDB.MainWindow.canvasNetychords);
+            //    R.NDB.NetychordsSurface = new NetychordsSurface(R.NDB.MainWindow.canvasNetychords);
 
-                R.NDB.NetychordsSurface.DrawButtons();
-                //canvasNetychords.Children.Add(Rack.NetychordsDMIBox.NetychordsSurface.highlighter);
-                btnStart.IsEnabled = false;
-                btnStart.Foreground = new SolidColorBrush(Colors.Black);
-            }
+            //    R.NDB.NetychordsSurface.DrawButtons();
+            //    //canvasNetychords.Children.Add(Rack.NetychordsDMIBox.NetychordsSurface.highlighter);
+            //    btnStart.IsEnabled = false;
+            //    btnStart.Foreground = new SolidColorBrush(Colors.Black);
+            //}
+            UpdateButtonVisuals();
         }
 
         //private void LoadSettingsToIndicators()
@@ -504,18 +501,52 @@ namespace Netychords
 
         /// <summary>
         /// This method gets called every millisecond (or something like?) in order to update the
-        /// elements of the GUI
+        /// elements of the GUI that need a DispatcherTimer
         /// </summary>
-        private void UpdateWindow(object sender, EventArgs e)
+        private void UpdateTimedVisuals(object sender, EventArgs e)
         {
             if (netychordsStarted)
             {
                 lblIsPlaying.Text = R.NDB.isPlaying;
                 lblPlayedNote.Text = R.NDB.Chord.ChordName();
                 lblYaw.Text = R.NDB.HTData.TranspYaw.ToString();
-                centerValue.Text = Math.Round(R.NDB.CenterZone, 0).ToString();
-                centerPitchValue.Text = Math.Round(centerPitchZone.Value, 0).ToString();
+                txtCenterValue.Text = Math.Round(R.NDB.CenterZone, 0).ToString();
+                txtCenterPitchValue.Text = Math.Round(centerPitchZone.Value, 0).ToString();
 
+                switch (R.NDB.Mute)
+                {
+                    case true:
+                        lblMIDIch.Background = brdMIDIch.Background = new SolidColorBrush(Colors.Black);
+                        break;
+                    case false:
+                        lblMIDIch.Background = brdMIDIch.Background = new SolidColorBrush(Colors.DarkSlateGray);
+                        break;
+                }
+
+                R.NDB.NetychordsSurface.UpdateHeadTrackerFeedback(R.NDB.HTData);
+            }
+
+            //if (clickedButton)
+            //{
+            //    TimeSpan limit = new TimeSpan(0, 0, 0, 0, 30);
+            //    TimeSpan button = DateTime.Now.Subtract(clicked);
+            //    if (button >= limit)
+            //    {
+            //        btnMIDIchMinus.IsEnabled = true;
+            //        btnMIDIchPlus.IsEnabled = true;
+            //        btnSensorPortMinus.IsEnabled = true;
+            //        btnSensorPortPlus.IsEnabled = true;
+            //        clickedButton = false;
+            //    }
+            //}
+        }
+
+        /* Visuals that should be updated only when a button is pressed */
+
+        private void UpdateButtonVisuals()
+        {
+            if (netychordsStarted)
+            {
                 switch (R.UserSettings.OnlyDiatonic)
                 {
                     case true:
@@ -561,23 +592,24 @@ namespace Netychords
                 }
 
                 indAutoStrumValue.Text = R.UserSettings.AutoStrumBPM.ToString();
-
-                R.NDB.NetychordsSurface.UpdateHeadTrackerFeedback(R.NDB.HTData);
             }
 
-            if (clickedButton)
-            {
-                TimeSpan limit = new TimeSpan(0, 0, 0, 0, 30);
-                TimeSpan button = DateTime.Now.Subtract(clicked);
-                if (button >= limit)
-                {
-                    btnMIDIchMinus.IsEnabled = true;
-                    btnMIDIchPlus.IsEnabled = true;
-                    btnSensorPortMinus.IsEnabled = true;
-                    btnSensorPortPlus.IsEnabled = true;
-                    clickedButton = false;
-                }
-            }
+            //if (clickedButton)
+            //{
+            //    TimeSpan limit = new TimeSpan(0, 0, 0, 0, 30);
+            //    TimeSpan button = DateTime.Now.Subtract(clicked);
+            //    if (button >= limit)
+            //    {
+            //        btnMIDIchMinus.IsEnabled = true;
+            //        btnMIDIchPlus.IsEnabled = true;
+            //        btnSensorPortMinus.IsEnabled = true;
+            //        btnSensorPortPlus.IsEnabled = true;
+            //        clickedButton = false;
+            //    }
+            //}
+
+            lblMIDIch.Text = "MP" + R.NDB.MidiModule.OutDevice.ToString();
+            CheckMidiPort();
         }
 
         private void sldDistance_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
@@ -611,32 +643,26 @@ namespace Netychords
                     break;
             }
             R.NDB.NetychordsSurface.DrawButtons();
+            UpdateButtonVisuals();
         }
 
         private void btnBlinkPlay_Click(object sender, RoutedEventArgs e)
         {
             R.UserSettings.BlinkPlay = !R.UserSettings.BlinkPlay;
+            UpdateButtonVisuals();
         }
 
         private void btnSustain_Click(object sender, RoutedEventArgs e)
         {
             R.UserSettings.KeyboardSustain = !R.UserSettings.KeyboardSustain;
+            UpdateButtonVisuals();
         }
 
         private void btnAutoStrum_Click(object sender, RoutedEventArgs e)
         {
             R.UserSettings.AutoStrum = !R.UserSettings.AutoStrum;
-            switch (R.UserSettings.AutoStrum)
-            {
-                case true:
-                    R.NDB.StartAutostrum(R.UserSettings.AutoStrumBPM);
-                    break;
-                case false:
-                    R.NDB.StopAutostrum();
-                    break;
-            }
+            UpdateButtonVisuals();
         }
-
 
         private void sldAutoStrum_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {

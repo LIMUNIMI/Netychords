@@ -170,13 +170,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Behaviors\Eyetracker\BBDoubleClosePlayChord.cs" />
-    <Compile Include="Behaviors\Eyetracker\BBDoubleCloseStopChords.cs" />
+    <Compile Include="Behaviors\Eyetracker\BBLeftCloseStopNotes.cs" />
     <Compile Include="Behaviors\HeadSensor\HSreadSerial.cs" />
     <Compile Include="ControlMode.cs" />
     <Compile Include="DMIbox\KeyboardBehaviors\KBautoStrum.cs" />
+    <Compile Include="DMIbox\KeyboardBehaviors\KBcenterHeadTracker.cs" />
+    <Compile Include="DMIbox\KeyboardBehaviors\KBsmute.cs" />
+    <Compile Include="DMIbox\KeyboardBehaviors\KBmute.cs" />
     <Compile Include="DMIbox\KeyboardBehaviors\KBstopAutoScroller.cs" />
     <Compile Include="DMIbox\KeyboardBehaviors\KBautoScroller.cs" />
     <Compile Include="DMIbox\KeyboardBehaviors\KBstopEmulateMouse.cs" />
+    <Compile Include="DMIbox\Settings\KeyChangeModes.cs" />
     <Compile Include="Surface\FlowerLayout\PlantFamilies.cs" />
     <Compile Include="Surface\FlowerLayout\Plant.cs" />
     <Compile Include="Surface\FlowerLayout\FlowerButton.cs" />

@@ -14,8 +14,8 @@ namespace Netychords
     {
         public int HighlightStrokeDim { get; set; } = 5;
         public int HighlightRadius { get; set; } = 65;
-        public int VerticalSpacer { get; set; } = 150;
-        public int HorizontalSpacer { get; set; } = 300;
+        public int VerticalSpacer { get; set; } = 140;
+        public int HorizontalSpacer { get; set; } = 280;
         public int ButtonHeight { get; set; } = 70;
         public int ButtonWidth { get; set; } = 70;
         public int OccluderOffset { get; set; } = 28;
@@ -42,7 +42,7 @@ namespace Netychords
         public SolidColorBrush MajorBrush { get; set; } = new SolidColorBrush(Colors.Red);
         public SolidColorBrush HighlightBrush {get; set; } = new SolidColorBrush(Colors.Black);
         public SolidColorBrush TransparentBrush { get; set; } = new SolidColorBrush(Colors.Transparent);
-        public int NCols { get; set; } = 3;
+        public int NCols { get; set; } = 12;
         public int NRows { get; set; } = System.Enum.GetNames(typeof(ChordType)).Length;
         public int Spacing { get; set; } = 100;
         public int GenerativeNote { get; set; } = 40;
@@ -50,12 +50,15 @@ namespace Netychords
         public int StartPositionY { get; set; } = 800;
         public int OccluderAlpha { get; set; } = 10;
         public AbsNotes TonalCenter { get; set; } = AbsNotes.C;
-        public string FirstNote { get; set; } = "F";
-        public bool OnlyDiatonic { get; set; } = true;
-        public Layouts Layout { get; set; } = Layouts.Diatonic_3;
+        public string FirstNote { get; set; } = "A#";
+        public bool OnlyDiatonic { get; set; } = false;
+        public Layouts Layout { get; set; } = Layouts.FifthCircle;
         public bool BlinkPlay { get; set; } = false;
         public bool KeyboardSustain { get; set; } = false;
         public int AutoStrumBPM { get; set; } = 120;
         public bool AutoStrum { get; set; } = false;
+        public KeyChangeModes KeyChangeMode { get; set; } = KeyChangeModes.Sustain;
+        public int MIDIPort { get; set; } = 2;
+        public int SensorPort { get; set; } = 4;
     }
 }

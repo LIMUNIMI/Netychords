@@ -141,8 +141,8 @@ namespace Netychords.Surface
         {
             if (checkedButton != null)
             {
-                Bar_horLine.X1 = Canvas.GetLeft(checkedButton) + checkedButton.ActualWidth / 2;
-                Bar_horLine.Y1 = Canvas.GetTop(checkedButton) + checkedButton.ActualHeight / 2;
+                Bar_horLine.X1 = Canvas.GetLeft(checkedButton.Occluder) + checkedButton.Occluder.ActualWidth / 2;
+                Bar_horLine.Y1 = Canvas.GetTop(checkedButton.Occluder) + checkedButton.Occluder.ActualHeight / 2;
 
                 Bar_horLine.X2 = Bar_horLine.X1 + headTrackerData.TranspYaw;
                 Bar_horLine.Y2 = Bar_horLine.Y1;
@@ -166,7 +166,7 @@ namespace Netychords.Surface
                 Dead_midLine.X1 = Canvas.GetLeft(Occ) + Occ.ActualWidth / 2;
                 Dead_midLine.Y1 = Canvas.GetTop(Occ);
                 Dead_midLine.X2 = Canvas.GetLeft(Occ) + Occ.ActualWidth / 2;
-                Dead_midLine.Y2 = Canvas.GetTop(Occ) + Occ.ActualHeight;
+                Dead_midLine.Y2 = Canvas.GetTop(Occ) + Occ.ActualHeight / 2;
 
                 if (R.NDB.InDeadZone)
                 {
@@ -194,7 +194,7 @@ namespace Netychords.Surface
                 Half_midLine.X1 = Canvas.GetLeft(Occ) + Occ.ActualWidth / 2;
                 Half_midLine.Y1 = Canvas.GetTop(Occ);
                 Half_midLine.X2 = Canvas.GetLeft(Occ) + Occ.ActualWidth / 2;
-                Half_midLine.Y2 = Canvas.GetTop(Occ) + Occ.ActualHeight;
+                Half_midLine.Y2 = Canvas.GetTop(Occ) + Occ.ActualHeight / 2;
 
                 Canvas.SetLeft(Half_leftRect, Canvas.GetLeft(Occ));
                 Canvas.SetLeft(Half_rightRect, Canvas.GetLeft(Occ) + Occ.ActualWidth / 2);

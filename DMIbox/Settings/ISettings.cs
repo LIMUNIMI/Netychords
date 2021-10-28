@@ -38,5 +38,8 @@ namespace Netychords
         bool KeyboardSustain { get; set; }
         int AutoStrumBPM { get; set; }
         bool AutoStrum { get; set; }
+        KeyChangeModes KeyChangeMode { get; set; }
+        int MIDIPort { get; set; }
+        int SensorPort { get; set; }
     }
 }

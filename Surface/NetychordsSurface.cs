@@ -54,6 +54,7 @@ namespace Netychords
             firstChord = MidiChord.StandardAbsStringToChordFactory(R.UserSettings.FirstNote, "2", ChordType.Major);
             R.UserSettings.Layout.Draw(firstChord, Canvas, NetychordsButtons);
             DrawHighlighter();
+            HtFeedbackModule.Mode = HTFeedbackModule.HTFeedbackModes.Bars;
         }
 
         public void FlashMovementLine()
@@ -71,7 +72,7 @@ namespace Netychords
             if (sender != CheckedButton)
             {
                 R.NDB.lastChord = R.NDB.Chord;
-                R.NDB.Chord = sender.Chord;
+                R.NDB.KeyNodeChange(sender.Chord);
 
                 lastCheckedButton = checkedButton;
                 checkedButton = sender;

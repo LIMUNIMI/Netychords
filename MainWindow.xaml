@@ -79,8 +79,8 @@
                             </Button.Background>
                         </Button>
                     </Border>
-                    <Border Background="Black" Grid.Column="1" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="1,1,1,1">
-                        <TextBlock Name="lblMIDIch" Margin="0,10,0,0" Background="Black" Foreground="LightCoral" FontFamily="Digital-7 Italic" FontSize="25" TextAlignment="Center" Text="MP1">
+                    <Border Name="brdMIDIch" Background="Black" Grid.Column="1" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="1,1,1,1">
+                        <TextBlock Name="lblMIDIch" Margin="0,0,0,0" VerticalAlignment="Center" Background="Black" Foreground="LightCoral" FontFamily="Digital-7 Italic" FontSize="25" TextAlignment="Center" Text="MP-">
                         </TextBlock>
                     </Border>
                     <Border Background="Black" Grid.Column="2" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="1,1,1,1">
@@ -107,7 +107,7 @@
                         </Button>
                     </Border>
                     <Border Visibility="Visible" Background="Black" Grid.Column="2" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="1.4,2,1.462,2.985">
-                        <TextBlock Name="txtSensorPort"  Background="Black" Foreground="LightCoral" FontFamily="Digital-7 Italic" FontSize="25" TextAlignment="Center" Text="">
+                        <TextBlock Name="txtSensorPort"  Background="Black" Foreground="LightCoral" FontFamily="Digital-7 Italic" FontSize="25" TextAlignment="Center" VerticalAlignment="Center" Text="">
                         </TextBlock>
                     </Border>
                     <Border Visibility="Visible"  Background="Black" Grid.Column="3" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="0.538,2,1.323,2.985">
@@ -187,11 +187,11 @@
                         <ColumnDefinition Width = "1*" />
                     </Grid.ColumnDefinitions>
                     <Border Background="Black" Grid.Column="0" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="1,1,1,1">
-                        <TextBlock Name="lblIsPlaying" Margin="0,10,0,0" Background="Black" Foreground="LightCoral" FontFamily="Digital-7 Italic" FontSize="25" TextAlignment="Center" Text="">
+                        <TextBlock Name="lblIsPlaying" Margin="0,0,0,0" Background="Black" Foreground="LightCoral" FontFamily="Digital-7 Italic" FontSize="25" TextAlignment="Center" Text="">
                         </TextBlock>
                     </Border>
                     <Border Background="Black" Grid.Column="1" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="1,1,1,1">
-                        <TextBlock Name="lblPlayedNote" Margin="0,10,0,0" Background="Black" Foreground="LightCoral" FontFamily="Digital-7 Italic" FontSize="25" TextAlignment="Center" Text="">
+                        <TextBlock Name="lblPlayedNote" Margin="0,0,0,0" Background="Black" Foreground="LightCoral" FontFamily="Digital-7 Italic" FontSize="25" TextAlignment="Center" Text="">
                         </TextBlock>
                     </Border>
                 </Grid>
@@ -207,7 +207,7 @@
                         </TextBlock>
                     </Border>
                     <Border HorizontalAlignment="Stretch" Margin="0,0,4,0" Width="Auto" Height="20" BorderThickness="0" BorderBrush="White" Grid.Column="1" Grid.RowSpan="2">
-                        <Slider Name="Margins" Maximum="1" Minimum="0" IsSnapToTickEnabled="True" TickFrequency="1" TickPlacement="None" ValueChanged="Margins_ValueChanged" Value="1" HorizontalAlignment="Left" Margin="0,0,-0.2,0" Width="53" />
+                        <Slider Name="Margins" Maximum="1" Minimum="0" IsSnapToTickEnabled="True" TickFrequency="1" TickPlacement="None" ValueChanged="Margins_ValueChanged" Value="0" HorizontalAlignment="Left" Margin="0,0,-0.2,0" Width="53" />
                     </Border>
                     <Border Background="Black" Grid.Column="2" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="30" Margin="0,0,0,0">
                         <TextBlock Name="trueMargin" Margin="0,5,0,0" Background="Black" Foreground="LightGreen" FontFamily="Digital-7 Italic" FontSize="12" TextAlignment="Center" Text="Grid">
@@ -320,7 +320,7 @@
                         <Slider Name="sldCenterZone" Maximum="10" Minimum="1" TickPlacement="None" TickFrequency="1" Value="0" ValueChanged="centerZone_ValueChanged" />
                     </Border>
                     <Border Background="Black" Grid.Column="1" Grid.Row="0" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="30" Margin="0,0,0,0">
-                        <TextBlock Name="centerValue" Margin="0,5,0,0" Background="Black" Foreground="LightGreen" FontFamily="Digital-7 Italic" FontSize="12" TextAlignment="Center" Text="">
+                        <TextBlock Name="txtCenterValue" Margin="0,5,0,0" Background="Black" Foreground="LightGreen" FontFamily="Digital-7 Italic" FontSize="12" TextAlignment="Center" Text="">
                         </TextBlock>
                     </Border>
 
@@ -328,7 +328,7 @@
                         <Slider Name="centerPitchZone" Maximum="40" Minimum="10" TickPlacement="None" TickFrequency="1" Value="0" />
                     </Border>
                     <Border Background="Black" Grid.Column="1" Grid.Row="1" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto">
-                        <TextBlock Name="centerPitchValue" Margin="0,5,0,0" Background="Black" Foreground="LightGreen" FontFamily="Digital-7 Italic" FontSize="12" TextAlignment="Center" Text="">
+                        <TextBlock Name="txtCenterPitchValue" Margin="0,5,0,0" Background="Black" Foreground="LightGreen" FontFamily="Digital-7 Italic" FontSize="12" TextAlignment="Center" Text="">
                         </TextBlock>
                     </Border>
 
@@ -457,8 +457,8 @@
                             </Button.Background>
                         </Button>
                     </Border>
-                    <Border Background="Black" Grid.Column="1" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="50" Margin="1,1,1,1">
-                        <TextBlock Name="lblYaw" Margin="0,10,0,0" Background="Black" Foreground="LightCoral" FontFamily="Digital-7 Italic" FontSize="25" TextAlignment="Center" Text="">
+                    <Border Background="Black" Grid.Column="1" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="1,1,1,1">
+                        <TextBlock Name="lblYaw" Margin="0,0,0,0" Background="Black" Foreground="LightCoral" FontFamily="Digital-7 Italic" FontSize="25" TextAlignment="Center" VerticalAlignment="Center"  Text="">
                         </TextBlock>
                     </Border>
                 </Grid>
