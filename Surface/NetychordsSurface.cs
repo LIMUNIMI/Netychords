@@ -90,7 +90,16 @@ namespace Netychords
         {
             if (headTrackerData != null)
             {
-                HtFeedbackModule.UpdateGraphics(headTrackerData, checkedButton);
+                switch (headTrackerData.HeadTrackerMode)
+                {
+                    case HeadTrackerMode.Absolute:
+                        HtFeedbackModule.UpdateGraphics(headTrackerData.TranspYaw, checkedButton);
+                        break;
+                    case HeadTrackerMode.Acceleration:
+                        HtFeedbackModule.UpdateGraphics(headTrackerData.AccYaw * UPDATERACCMULTIPLIER, checkedButton);
+                        break;
+                }
+                
             }
         }
 
@@ -134,6 +143,8 @@ namespace Netychords
         public NetychordsButton[,] NetychordsButtons;
         private List<Ellipse> drawnEllipses = new List<Ellipse>();
         private List<Line> drawnLines = new List<Line>();
+        private readonly double UPDATERACCMULTIPLIER = 40f;
+
         public Canvas Canvas { get; set; }
 
         #endregion Surface components

@@ -1,4 +1,5 @@
-﻿using NeeqDMIs.Eyetracking.PointFilters;
+﻿using NeeqDMIs.Eyetracking.MouseEmulator;
+using NeeqDMIs.Eyetracking.PointFilters;
 using NeeqDMIs.Eyetracking.Utils;
 using NeeqDMIs.Keyboard;
 using RawInputProcessor;
@@ -13,7 +14,7 @@ namespace Netychords
         {
             if (e.VirtualKey == (ushort)keyAction)
             {
-                R.NDB.TobiiModule.MouseEmulator = new MouseEmulator(new PointFilterBypass());
+                R.NDB.TobiiModule.MouseEmulator = new MouseEmulatorModule(new PointFilterBypass());
                 R.NDB.TobiiModule.MouseEmulator.EyetrackerToMouse = true;
                 R.NDB.TobiiModule.MouseEmulator.CursorVisible = false;
 

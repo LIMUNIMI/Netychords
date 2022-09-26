@@ -39,6 +39,9 @@
   <PropertyGroup>
     <StartupObject>Netychords.App</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>NetychordsIcon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ArduinoDriver, Version=2.4.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\ArduinoDriver.2.4.6\lib\net452\ArduinoDriver.dll</HintPath>
@@ -171,6 +174,7 @@
     </ApplicationDefinition>
     <Compile Include="Behaviors\Eyetracker\BBDoubleClosePlayChord.cs" />
     <Compile Include="Behaviors\Eyetracker\BBLeftCloseStopNotes.cs" />
+    <Compile Include="Behaviors\HeadSensor\HBjustTransferData.cs" />
     <Compile Include="Behaviors\HeadSensor\HSreadSerial.cs" />
     <Compile Include="ControlMode.cs" />
     <Compile Include="DMIbox\KeyboardBehaviors\KBautoStrum.cs" />
@@ -267,6 +271,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="NetychordsIcon.ico" />
     <None Include="Libraries\Tobii.Interaction.Net.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

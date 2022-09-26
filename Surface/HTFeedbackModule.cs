@@ -53,20 +53,20 @@ namespace Netychords.Surface
             CreateElements();
         }
 
-        public void UpdateGraphics(HeadTrackerData headTrackerData, NetychordsButton checkedButton)
+        public void UpdateGraphics(double TrackedValue, NetychordsButton checkedButton)
         {
             switch (Mode)
             {
                 case HTFeedbackModes.Bars:
-                    Update_Bars(headTrackerData, checkedButton);
+                    Update_Bars(TrackedValue, checkedButton);
                     break;
 
                 case HTFeedbackModes.HalfButton:
-                    Update_HalfButton(headTrackerData, checkedButton);
+                    Update_HalfButton(TrackedValue, checkedButton);
                     break;
 
                 case HTFeedbackModes.DeadZone:
-                    Update_DeadZone(headTrackerData, checkedButton);
+                    Update_DeadZone(TrackedValue, checkedButton);
                     break;
             }
         }
@@ -137,14 +137,14 @@ namespace Netychords.Surface
 
         #region Update resolvers
 
-        private void Update_Bars(HeadTrackerData headTrackerData, NetychordsButton checkedButton)
+        private void Update_Bars(double TrackedValue, NetychordsButton checkedButton)
         {
             if (checkedButton != null)
             {
                 Bar_horLine.X1 = Canvas.GetLeft(checkedButton.Occluder) + checkedButton.Occluder.ActualWidth / 2;
                 Bar_horLine.Y1 = Canvas.GetTop(checkedButton.Occluder) + checkedButton.Occluder.ActualHeight / 2;
 
-                Bar_horLine.X2 = Bar_horLine.X1 + headTrackerData.TranspYaw;
+                Bar_horLine.X2 = Bar_horLine.X1 + TrackedValue;
                 Bar_horLine.Y2 = Bar_horLine.Y1;
 
                 Bar_verLine.X1 = Bar_horLine.X2;
@@ -157,7 +157,7 @@ namespace Netychords.Surface
             }
         }
 
-        private void Update_DeadZone(HeadTrackerData headTrackerData, NetychordsButton checkedButton)
+        private void Update_DeadZone(double TrackedValue, NetychordsButton checkedButton)
         {
             if (checkedButton != null)
             {
@@ -179,7 +179,7 @@ namespace Netychords.Surface
             }
         }
 
-        private void Update_HalfButton(HeadTrackerData headTrackerData, NetychordsButton checkedButton)
+        private void Update_HalfButton(double TrackedValue, NetychordsButton checkedButton)
         {
             if (checkedButton != null)
             {
@@ -204,14 +204,14 @@ namespace Netychords.Surface
                 double posPart = 0;
                 double negPart = 0;
 
-                if (headTrackerData.TranspYaw >= 0)
+                if (TrackedValue >= 0)
                 {
-                    posPart = headTrackerData.TranspYaw;
+                    posPart = TrackedValue;
                     negPart = 0;
                 }
                 else
                 {
-                    negPart = -headTrackerData.TranspYaw;
+                    negPart = -TrackedValue;
                     posPart = 0;
                 }
 

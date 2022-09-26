@@ -1,9 +1,11 @@
 ﻿using NeeqDMIs.ATmega;
 using NeeqDMIs.Eyetracking.PointFilters;
 using NeeqDMIs.Eyetracking.Tobii;
+using NeeqDMIs.Headtracking.NeeqHT;
 using NeeqDMIs.Keyboard;
 using NeeqDMIs.MIDI;
 using Netychords.Behaviors.Eyetracker;
+using Netychords.Behaviors.HeadSensor;
 using Netychords.Behaviors.Sensor;
 using Netychords.DMIBox.KeyboardBehaviors;
 using Netychords.Surface;
@@ -24,7 +26,7 @@ namespace Netychords.DMIBox
         {
             // KEYBOARD MODULE
             IntPtr windowHandle = new WindowInteropHelper(R.NDB.MainWindow).Handle;
-            R.NDB.KeyboardModule = new KeyboardModule(windowHandle);
+            R.NDB.KeyboardModule = new KeyboardModule(windowHandle, RawInputProcessor.RawInputCaptureMode.Foreground);
 
             // MIDI
             R.NDB.MidiModule = new MidiModuleNAudio(1, 1);
@@ -50,7 +52,7 @@ namespace Netychords.DMIBox
            
 
             // MODULES
-            R.NDB.HeadTrackerModule = new SensorModule(115200);
+            R.NDB.HeadTrackerModule = new NeeqHTModule(115200, "COM");
 
             // BEHAVIORS
             R.NDB.KeyboardModule.KeyboardBehaviors.Add(new KBplayStop());
@@ -63,7 +65,7 @@ namespace Netychords.DMIBox
             R.NDB.KeyboardModule.KeyboardBehaviors.Add(new KBmute());
             R.NDB.KeyboardModule.KeyboardBehaviors.Add(new KBsmute());
 
-            R.NDB.HeadTrackerModule.Behaviors.Add(new HSreadSerial());
+            R.NDB.HeadTrackerModule.Behaviors.Add(new HBjustTransferData());
 
             //R.NDB.TobiiModule.BlinkBehaviors.Add(new BBDoubleCloseStopChords());
             R.NDB.TobiiModule.BlinkBehaviors.Add(new BBLeftCloseStopNotes());

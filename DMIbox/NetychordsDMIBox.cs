@@ -1,9 +1,11 @@
 ﻿using NeeqDMIs.ATmega;
 using NeeqDMIs.Eyetracking.Utils;
+using NeeqDMIs.Filters.ValueFilters;
 using NeeqDMIs.Headtracking.NeeqHT;
 using NeeqDMIs.Keyboard;
 using NeeqDMIs.MicroLibrary;
 using NeeqDMIs.Music;
+using NeeqDMIs.Utils;
 using Netychords.Utils;
 using System;
 using System.Collections.Generic;
@@ -21,7 +23,7 @@ namespace Netychords
 
         }
         public KeyboardModule KeyboardModule;
-        public bool Mute { get; set; } = true;
+        public bool Mute { get; set; } = false;
         public EyetrackerModels Eyetracker { get; set; } = EyetrackerModels.Tobii;
         public MainWindow MainWindow { get; set; }
 
@@ -264,7 +266,7 @@ namespace Netychords
         }
 
         public double Distance { get; private set; }
-        public SensorModule HeadTrackerModule { get; set; }
+        public NeeqHTModule HeadTrackerModule { get; set; }
 
         public int HeadTrackerPortNumber
         {
@@ -302,83 +304,109 @@ namespace Netychords
         {
             if (isCentered && MainWindow.NetychordsStarted)
             {
-                if (HTData.TranspYaw <= deadzoneTop && HTData.TranspYaw >= deadzoneBottom)
+                if(HTData.HeadTrackerMode == HeadTrackerMode.Absolute)
                 {
-                    //startStrum = HeadTrackerData.TranspYaw;
-                    isEndedStrum = false;
-                    InDeadZone = true;
-                }
-                else if (!isStartedStrum && !isEndedStrum)
-                {
-                    InDeadZone = false;
-                    if (HTData.TranspYaw < deadzoneBottom)
+                    if (HTData.TranspYaw <= deadzoneTop && HTData.TranspYaw >= deadzoneBottom)
                     {
-                        dirStrum = NetychordsDMIBox.DirectionStrum.Left;
-                        isStartedStrum = true;
+                        //startStrum = HeadTrackerData.TranspYaw;
                         isEndedStrum = false;
-                        lastYaw = HTData.TranspYaw;
+                        InDeadZone = true;
                     }
-                    if (HTData.TranspYaw > deadzoneTop)
+                    else if (!isStartedStrum && !isEndedStrum)
                     {
-                        dirStrum = NetychordsDMIBox.DirectionStrum.Right;
-                        isStartedStrum = true;
-                        isEndedStrum = false;
-                        lastYaw = HTData.TranspYaw;
+                        InDeadZone = false;
+                        if (HTData.TranspYaw < deadzoneBottom)
+                        {
+                            dirStrum = DirectionStrum.Left;
+                            isStartedStrum = true;
+                            isEndedStrum = false;
+                            lastYaw = HTData.TranspYaw;
+                        }
+                        if (HTData.TranspYaw > deadzoneTop)
+                        {
+                            dirStrum = DirectionStrum.Right;
+                            isStartedStrum = true;
+                            isEndedStrum = false;
+                            lastYaw = HTData.TranspYaw;
+                        }
+                    }
+                    else if (!isEndedStrum)
+                    {
+                        InDeadZone = false;
+                        switch (dirStrum)
+                        {
+                            case DirectionStrum.Left:
+                                if (HTData.TranspYaw > lastYaw)
+                                {
+                                    endStrum = lastYaw;
+                                    Distance = endStrum - deadzoneBottom;
+                                    int midiVelocity = (int)(40 + 1.4 * Math.Abs(Distance));
+                                    isEndedStrum = true;
+                                    isStartedStrum = false;
+                                    Velocity = midiVelocity;
+
+                                    if (lastChord != null)
+                                    {
+                                        StopNotes();
+                                    }
+                                    PlayChord(Chord);
+                                    lastChord = Chord;
+                                }
+                                else
+                                {
+                                    lastYaw = HTData.TranspYaw;
+                                }
+                                break;
+
+                            case DirectionStrum.Right:
+                                if (HTData.TranspYaw < lastYaw)
+                                {
+                                    endStrum = lastYaw;
+                                    Distance = endStrum - deadzoneTop;
+                                    int midiVelocity = (int)(40 + 1.4 * Math.Abs(Distance));
+                                    isEndedStrum = true;
+                                    isStartedStrum = false;
+                                    Velocity = midiVelocity;
+                                    if (lastChord != null)
+                                    {
+                                        StopNotes();
+                                    }
+                                    PlayChord(Chord);
+                                    lastChord = Chord;
+                                }
+                                else
+                                {
+                                    lastYaw = HTData.TranspYaw;
+                                }
+                                break;
+                        }
                     }
                 }
-                else if (!isEndedStrum)
+                else if(HTData.HeadTrackerMode == HeadTrackerMode.Acceleration)
                 {
-                    InDeadZone = false;
-                    switch (dirStrum)
+                    VelocityFilter.Push(Math.Abs(HTData.AccYaw));
+                    FilteredVelocity = VelocityFilter.Pull();
+                    Velocity = (int)Mapper_AccToVelocity.Map(FilteredVelocity);
+
+                    if (Math.Sign(lastVelocity) != Math.Sign(HTData.AccYaw) && FilteredVelocity > STRUMTHRESHOLD)
                     {
-                        case NetychordsDMIBox.DirectionStrum.Left:
-                            if (HTData.TranspYaw > lastYaw)
-                            {
-                                endStrum = lastYaw;
-                                Distance = endStrum - deadzoneBottom;
-                                int midiVelocity = (int)(40 + 1.4 * Math.Abs(Distance));
-                                isEndedStrum = true;
-                                isStartedStrum = false;
-                                Velocity = midiVelocity;
-
-                                if (lastChord != null)
-                                {
-                                    StopNotes();
-                                }
-                                PlayChord(Chord);
-                                lastChord = Chord;
-                            }
-                            else
-                            {
-                                lastYaw = HTData.TranspYaw;
-                            }
-                            break;
-
-                        case NetychordsDMIBox.DirectionStrum.Right:
-                            if (HTData.TranspYaw < lastYaw)
-                            {
-                                endStrum = lastYaw;
-                                Distance = endStrum - deadzoneTop;
-                                int midiVelocity = (int)(40 + 1.4 * Math.Abs(Distance));
-                                isEndedStrum = true;
-                                isStartedStrum = false;
-                                Velocity = midiVelocity;
-                                if (lastChord != null)
-                                {
-                                    StopNotes();
-                                }
-                                PlayChord(Chord);
-                                lastChord = Chord;
-                            }
-                            else
-                            {
-                                lastYaw = HTData.TranspYaw;
-                            }
-                            break;
+                        if (lastChord != null)
+                        {
+                            StopNotes();
+                        }
+                        PlayChord(Chord);
                     }
+
+                    lastVelocity = HTData.AccYaw;
                 }
             }
         }
+
+        private IDoubleFilter VelocityFilter = new DoubleFilterMAExpDecaying(0.05f);
+        private double lastVelocity = 0f;
+        const double STRUMTHRESHOLD = 0.06f;
+        private ValueMapperDouble Mapper_AccToVelocity = new ValueMapperDouble(0.3f, 127);
+        public double FilteredVelocity { get; set; } = 0;
 
         public void StartAutostrum(int bpm)
         {

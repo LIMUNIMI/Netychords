@@ -20,10 +20,8 @@ namespace Netychords.Surface.FlowerLayout
                     {
                         case FlowerButtonPositions.C:
                             return Colors.DarkRed;
-                            break;
                         default:
                             return Colors.Red;
-                            break;
                     }
                     break;
                 case FlowerFamilies.Minor:
@@ -31,12 +29,9 @@ namespace Netychords.Surface.FlowerLayout
                     {
                         case FlowerButtonPositions.C:
                             return Colors.DarkBlue;
-                            break;
                         default:
                             return Colors.Blue;
-                            break;
                     }
-                    break;
             }
             return Colors.White;
         }

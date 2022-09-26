@@ -509,7 +509,16 @@ namespace Netychords
             {
                 lblIsPlaying.Text = R.NDB.isPlaying;
                 lblPlayedNote.Text = R.NDB.Chord.ChordName();
-                lblYaw.Text = R.NDB.HTData.TranspYaw.ToString();
+                switch (R.NDB.HTData.HeadTrackerMode)
+                {
+                    case NeeqDMIs.Headtracking.NeeqHT.HeadTrackerMode.Absolute:
+                        lblYaw.Text = R.NDB.HTData.TranspYaw.ToString();
+                        break;
+                    case NeeqDMIs.Headtracking.NeeqHT.HeadTrackerMode.Acceleration:
+                        lblYaw.Text = R.NDB.Velocity.ToString();
+                        break;
+                }
+                
                 txtCenterValue.Text = Math.Round(R.NDB.CenterZone, 0).ToString();
                 txtCenterPitchValue.Text = Math.Round(centerPitchZone.Value, 0).ToString();
 

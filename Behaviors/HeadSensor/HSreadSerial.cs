@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace Netychords.Behaviors.Sensor
 {
-    public class HSreadSerial : ISensorReaderBehavior
+    public class HSreadSerial : ISensorBehavior
     {
         private string[] split;
 
@@ -19,9 +19,9 @@ namespace Netychords.Behaviors.Sensor
                 split = val.Split('!');
 
                 //Extracting the single data from the input string
-                R.NDB.HTData.Yaw = double.Parse(split[0], CultureInfo.InvariantCulture);
-                R.NDB.HTData.Pitch = double.Parse(split[1], CultureInfo.InvariantCulture);
-                R.NDB.HTData.Roll = double.Parse(split[2], CultureInfo.InvariantCulture);
+                R.NDB.HTData.PosYaw = double.Parse(split[0], CultureInfo.InvariantCulture);
+                R.NDB.HTData.PosPitch = double.Parse(split[1], CultureInfo.InvariantCulture);
+                R.NDB.HTData.PosRoll = double.Parse(split[2], CultureInfo.InvariantCulture);
 
                 //Strumming is elaborated only while the head position is centered along the pitch axis
                 //if (Rack.NetychordsDMIBox.HeadTrackerData.Pitch <= Rack.NetychordsDMIBox.MainWindow.centerPitchZone.Value && Rack.NetychordsDMIBox.HeadTrackerData.Pitch >= -Rack.NetychordsDMIBox.MainWindow.centerPitchZone.Value)
@@ -31,7 +31,7 @@ namespace Netychords.Behaviors.Sensor
             }
 
             //Debugging variables
-            R.NDB.Str_HeadTrackerRaw = R.NDB.HTData.Yaw.ToString();
+            R.NDB.Str_HeadTrackerRaw = R.NDB.HTData.PosYaw.ToString();
             R.NDB.Str_HeadTrackerCalib = R.NDB.HTData.TranspYaw.ToString();
         }
     }
