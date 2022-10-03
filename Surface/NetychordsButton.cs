@@ -38,8 +38,8 @@ namespace Netychords
             occluder = new Ellipse();
             occluder.Stroke = Brushes.Transparent;
             occluder.Fill = Brushes.Transparent;
-            occluder.Stroke = new SolidColorBrush(Color.FromArgb(40, 0, 0, 0));
-            occluder.Fill = new SolidColorBrush(Color.FromArgb(120, 255, 0, 0));
+            occluder.Stroke = new SolidColorBrush(Color.FromArgb(50, 0, 0, 0));
+            occluder.Fill = new SolidColorBrush(Color.FromArgb(200, 255, 0, 0));
             occluder.StrokeThickness = 1;
             occluder.HorizontalAlignment = HorizontalAlignment.Center;
             occluder.VerticalAlignment = VerticalAlignment.Center;

@@ -14,11 +14,11 @@ namespace Netychords
     {
         public int HighlightStrokeDim { get; set; } = 5;
         public int HighlightRadius { get; set; } = 65;
-        public int VerticalSpacer { get; set; } = 140;
-        public int HorizontalSpacer { get; set; } = 280;
-        public int ButtonHeight { get; set; } = 70;
-        public int ButtonWidth { get; set; } = 70;
-        public int OccluderOffset { get; set; } = 28;
+        public int VerticalSpacer { get; set; } = 150;
+        public int HorizontalSpacer { get; set; } = 300;
+        public int ButtonHeight { get; set; } = 100;
+        public int ButtonWidth { get; set; } = 100;
+        public int OccluderOffset { get; set; } = 50;
         public int EllipseStrokeDim { get; set; } = 15;
         public int EllipseStrokeSpacer { get; set; } = 15;
         public int LineThickness { get; set; } = 3;
@@ -58,7 +58,7 @@ namespace Netychords
         public int AutoStrumBPM { get; set; } = 120;
         public bool AutoStrum { get; set; } = false;
         public KeyChangeModes KeyChangeMode { get; set; } = KeyChangeModes.Sustain;
-        public int MIDIPort { get; set; } = 2;
+        public int MIDIPort { get; set; } = 1;
         public int SensorPort { get; set; } = 4;
     }
 }

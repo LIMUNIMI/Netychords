@@ -48,7 +48,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Border Grid.Column="1" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="5,5,5,5">
-                        <Button x:Name="btnStart" Foreground="White" Content="Start" Click="StartNetytar"  Width="Auto" Height="Auto"  FontFamily="Magneto" FontSize="20" IsCancel="True" VerticalAlignment="Stretch">
+                        <Button x:Name="btnStart" Foreground="White" Content="Start" Click="BtnStart_Click"  Width="Auto" Height="Auto"  FontFamily="Magneto" FontSize="20" IsCancel="True" VerticalAlignment="Stretch">
                             <Button.Background>
                                 <ImageBrush ImageSource="Images/Backgrounds/MidWood.png" TileMode="Tile" Stretch="None"></ImageBrush>
                             </Button.Background>

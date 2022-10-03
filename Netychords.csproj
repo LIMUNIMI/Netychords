@@ -185,6 +185,7 @@
     <Compile Include="DMIbox\KeyboardBehaviors\KBautoScroller.cs" />
     <Compile Include="DMIbox\KeyboardBehaviors\KBstopEmulateMouse.cs" />
     <Compile Include="DMIbox\Settings\KeyChangeModes.cs" />
+    <Compile Include="Surface\AutoScroller_ButtonFollower.cs" />
     <Compile Include="Surface\FlowerLayout\PlantFamilies.cs" />
     <Compile Include="Surface\FlowerLayout\Plant.cs" />
     <Compile Include="Surface\FlowerLayout\FlowerButton.cs" />

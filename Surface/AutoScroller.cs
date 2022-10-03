@@ -14,36 +14,36 @@ namespace Netychords
     {
         #region Params
 
-        private ScrollViewer scrollViewer;
-        private int radiusThreshold;
-        private int proportional;
-        private IPointFilter filter;
+        protected ScrollViewer scrollViewer;
+        protected int radiusThreshold;
+        protected int proportional;
+        protected IPointFilter filter;
 
         #endregion Params
 
         #region Scrollviewer params
 
-        private System.Windows.Point scrollCenter;
-        private System.Windows.Point basePosition;
+        protected System.Windows.Point scrollCenter;
+        protected System.Windows.Point basePosition;
 
         #endregion Scrollviewer params
 
         #region Internal counters
 
-        private DispatcherTimer samplerTimer = new DispatcherTimer(DispatcherPriority.Render);
+        protected DispatcherTimer samplerTimer = new DispatcherTimer(DispatcherPriority.Render);
 
-        // private Timer samplerTimer = new Timer();
-        // private MicroTimer samplerTimer = new MicroTimer();
-        private Point lastSampledPoint;
+        // protected Timer samplerTimer = new Timer();
+        // protected MicroTimer samplerTimer = new MicroTimer();
+        protected Point lastSampledPoint;
 
-        private Point lastMean;
-        private double Xdifference;
-        private double Ydifference;
+        protected Point lastMean;
+        protected double Xdifference;
+        protected double Ydifference;
 
         #endregion Internal counters
 
 
-        private System.Windows.Point temp = new System.Windows.Point();
+        protected System.Windows.Point temp = new System.Windows.Point();
 
         public AutoScroller(ScrollViewer scrollViewer, int radiusThreshold, int proportional, IPointFilter filter)
         {
@@ -60,7 +60,7 @@ namespace Netychords
             // Setting sampling timer
             samplerTimer.Interval = new TimeSpan(10000);//1000; //1;
             //samplerTimer.MicroTimerElapsed += SamplerTimer_MicroTimerElapsed;
-            samplerTimer.Tick += ListenMouse;
+            samplerTimer.Tick += ListenPosition;
             samplerTimer.Start();
         }
 
@@ -69,7 +69,7 @@ namespace Netychords
             get; set;
         } = false;
 
-        private void ListenMouse(object sender, EventArgs e)
+        protected void ListenPosition(object sender, EventArgs e)
         {
             if (Enabled)
             {
@@ -83,7 +83,7 @@ namespace Netychords
             }
         }
 
-        private void Scroll()
+        protected void Scroll()
         {
             Xdifference = (scrollCenter.X - lastMean.X);
             Ydifference = (scrollCenter.Y - lastMean.Y);
@@ -94,7 +94,7 @@ namespace Netychords
             }
         }
 
-        private Point GetMousePos()
+        protected Point GetMousePos()
         {
             temp = scrollViewer.PointToScreen(Mouse.GetPosition(scrollViewer));
             return new Point((int)temp.X, (int)temp.Y);

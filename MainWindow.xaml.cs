@@ -308,7 +308,7 @@ namespace Netychords
             var b = ((ListBoxItem)lstNoteChanger.SelectedItem).Content.ToString();
 
             // ROITO ORRIBILE DA SISTEMARE, MA FUNZIONA
-            MidiNotes temp = MidiNotesUtils.StandardStringToAbsNote(b).ToMidiNote(5);
+            MidiNotes temp = MusicConversions.ToAbsNote(b).ToMidiNote(5);
             temp = (MidiNotes)(temp - 7);
             R.UserSettings.FirstNote = temp.ToAbsNote().ToStandardString();
 
@@ -382,7 +382,7 @@ namespace Netychords
         /// <summary>
         /// This gets called when the Start button is pressed
         /// </summary>
-        private void StartNetytar(object sender, RoutedEventArgs e)
+        private void BtnStart_Click(object sender, RoutedEventArgs e)
         {
             if (!netychordsStarted)
             {
@@ -393,6 +393,7 @@ namespace Netychords
                 // Changes the aspect of the Start button
                 btnStart.IsEnabled = false;
                 btnStart.Foreground = new SolidColorBrush(Colors.Black);
+
                 // Checks the selected MIDI port is available
                 CheckMidiPort();
                 InitializeSensorPortText();
@@ -635,7 +636,7 @@ namespace Netychords
         private void lstTonalCenter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string temp = ((ListBoxItem)lstNoteChanger.SelectedItem).Content.ToString();
-            R.UserSettings.TonalCenter = MidiNotesUtils.StandardStringToAbsNote(temp);
+            R.UserSettings.TonalCenter = MusicConversions.ToAbsNote(temp);
         }
 
         private void btnOnlyDiatonic_Click(object sender, RoutedEventArgs e)

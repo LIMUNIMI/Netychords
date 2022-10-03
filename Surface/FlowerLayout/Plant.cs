@@ -23,7 +23,7 @@ namespace Netychords.Surface.FlowerLayout
 
         public Plant(MidiNotes rootNote, PlantFamilies rootFamily, Point center)
         {
-            List<MidiNotes> allnotes = MidiNotesUtils.GetAllMidiNotesList();
+            List<MidiNotes> allnotes = MusicConversions.GetAllMidiNotesList();
             List<int> rule = new List<int>();
 
             Point p1 = new Point(center.X, center.Y);

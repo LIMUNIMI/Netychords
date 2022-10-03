@@ -376,3 +376,4 @@ C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords_LIMUNIMI\obj\Debug\Netychord
 C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords_LIMUNIMI\obj\Debug\Netychords.csproj.CopyComplete
 C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords_LIMUNIMI\obj\Debug\Netychords.exe
 C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords_LIMUNIMI\obj\Debug\Netychords.pdb
+C:\Users\neequ\OneDrive\Documenti\GitHub\Netychords_LIMUNIMI\obj\Debug\Netychords.csproj.SuggestedBindingRedirects.cache

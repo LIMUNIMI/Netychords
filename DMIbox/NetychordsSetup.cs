@@ -73,7 +73,7 @@ namespace Netychords.DMIBox
             
 
             //SURFACE
-            R.NDB.AutoScroller = new AutoScroller(R.NDB.MainWindow.scrlNetychords, 0, 200, new PointFilterMAExpDecaying(0.1f));
+            R.NDB.AutoScroller = new AutoScroller_ButtonFollower(R.NDB.MainWindow.scrlNetychords, 0, 140, new PointFilterMAExpDecaying(0.1f));
 
             R.NDB.NetychordsSurface = new NetychordsSurface(R.NDB.MainWindow.canvasNetychords);
             R.NDB.NetychordsSurface.HtFeedbackModule = new HTFeedbackModule(R.NDB.NetychordsSurface.Canvas, HTFeedbackModule.HTFeedbackModes.Bars);

@@ -129,6 +129,9 @@ namespace Netychords
         {
             if (!Mute)
             {
+                MidiModule.SetPressure(127);
+                MidiModule.SetModulation(0);
+
                 List<int> notes = new List<int>();
                 int minInterval;
                 int maxInterval;
@@ -237,7 +240,7 @@ namespace Netychords
 
         #region HeadSensor
 
-        public bool isCentered = false;
+        public bool isCentered = true;
         private DirectionStrum dirStrum;
 
         private double endStrum;
@@ -385,10 +388,11 @@ namespace Netychords
                 else if(HTData.HeadTrackerMode == HeadTrackerMode.Acceleration)
                 {
                     VelocityFilter.Push(Math.Abs(HTData.AccYaw));
-                    FilteredVelocity = VelocityFilter.Pull();
+
+                    FilteredVelocity = (VelocityFilter.Pull());
                     Velocity = (int)Mapper_AccToVelocity.Map(FilteredVelocity);
 
-                    if (Math.Sign(lastVelocity) != Math.Sign(HTData.AccYaw) && FilteredVelocity > STRUMTHRESHOLD)
+                    if (Math.Sign(lastVelocity) != Math.Sign(HTData.AccYaw) && Math.Abs(lastVelocity - HTData.AccYaw) > STRUMTHRESHOLD)
                     {
                         if (lastChord != null)
                         {
@@ -402,9 +406,10 @@ namespace Netychords
             }
         }
 
-        private IDoubleFilter VelocityFilter = new DoubleFilterMAExpDecaying(0.05f);
+        private IDoubleFilter VelocityFilter = new DoubleFilterMAExpDecaying(0.04f);
+        private IDoubleFilter ThresholdFilter = new DoubleFilterMAExpDecaying(0.1f);
         private double lastVelocity = 0f;
-        const double STRUMTHRESHOLD = 0.06f;
+        const double STRUMTHRESHOLD = 0.016f;
         private ValueMapperDouble Mapper_AccToVelocity = new ValueMapperDouble(0.3f, 127);
         public double FilteredVelocity { get; set; } = 0;
 
