@@ -290,7 +290,7 @@ namespace Netychords
             }
         }
 
-        public HeadTrackerData HTData { get; set; } = new HeadTrackerData();
+        public NeeqHTData HTData { get; set; } = new NeeqHTData();
         public bool InDeadZone { get; private set; } = false;
         public string Str_HeadTrackerCalib { get; set; } = "Test";
         public string Str_HeadTrackerRaw { get; set; } = "Test";
@@ -299,7 +299,7 @@ namespace Netychords
 
         public void CalibrationHeadSensor()
         {
-            HTData.CalibrateCenter();
+            HTData.SetCenterToCurrentPosition();
             isCentered = true;
         }
 
@@ -307,30 +307,30 @@ namespace Netychords
         {
             if (isCentered && MainWindow.NetychordsStarted)
             {
-                if(HTData.HeadTrackerMode == HeadTrackerMode.Absolute)
+                if(HTData.HeadTrackerMode == NeeqHTModes.Absolute)
                 {
-                    if (HTData.TranspYaw <= deadzoneTop && HTData.TranspYaw >= deadzoneBottom)
+                    if (HTData.CenteredPosition.Yaw <= deadzoneTop && HTData.CenteredPosition.Yaw >= deadzoneBottom)
                     {
-                        //startStrum = HeadTrackerData.TranspYaw;
+                        //startStrum = HeadTrackerData.CenteredPosition.Yaw;
                         isEndedStrum = false;
                         InDeadZone = true;
                     }
                     else if (!isStartedStrum && !isEndedStrum)
                     {
                         InDeadZone = false;
-                        if (HTData.TranspYaw < deadzoneBottom)
+                        if (HTData.CenteredPosition.Yaw < deadzoneBottom)
                         {
                             dirStrum = DirectionStrum.Left;
                             isStartedStrum = true;
                             isEndedStrum = false;
-                            lastYaw = HTData.TranspYaw;
+                            lastYaw = HTData.CenteredPosition.Yaw;
                         }
-                        if (HTData.TranspYaw > deadzoneTop)
+                        if (HTData.CenteredPosition.Yaw > deadzoneTop)
                         {
                             dirStrum = DirectionStrum.Right;
                             isStartedStrum = true;
                             isEndedStrum = false;
-                            lastYaw = HTData.TranspYaw;
+                            lastYaw = HTData.CenteredPosition.Yaw;
                         }
                     }
                     else if (!isEndedStrum)
@@ -339,7 +339,7 @@ namespace Netychords
                         switch (dirStrum)
                         {
                             case DirectionStrum.Left:
-                                if (HTData.TranspYaw > lastYaw)
+                                if (HTData.CenteredPosition.Yaw > lastYaw)
                                 {
                                     endStrum = lastYaw;
                                     Distance = endStrum - deadzoneBottom;
@@ -357,12 +357,12 @@ namespace Netychords
                                 }
                                 else
                                 {
-                                    lastYaw = HTData.TranspYaw;
+                                    lastYaw = HTData.CenteredPosition.Yaw;
                                 }
                                 break;
 
                             case DirectionStrum.Right:
-                                if (HTData.TranspYaw < lastYaw)
+                                if (HTData.CenteredPosition.Yaw < lastYaw)
                                 {
                                     endStrum = lastYaw;
                                     Distance = endStrum - deadzoneTop;
@@ -379,20 +379,20 @@ namespace Netychords
                                 }
                                 else
                                 {
-                                    lastYaw = HTData.TranspYaw;
+                                    lastYaw = HTData.CenteredPosition.Yaw;
                                 }
                                 break;
                         }
                     }
                 }
-                else if(HTData.HeadTrackerMode == HeadTrackerMode.Acceleration)
+                else if(HTData.HeadTrackerMode == NeeqHTModes.Acceleration)
                 {
-                    VelocityFilter.Push(Math.Abs(HTData.AccYaw));
+                    VelocityFilter.Push(Math.Abs(HTData.Acceleration.Yaw));
 
                     FilteredVelocity = (VelocityFilter.Pull());
                     Velocity = (int)Mapper_AccToVelocity.Map(FilteredVelocity);
 
-                    if (Math.Sign(lastVelocity) != Math.Sign(HTData.AccYaw) && Math.Abs(lastVelocity - HTData.AccYaw) > STRUMTHRESHOLD)
+                    if (Math.Sign(lastVelocity) != Math.Sign(HTData.Acceleration.Yaw) && Math.Abs(lastVelocity - HTData.Acceleration.Yaw) > STRUMTHRESHOLD)
                     {
                         if (lastChord != null)
                         {
@@ -401,7 +401,7 @@ namespace Netychords
                         PlayChord(Chord);
                     }
 
-                    lastVelocity = HTData.AccYaw;
+                    lastVelocity = HTData.Acceleration.Yaw;
                 }
             }
         }

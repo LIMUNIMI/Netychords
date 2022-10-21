@@ -87,17 +87,17 @@ namespace Netychords
             }
         }
 
-        public void UpdateHeadTrackerFeedback(HeadTrackerData headTrackerData)
+        public void UpdateHeadTrackerFeedback(NeeqHTData neeqHTData)
         {
-            if (headTrackerData != null)
+            if (neeqHTData != null)
             {
-                switch (headTrackerData.HeadTrackerMode)
+                switch (neeqHTData.HeadTrackerMode)
                 {
-                    case HeadTrackerMode.Absolute:
-                        HtFeedbackModule.UpdateGraphics(headTrackerData.TranspYaw, checkedButton);
+                    case NeeqHTModes.Absolute:
+                        HtFeedbackModule.UpdateGraphics(neeqHTData.CenteredPosition.Yaw, checkedButton);
                         break;
-                    case HeadTrackerMode.Acceleration:
-                        HtFeedbackModule.UpdateGraphics(R.NDB.FilteredVelocity * Math.Sign(headTrackerData.AccYaw) * UPDATERACCMULTIPLIER, checkedButton);
+                    case NeeqHTModes.Acceleration:
+                        HtFeedbackModule.UpdateGraphics(R.NDB.FilteredVelocity * Math.Sign(neeqHTData.Acceleration.Yaw) * UPDATERACCMULTIPLIER, checkedButton);
                         break;
                 }
                 

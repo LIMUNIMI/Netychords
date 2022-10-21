@@ -243,6 +243,9 @@
                                 Only Major
                             </ListBoxItem>
                             <ListBoxItem>
+                                Only Minor
+                            </ListBoxItem>
+                            <ListBoxItem>
                                 Diatonic_3
                             </ListBoxItem>
                             <ListBoxItem>

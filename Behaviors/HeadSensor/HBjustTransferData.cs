@@ -4,7 +4,7 @@ namespace Netychords.Behaviors.HeadSensor
 {
     public class HBjustTransferData : INeeqHTbehavior
     {
-        public void ReceiveHeadTrackerData(HeadTrackerData headTrackerData)
+        public void ReceiveHeadTrackerData(NeeqHTData headTrackerData)
         {
             R.NDB.HTData = headTrackerData;
             R.NDB.ElaborateStrumming();

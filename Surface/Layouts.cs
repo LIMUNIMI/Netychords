@@ -17,6 +17,7 @@ namespace Netychords.Surface
         Pop,
         Rock,
         OnlyMajor,
+        OnlyMinor,
         Diatonic_3,
         Diatonic_4,
         Flower
@@ -80,6 +81,9 @@ namespace Netychords.Surface
 
                 case Layouts.Diatonic_4:
                     DrawDiatonic_4(firstChord, canvas, NetychordsButtons);
+                    break;
+                case Layouts.OnlyMinor:
+                    DrawOnlyMinor(firstChord, canvas, NetychordsButtons);
                     break;
             }
             ResetCanvasDimensions(canvas);
@@ -3541,7 +3545,7 @@ namespace Netychords.Surface
             }
         }
 
-                private static void DrawOnlyMajor(MidiChord firstChord, Canvas canvas, NetychordsButton[,] netychordsButtons)
+        private static void DrawOnlyMajor(MidiChord firstChord, Canvas canvas, NetychordsButton[,] netychordsButtons)
         {
             LoadSettings();
 
@@ -3669,8 +3673,133 @@ namespace Netychords.Surface
             }
         }
 
-        /*
-         * Deprecated
-         */
+        private static void DrawOnlyMinor(MidiChord firstChord, Canvas canvas, NetychordsButton[,] netychordsButtons)
+        {
+            LoadSettings();
+
+            MidiChord actualChord = null;
+      
+            int halfSpacer = horizontalSpacer / 2;
+            int spacer = horizontalSpacer;
+            int firstSpacer = 0;
+
+            bool isPairRow;
+
+            // OVERRIDE NUMERO RIGHE PER LAYOUTS SPECIFICI =====================
+            nRows = 1;
+
+            // CICLO PRINCIPALE =====================
+
+            for (int row = 0; row < nRows; row++)
+            {
+                Line backgroundLine = new Line();
+                for (int col = 0; col < nCols; col++)
+                {
+                    #region Is row pair?
+
+                    if ((int)R.NDB.MainWindow.Margins.Value == 1)
+                    {
+                        spacer = horizontalSpacer;
+                        firstSpacer = row * spacer / 2;
+
+                        if (row % 2 != 0)
+                        {
+                            isPairRow = false;
+                        }
+                        else
+                        {
+                            isPairRow = true;
+                        }
+                    }
+                    else
+                    {
+                        spacer = verticalSpacer;
+                        firstSpacer = 0;
+                        isPairRow = true;
+                    }
+
+                    #endregion Is row pair?
+
+                    netychordsButtons[row, col] = new NetychordsButton(R.NDB.NetychordsSurface);
+
+                    #region Define chordType of this chord and starter note of the row
+
+                    ChordType thisChordType;
+                    MidiNotes thisNote;
+
+                    switch (row)
+                    {
+                        
+
+                        case 0:
+                            thisChordType = ChordType.Minor;
+                            if (col == 0)
+                            {
+                                thisNote = firstChord.rootNote;
+                                actualChord = new MidiChord(firstChord.rootNote - 3, ChordType.Minor);
+                            }
+                            else
+                            {
+                                actualChord = actualChord.generateNextFifth();
+                            };
+                            netychordsButtons[row, col].Chord = actualChord;
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                    #endregion Define chordType of this chord and starter note of the row
+
+                    #region Draw the button on canvas
+
+                    if (!isPairRow)
+                    {
+                        firstSpacer = 0;
+                    }
+                    else
+                    {
+                        firstSpacer = spacer / 2;
+                    }
+
+                    int X = startPositionX + firstSpacer + col * spacer;
+                    int Y = startPositionY + verticalSpacer * row;
+
+                    Canvas.SetLeft(netychordsButtons[row, col], X);
+                    Canvas.SetTop(netychordsButtons[row, col], Y);
+
+                    // OCCLUDER
+                    netychordsButtons[row, col].Occluder.Width = buttonWidth;
+                    netychordsButtons[row, col].Occluder.Height = buttonHeight;
+                    netychordsButtons[row, col].Occluder.Stroke = new SolidColorBrush(Color.FromArgb((byte)occluderAlpha, 0, 0, 0));
+
+                    //OCCLUDER COLORS
+                    SetButtonColor(netychordsButtons[row, col], actualChord);
+
+                    Canvas.SetLeft(netychordsButtons[row, col].Occluder, X - occluderOffset);
+                    Canvas.SetTop(netychordsButtons[row, col].Occluder, Y - occluderOffset);
+
+                    Panel.SetZIndex(netychordsButtons[row, col], 30);
+                    Panel.SetZIndex(netychordsButtons[row, col].Occluder, 2);
+                    canvas.Children.Add(netychordsButtons[row, col]);
+                    canvas.Children.Add(netychordsButtons[row, col].Occluder);
+
+                    netychordsButtons[row, col].Width = buttonWidth;
+                    netychordsButtons[row, col].Height = buttonHeight;
+
+                    #endregion Draw the button on canvas
+                }
+
+                backgroundLine.X1 = Canvas.GetLeft(netychordsButtons[row, 0]) + 7;
+                backgroundLine.X2 = Canvas.GetLeft(netychordsButtons[row, nCols - 1]) + 7;
+                backgroundLine.Y1 = Canvas.GetTop(netychordsButtons[row, 0]) + 7;
+                backgroundLine.Y2 = Canvas.GetTop(netychordsButtons[row, nCols - 1]) + 7;
+                SetChordLineColor(backgroundLine, actualChord);
+                backgroundLine.Opacity = BACKGROUNDLINE_OPACITY;
+                backgroundLine.StrokeThickness = 50;
+                canvas.Children.Add(backgroundLine);
+            }
+        }
+
     }
 }

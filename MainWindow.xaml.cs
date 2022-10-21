@@ -1,4 +1,5 @@
-﻿using NeeqDMIs.Music;
+﻿using NeeqDMIs.Headtracking.NeeqHT;
+using NeeqDMIs.Music;
 using Netychords.DMIBox;
 using Netychords.Surface;
 using Netychords.Utils;
@@ -81,7 +82,7 @@ namespace Netychords
 
         private void BtnCenter_Click(object sender, RoutedEventArgs e)
         {
-            R.NDB.HTData.CalibrateCenter();
+            R.NDB.HTData.SetCenterToCurrentPosition();
             R.NDB.CalibrationHeadSensor();
             UpdateButtonVisuals();
         }
@@ -267,13 +268,17 @@ namespace Netychords
                 case "Only Major":
                     R.UserSettings.Layout = Layouts.OnlyMajor;
                     break;
-
+                case "Only Minor":
+                    R.UserSettings.Layout = Layouts.OnlyMinor;
+                    break;
                 case "Diatonic_3":
                     R.UserSettings.Layout = Layouts.Diatonic_3;
                     break;
 
                 case "Diatonic_4":
                     R.UserSettings.Layout = Layouts.Diatonic_4;
+                    break;
+                default:
                     break;
             }
 
@@ -512,10 +517,10 @@ namespace Netychords
                 lblPlayedNote.Text = R.NDB.Chord.ChordName();
                 switch (R.NDB.HTData.HeadTrackerMode)
                 {
-                    case NeeqDMIs.Headtracking.NeeqHT.HeadTrackerMode.Absolute:
-                        lblYaw.Text = R.NDB.HTData.TranspYaw.ToString();
+                    case NeeqHTModes.Absolute:
+                        lblYaw.Text = R.NDB.HTData.CenteredPosition.Yaw.ToString();
                         break;
-                    case NeeqDMIs.Headtracking.NeeqHT.HeadTrackerMode.Acceleration:
+                    case NeeqHTModes.Acceleration:
                         lblYaw.Text = R.NDB.Velocity.ToString();
                         break;
                 }

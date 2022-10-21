@@ -220,7 +220,6 @@
     <Compile Include="Surface\NetychordsButton.cs" />
     <Compile Include="Surface\NetychordsSurface.cs" />
     <Compile Include="Surface\RhythmFlasher.cs" />
-    <Compile Include="Utils\HeadTrackerData.cs" />
     <Compile Include="Utils\MidiChord.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
