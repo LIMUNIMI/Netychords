@@ -1,6 +1,4 @@
-﻿using NeeqDMIs.Eyetracking.PointFilters;
-using NeeqDMIs.Eyetracking.Utils;
-using NeeqDMIs.Keyboard;
+﻿using NeeqDMIs.Keyboard;
 using RawInputProcessor;
 
 namespace Netychords

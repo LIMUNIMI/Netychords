@@ -1,9 +1,11 @@
 ﻿using NeeqDMIs.ATmega;
+using NeeqDMIs.Eyetracking.Tobii;
 using NeeqDMIs.Eyetracking.Utils;
 using NeeqDMIs.Filters.ValueFilters;
 using NeeqDMIs.Headtracking.NeeqHT;
 using NeeqDMIs.Keyboard;
 using NeeqDMIs.MicroLibrary;
+using NeeqDMIs.MIDI;
 using NeeqDMIs.Music;
 using NeeqDMIs.Utils;
 using Netychords.Utils;
@@ -16,13 +18,15 @@ namespace Netychords
     /// <summary>
     /// DMIBox for Netytar, implementing the internal logic of the instrument.
     /// </summary>
-    public class NetychordsDMIBox : NeeqDMIs.DMIBox
+    public class NetychordsDMIBox
     {
         public NetychordsDMIBox() : base()
         {
 
         }
         public KeyboardModule KeyboardModule;
+        public IMidiModule MidiModule { get; set; }
+        public TobiiModule TobiiModule { get; set; }
         public bool Mute { get; set; } = false;
         public EyetrackerModels Eyetracker { get; set; } = EyetrackerModels.Tobii;
         public MainWindow MainWindow { get; set; }

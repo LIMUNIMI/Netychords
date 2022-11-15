@@ -1,4 +1,5 @@
-﻿using NeeqDMIs.Headtracking.NeeqHT;
+﻿using NeeqDMIs.ErrorLogging;
+using NeeqDMIs.Headtracking.NeeqHT;
 using NeeqDMIs.Music;
 using Netychords.DMIBox;
 using Netychords.Surface;
@@ -30,6 +31,8 @@ namespace Netychords
         public MainWindow()
         {
             InitializeComponent();
+            TraceAdder.AddTrace();
+
             DataContext = this;
 
             // Initializing dispatcher timer, i.e. the timer that updates every graphical value in
