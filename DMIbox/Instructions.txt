@@ -1,4 +1,4 @@
-﻿NeeqDMIs Framework Instructions
+﻿NITHdmis Framework Instructions
 ===============================
 - Copy the content of this "Template" folder into your project;
 - Extend the abstract class "DMIBox" creating a customized box for your needs: override the method "Setup()" and use it to instantiate all the needed components. You can use the "DMIBoxExample" as an example;

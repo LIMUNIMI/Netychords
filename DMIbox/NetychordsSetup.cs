@@ -1,17 +1,19 @@
-﻿using NeeqDMIs.ATmega;
-using NeeqDMIs.Eyetracking.PointFilters;
-using NeeqDMIs.Eyetracking.Tobii;
-using NeeqDMIs.Headtracking.NeeqHT;
-using NeeqDMIs.Keyboard;
-using NeeqDMIs.MIDI;
+﻿using NITHdmis.Eyetracking.PointFilters;
+using NITHdmis.Eyetracking.Tobii;
+using NITHdmis.Headtracking.NeeqHT;
+using NITHdmis.Keyboard;
+using NITHdmis.MIDI;
 using Netychords.Behaviors.Eyetracker;
 using Netychords.Behaviors.HeadSensor;
-using Netychords.Behaviors.Sensor;
+using Netychords.Behaviors.KeyboardBehaviors;
 using Netychords.DMIBox.KeyboardBehaviors;
 using Netychords.Surface;
 using System;
+using System.Windows;
 using System.Windows.Interop;
 using Tobii.Interaction.Framework;
+using NITHdmis.NithSensors;
+using Netychords.Behaviors.NithHT;
 
 namespace Netychords.DMIBox
 {
@@ -24,35 +26,28 @@ namespace Netychords.DMIBox
 
         public void Setup()
         {
+            // TEST SWITCH BEHAVIOR
+            if(R.TEST_SWITCH == false)
+            {
+                R.NDB.MainWindow.brdSettings.Visibility = Visibility.Hidden;
+                R.NDB.MainWindow.brdCustom.Visibility = Visibility.Hidden;
+            }
+
             // KEYBOARD MODULE
             IntPtr windowHandle = new WindowInteropHelper(R.NDB.MainWindow).Handle;
             R.NDB.KeyboardModule = new KeyboardModule(windowHandle, RawInputProcessor.RawInputCaptureMode.Foreground);
 
             // MIDI
-            R.NDB.MidiModule = new MidiModuleNAudio(1, 1);
-            MidiDeviceFinder midiDeviceFinder = new MidiDeviceFinder(R.NDB.MidiModule);
+            R.NDB.MidiModule = new MidiModuleNAudio(R.UserSettings.MIDIPort, 1);
+            //MidiDeviceFinder midiDeviceFinder = new MidiDeviceFinder(R.NDB.MidiModule);
             //midiDeviceFinder.SetToLastDevice();
 
-            // EYETRACKER
-            //if(R.NDB.Eyetracker == EyetrackerModels.Tobii)
-            //{
+            // TOBII
             R.NDB.TobiiModule = new TobiiModule(GazePointDataMode.Unfiltered);
-            //Rack.NetychordsDMIBox.TobiiModule.HeadPoseBehaviors.Add(new HPBpitchPlay(10, 15, 1.5f, 30f));
-            //Rack.NetychordsDMIBox.TobiiModule.HeadPoseBehaviors.Add(new HPBvelocityPlay(8, 12, 2f, 120f, 0.2f));
-            //}
-
-            //if(R.NDB.Eyetracker == EyetrackerModels.EyeTribe)
-            //{
-            //    R.NDB.EyeTribeModule = new EyeTribeModule();
-            //    R.NDB.EyeTribeModule.Start();
-            //    R.NDB.EyeTribeModule.MouseEmulator = new MouseEmulator(new PointFilterBypass());
-            //    R.NDB.EyeTribeModule.MouseEmulatorGazeMode = GazeMode.Raw;
-            //}
-
-           
 
             // MODULES
-            R.NDB.HeadTrackerModule = new NeeqHTModule(115200, "COM");
+            //R.NDB.HeadTrackerModule = new NeeqHTModule(115200, "COM");
+            R.NDB.NithModule = new NithModule();
 
             // BEHAVIORS
             R.NDB.KeyboardModule.KeyboardBehaviors.Add(new KBplayStop());
@@ -64,15 +59,18 @@ namespace Netychords.DMIBox
             R.NDB.KeyboardModule.KeyboardBehaviors.Add(new KBcenterHeadTracker());
             R.NDB.KeyboardModule.KeyboardBehaviors.Add(new KBmute());
             R.NDB.KeyboardModule.KeyboardBehaviors.Add(new KBsmute());
+            R.NDB.KeyboardModule.KeyboardBehaviors.Add(new KBsimulateClick());
 
-            R.NDB.HeadTrackerModule.Behaviors.Add(new HBjustTransferData());
+            R.NDB.NithModule.SensorBehaviors.Add(new NithBeh_HT_ReceiveData());
+            R.NDB.NithModule.SensorBehaviors.Add(new NithBeh_HT_ElaborateStrum());
 
-            //R.NDB.TobiiModule.BlinkBehaviors.Add(new BBDoubleCloseStopChords());
+            R.NDB.TobiiModule.BlinkBehaviors.Add(new BBDoubleClosePlayChord());
             R.NDB.TobiiModule.BlinkBehaviors.Add(new BBLeftCloseStopNotes());
-            //R.NDB.TobiiModule.BlinkBehaviors.Add(new BBDoubleClosePlayChord());
+            R.NDB.TobiiModule.BlinkBehaviors.Add(new BBDoubleCloseClick());
             
 
             //SURFACE
+
             R.NDB.AutoScroller = new AutoScroller_ButtonFollower(R.NDB.MainWindow.scrlNetychords, 0, 140, new PointFilterMAExpDecaying(0.1f));
 
             R.NDB.NetychordsSurface = new NetychordsSurface(R.NDB.MainWindow.canvasNetychords);

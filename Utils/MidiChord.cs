@@ -1,4 +1,4 @@
-﻿using NeeqDMIs.Music;
+﻿using NITHdmis.Music;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,19 +28,19 @@ namespace Netychords.Utils
 
             temp.Add(0);
 
-            if (type == ChordType.Major) { temp.Add(4); temp.Add(7); };
-            if (type == ChordType.Minor) { temp.Add(3); temp.Add(7); };
-            if (type == ChordType.MajorSixth) { temp.Add(4); temp.Add(7); temp.Add(9); };
-            if (type == ChordType.MinorSixth) { temp.Add(3); temp.Add(7); temp.Add(9); };
-            if (type == ChordType.SemiDiminished) { temp.Add(3); temp.Add(6); temp.Add(10); };
-            if (type == ChordType.MajorSeventh) { temp.Add(4); temp.Add(7); temp.Add(11); };
-            if (type == ChordType.MinorSeventh) { temp.Add(3); temp.Add(7); temp.Add(10); };
-            if (type == ChordType.DominantSeventh) { temp.Add(4); temp.Add(7); temp.Add(10); };
-            if (type == ChordType.DiminishedSeventh) { temp.Add(3); temp.Add(6); temp.Add(9); };
+            if (type == ChordType.Maj) { temp.Add(4); temp.Add(7); };
+            if (type == ChordType.Min) { temp.Add(3); temp.Add(7); };
+            if (type == ChordType.Maj6th) { temp.Add(4); temp.Add(7); temp.Add(9); };
+            if (type == ChordType.Min6th) { temp.Add(3); temp.Add(7); temp.Add(9); };
+            if (type == ChordType.SemiDim) { temp.Add(3); temp.Add(6); temp.Add(10); };
+            if (type == ChordType.Maj7th) { temp.Add(4); temp.Add(7); temp.Add(11); };
+            if (type == ChordType.Min7th) { temp.Add(3); temp.Add(7); temp.Add(10); };
+            if (type == ChordType.Dom7th) { temp.Add(4); temp.Add(7); temp.Add(10); };
+            if (type == ChordType.Dim7th) { temp.Add(3); temp.Add(6); temp.Add(9); };
             if (type == ChordType.Sus2) { temp.Add(2); temp.Add(7); };
             if (type == ChordType.Sus4) { temp.Add(5); temp.Add(7); };
-            if (type == ChordType.DominantNinth) { temp.Add(4); temp.Add(7); temp.Add(14); };
-            if (type == ChordType.DominantEleventh) { temp.Add(4); temp.Add(7); temp.Add(14); temp.Add(17); };
+            if (type == ChordType.Dom9th) { temp.Add(4); temp.Add(7); temp.Add(14); };
+            if (type == ChordType.Dom11th) { temp.Add(4); temp.Add(7); temp.Add(14); temp.Add(17); };
 
             return temp;
         }
@@ -57,28 +57,28 @@ namespace Netychords.Utils
             string name;
             switch (type)
             {
-                case ChordType.Major:
+                case ChordType.Maj:
                     name = "";
                     break;
-                case ChordType.Minor:
+                case ChordType.Min:
                     name = "m";
                     break;
-                case ChordType.DiminishedSeventh:
+                case ChordType.Dim7th:
                     name = "dim7";
                     break;
-                case ChordType.DominantEleventh:
+                case ChordType.Dom11th:
                     name = "11";
                     break;
-                case ChordType.DominantNinth:
+                case ChordType.Dom9th:
                     name = "9";
                     break;
-                case ChordType.DominantSeventh:
+                case ChordType.Dom7th:
                     name = "7";
                     break;
-                case ChordType.MajorSeventh:
+                case ChordType.Maj7th:
                     name = "maj7";
                     break;
-                case ChordType.MinorSeventh:
+                case ChordType.Min7th:
                     name = "min7";
                     break;
                 case ChordType.Sus2:
@@ -87,13 +87,13 @@ namespace Netychords.Utils
                 case ChordType.Sus4:
                     name = "sus4";
                     break;
-                case ChordType.MajorSixth:
+                case ChordType.Maj6th:
                     name = "6";
                     break;
-                case ChordType.MinorSixth:
+                case ChordType.Min6th:
                     name = "m6";
                     break;
-                case ChordType.SemiDiminished:
+                case ChordType.SemiDim:
                     name = "m7b5";
                     break;
                 default:
@@ -148,29 +148,20 @@ namespace Netychords.Utils
             return new MidiChord(rootNote, chordType);
         }
 
-        public MidiChord generateNextFifth()
+        public MidiChord GenerateNextFifth()
         {
             MidiNotes nextNote = (rootNote + 7);
             string tmp = nextNote.ToStandardString().Remove(nextNote.ToStandardString().Length - 1);
             MidiChord nextFifth = StandardAbsStringToChordFactory(tmp, "2", chordType);
             return nextFifth;
         }
-    };
 
-    public enum ChordType
-    {
-        Major,
-        Minor,
-        MajorSeventh,
-        MinorSeventh,
-        DominantSeventh,
-        DiminishedSeventh,
-        Sus2,
-        Sus4,
-        DominantNinth,
-        DominantEleventh,
-        SemiDiminished,
-        MajorSixth,
-        MinorSixth
+        public MidiChord GeneratePreviousFifth()
+        {
+            MidiNotes nextNote = (rootNote - 7);
+            string tmp = nextNote.ToStandardString().Remove(nextNote.ToStandardString().Length - 1);
+            MidiChord nextFifth = StandardAbsStringToChordFactory(tmp, "2", chordType);
+            return nextFifth;
+        }
     };
 }

@@ -1,4 +1,4 @@
-﻿using NeeqDMIs.Eyetracking.Tobii;
+﻿using NITHdmis.Eyetracking.Tobii;
 
 namespace Netychords.Behaviors.Eyetracker
 {

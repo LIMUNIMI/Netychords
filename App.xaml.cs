@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using NeeqDMIs.ErrorLogging;
+using NITHdmis.ErrorLogging;
 using System.Windows.Threading;
 
 namespace Netychords

@@ -1,17 +1,17 @@
-﻿using NeeqDMIs.ATmega;
-using NeeqDMIs.Eyetracking.Tobii;
-using NeeqDMIs.Eyetracking.Utils;
-using NeeqDMIs.Filters.ValueFilters;
-using NeeqDMIs.Headtracking.NeeqHT;
-using NeeqDMIs.Keyboard;
-using NeeqDMIs.MicroLibrary;
-using NeeqDMIs.MIDI;
-using NeeqDMIs.Music;
-using NeeqDMIs.Utils;
+﻿using NITHdmis.Eyetracking.Tobii;
+using NITHdmis.Eyetracking.Utils;
+using NITHdmis.Filters.ValueFilters;
+using NITHdmis.Headtracking.NeeqHT;
+using NITHdmis.Keyboard;
+using NITHdmis.MicroLibrary;
+using NITHdmis.MIDI;
+using NITHdmis.Music;
+using NITHdmis.Utils;
 using Netychords.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using NITHdmis.NithSensors;
 
 namespace Netychords
 {
@@ -20,11 +20,12 @@ namespace Netychords
     /// </summary>
     public class NetychordsDMIBox
     {
+        public KeyboardModule KeyboardModule;
+
         public NetychordsDMIBox() : base()
         {
-
         }
-        public KeyboardModule KeyboardModule;
+
         public IMidiModule MidiModule { get; set; }
         public TobiiModule TobiiModule { get; set; }
         public bool Mute { get; set; } = false;
@@ -33,7 +34,7 @@ namespace Netychords
 
         #region Instrument logic
 
-        public List<string> arbitraryLines = new List<string>();
+        public List<ChordType> CustomLines = new List<ChordType>();
 
         public string isPlaying = "";
 
@@ -43,9 +44,7 @@ namespace Netychords
 
         public string octaveNumber = "2";
 
-        public List<int> reeds = new List<int>();
-
-        private MidiChord chord = new MidiChord(MidiNotes.C4, ChordType.Major);
+        private MidiChord chord = new MidiChord(MidiNotes.C4, ChordType.Maj);
 
         private bool keyDown = false;
 
@@ -149,7 +148,7 @@ namespace Netychords
                         minInterval = 36 + j * 12;
                         maxInterval = 47 + j * 12;
 
-                        if (reeds.Contains(j))
+                        if (R.UserSettings.Reeds().Contains(j))
                         {
                             if ((thisNote + (j + 1) * 12 <= maxInterval && thisNote + (j + 1) * 12 >= minInterval))
                             {
@@ -176,9 +175,9 @@ namespace Netychords
                     }
                 }
 
-                if (!(reeds.Count == 0))
+                if (!(R.UserSettings.Reeds().Count == 0))
                 {
-                    int min = reeds.Min();
+                    int min = R.UserSettings.Reeds().Min();
                     notes.Add((int)chord.rootNote + (min - 1) * 12);
                 }
 
@@ -206,7 +205,7 @@ namespace Netychords
 
         public void KeyNodeChange(MidiChord newChord)
         {
-            if(!(newChord.chordType == chord.chordType && newChord.rootNote == chord.rootNote))
+            if (!(newChord.chordType == chord.chordType && newChord.rootNote == chord.rootNote))
             {
                 chord = newChord;
                 switch (R.UserSettings.KeyChangeMode)
@@ -214,6 +213,7 @@ namespace Netychords
                     case KeyChangeModes.StopOnChanges:
                         StopNotes();
                         break;
+
                     case KeyChangeModes.Sustain:
                         //
                         break;
@@ -245,6 +245,7 @@ namespace Netychords
         #region HeadSensor
 
         public bool isCentered = true;
+        private const double STRUMTHRESHOLD = 1.5f;
         private DirectionStrum dirStrum;
 
         private double endStrum;
@@ -257,7 +258,15 @@ namespace Netychords
 
         private MicroTimer autoStrumTimer;
 
-        private bool autoStrumStarted = false;
+        public bool AutoStrumStarted = false;
+
+        private IDoubleFilter VelocityFilter = new DoubleFilterMAExpDecaying(0.08f); // OLD 0.04f
+
+        private IDoubleFilter ThresholdFilter = new DoubleFilterMAExpDecaying(0.25f);
+
+        private double lastVelocity = 0f;
+
+        private ValueMapperDouble Mapper_AccToVelocity = new ValueMapperDouble(25f, 127);
 
         public enum DirectionStrum
         {
@@ -273,47 +282,38 @@ namespace Netychords
         }
 
         public double Distance { get; private set; }
-        public NeeqHTModule HeadTrackerModule { get; set; }
 
-        public int HeadTrackerPortNumber
-        {
-            get
-            {
-                return headTrackerPortNumber;
-            }
-            set
-            {
-                if (value < 0)
-                {
-                    headTrackerPortNumber = 0;
-                }
-                else
-                {
-                    headTrackerPortNumber = value;
-                }
-            }
-        }
+        public NithModule NithModule { get; set; }
+        public HeadtrackerCenteringHelper HThelper { get; set; } = new HeadtrackerCenteringHelper();
 
-        public NeeqHTData HTData { get; set; } = new NeeqHTData();
+        public HeadTrackerModes HeadTrackerMode { get; set; } = HeadTrackerModes.Acceleration;
+
+
+        //public NeeqHTModule HeadTrackerModule { get; set; }
+
+
+        //public NeeqHTData HTData { get; set; } = new NeeqHTData();
         public bool InDeadZone { get; private set; } = false;
         public string Str_HeadTrackerCalib { get; set; } = "Test";
         public string Str_HeadTrackerRaw { get; set; } = "Test";
+        public double FilteredVelocity { get; set; } = 0;
         private double deadzoneBottom { get; set; } = 1f;
         private double deadzoneTop { get; set; } = 1f;
+        public bool CursorHidden { get; set; } = false;
 
         public void CalibrationHeadSensor()
         {
-            HTData.SetCenterToCurrentPosition();
+            HThelper.SetCenterToCurrentPosition();
             isCentered = true;
         }
 
-        public void ElaborateStrumming()
+        public void ElaborateStrumming(float accelMultiplier)
         {
             if (isCentered && MainWindow.NetychordsStarted)
             {
-                if(HTData.HeadTrackerMode == NeeqHTModes.Absolute)
+                if (HeadTrackerMode == HeadTrackerModes.Absolute)
                 {
-                    if (HTData.CenteredPosition.Yaw <= deadzoneTop && HTData.CenteredPosition.Yaw >= deadzoneBottom)
+                    if (HThelper.CenteredPosition.Yaw <= deadzoneTop && HThelper.CenteredPosition.Yaw >= deadzoneBottom)
                     {
                         //startStrum = HeadTrackerData.CenteredPosition.Yaw;
                         isEndedStrum = false;
@@ -322,19 +322,19 @@ namespace Netychords
                     else if (!isStartedStrum && !isEndedStrum)
                     {
                         InDeadZone = false;
-                        if (HTData.CenteredPosition.Yaw < deadzoneBottom)
+                        if (HThelper.CenteredPosition.Yaw < deadzoneBottom)
                         {
                             dirStrum = DirectionStrum.Left;
                             isStartedStrum = true;
                             isEndedStrum = false;
-                            lastYaw = HTData.CenteredPosition.Yaw;
+                            lastYaw = HThelper.CenteredPosition.Yaw;
                         }
-                        if (HTData.CenteredPosition.Yaw > deadzoneTop)
+                        if (HThelper.CenteredPosition.Yaw > deadzoneTop)
                         {
                             dirStrum = DirectionStrum.Right;
                             isStartedStrum = true;
                             isEndedStrum = false;
-                            lastYaw = HTData.CenteredPosition.Yaw;
+                            lastYaw = HThelper.CenteredPosition.Yaw;
                         }
                     }
                     else if (!isEndedStrum)
@@ -343,7 +343,7 @@ namespace Netychords
                         switch (dirStrum)
                         {
                             case DirectionStrum.Left:
-                                if (HTData.CenteredPosition.Yaw > lastYaw)
+                                if (HThelper.CenteredPosition.Yaw > lastYaw)
                                 {
                                     endStrum = lastYaw;
                                     Distance = endStrum - deadzoneBottom;
@@ -361,12 +361,12 @@ namespace Netychords
                                 }
                                 else
                                 {
-                                    lastYaw = HTData.CenteredPosition.Yaw;
+                                    lastYaw = HThelper.CenteredPosition.Yaw;
                                 }
                                 break;
 
                             case DirectionStrum.Right:
-                                if (HTData.CenteredPosition.Yaw < lastYaw)
+                                if (HThelper.CenteredPosition.Yaw < lastYaw)
                                 {
                                     endStrum = lastYaw;
                                     Distance = endStrum - deadzoneTop;
@@ -383,20 +383,20 @@ namespace Netychords
                                 }
                                 else
                                 {
-                                    lastYaw = HTData.CenteredPosition.Yaw;
+                                    lastYaw = HThelper.CenteredPosition.Yaw;
                                 }
                                 break;
                         }
                     }
                 }
-                else if(HTData.HeadTrackerMode == NeeqHTModes.Acceleration)
+                else if (HeadTrackerMode == HeadTrackerModes.Acceleration)
                 {
-                    VelocityFilter.Push(Math.Abs(HTData.Acceleration.Yaw));
+                    VelocityFilter.Push(Math.Abs(HThelper.Acceleration.Yaw * accelMultiplier));
 
                     FilteredVelocity = (VelocityFilter.Pull());
                     Velocity = (int)Mapper_AccToVelocity.Map(FilteredVelocity);
 
-                    if (Math.Sign(lastVelocity) != Math.Sign(HTData.Acceleration.Yaw) && Math.Abs(lastVelocity - HTData.Acceleration.Yaw) > STRUMTHRESHOLD)
+                    if (Math.Sign(lastVelocity) != Math.Sign(HThelper.Acceleration.Yaw) && Math.Abs(lastVelocity - HThelper.Acceleration.Yaw) > STRUMTHRESHOLD)
                     {
                         if (lastChord != null)
                         {
@@ -405,37 +405,54 @@ namespace Netychords
                         PlayChord(Chord);
                     }
 
-                    lastVelocity = HTData.Acceleration.Yaw;
+                    lastVelocity = HThelper.Acceleration.Yaw;
                 }
             }
         }
 
-        private IDoubleFilter VelocityFilter = new DoubleFilterMAExpDecaying(0.04f);
-        private IDoubleFilter ThresholdFilter = new DoubleFilterMAExpDecaying(0.1f);
-        private double lastVelocity = 0f;
-        const double STRUMTHRESHOLD = 0.016f;
-        private ValueMapperDouble Mapper_AccToVelocity = new ValueMapperDouble(0.3f, 127);
-        public double FilteredVelocity { get; set; } = 0;
-
         public void StartAutostrum(int bpm)
         {
-            if (!autoStrumStarted)
+            if (!AutoStrumStarted)
             {
                 autoStrumTimer = new MicroTimer();
                 autoStrumTimer.Interval = (60_000_000 / bpm);
                 autoStrumTimer.MicroTimerElapsed += AutoStrumTimer_MicroTimerElapsed;
                 autoStrumTimer.Start();
 
-                autoStrumStarted = true;
+                AutoStrumStarted = true;
             }
         }
 
         public void StopAutostrum()
         {
-            if (autoStrumStarted)
+            if (AutoStrumStarted)
             {
                 autoStrumTimer.Abort();
-                autoStrumStarted = false;
+                AutoStrumStarted = false;
+            }
+        }
+
+        internal void SwitchReed(int reed)
+        {
+            switch (reed)
+            {
+                case 0:
+                    R.UserSettings.Reed0 = !R.UserSettings.Reed0;
+                    break;
+                case 1:
+                    R.UserSettings.Reed1 = !R.UserSettings.Reed1;
+                    break;
+                case 2:
+                    R.UserSettings.Reed2 = !R.UserSettings.Reed2;
+                    break;
+                case 3:
+                    R.UserSettings.Reed3 = !R.UserSettings.Reed3;
+                    break;
+                case 4:
+                    R.UserSettings.Reed4 = !R.UserSettings.Reed4;
+                    break;
+                default:
+                    break;
             }
         }
 

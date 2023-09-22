@@ -1,4 +1,4 @@
-﻿using NeeqDMIs.Eyetracking.Tobii;
+﻿using NITHdmis.Eyetracking.Tobii;
 using System;
 using System.Collections.Generic;
 using System.Linq;

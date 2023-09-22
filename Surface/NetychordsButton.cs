@@ -1,4 +1,5 @@
-﻿using Netychords.Utils;
+﻿using NITHdmis.Template;
+using Netychords.Utils;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -51,6 +52,7 @@ namespace Netychords
         private void OccluderMouseEnterBehavior(object sender, MouseEventArgs e)
         {
             NetychordsDrawer.NetychordsButton_OccluderMouseEnter(this);
+            R.NDB.MainWindow.Global_NetychordsButtonEntered();
         }
     }
 }

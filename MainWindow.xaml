@@ -4,604 +4,432 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" WindowStyle="None" ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen" WindowState="Maximized" Width="1366.222" Height="768.762">
+        Title="Netychords" WindowStyle="None" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized" Width="1537" Height="865" Loaded="Window_Loaded">
+    <!-- MAIN GRID -->
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
         <Grid.Background>
             <ImageBrush ImageSource="/Images/Backgrounds/DarkWood.png" TileMode="Tile" />
         </Grid.Background>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="219*" />
-            <ColumnDefinition Width="1147*" />
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70" />
+            <RowDefinition Height="20*" />
+        </Grid.RowDefinitions>
 
-        <Border VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="20,60,10,0" Width="Auto" Height="Auto" BorderThickness="4" BorderBrush="White" Grid.Column="0">
+        <!-- HEADBAR -->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Content="Netychords" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Magneto" FontSize="28" Foreground="White" Width="200" Grid.ColumnSpan="2" Margin="5,0,1337,0" />
+            <StackPanel Grid.Column="1" Orientation="Horizontal" FlowDirection="RightToLeft" Grid.ColumnSpan="2">
+                <Button Name="btnExit" Style="{StaticResource RWood}" Click="BtnExit_Click" HorizontalContentAlignment="Center">
+                        <Image Source="/Images/Icons/Cross.png" Margin="10,10,10,10" />
+                </Button>
+                <Button Name="btnSettings" Style="{StaticResource MWood}" Click="btnSettings_Click" HorizontalContentAlignment="Center">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0" FlowDirection="LeftToRight">
+                        <Border Name="indSettings" Style="{StaticResource Indicator}" />
+                        <Image Source="/Images/Icons/Settings.png" Margin="10,8,0,8" />
+                    </StackPanel>
+                </Button>
+                <Button Name="btnToggleAutoScroll" Style="{StaticResource MWood}" Click="btnToggleAutoScroll_Click"  HorizontalContentAlignment="Center">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0" FlowDirection="LeftToRight">
+                        <Border Name="indToggleAutoScroll" Style="{StaticResource Indicator}" />
+                        <Image Source="/Images/Icons/AutoScroll.png" Margin="10,5,0,5" />
+                    </StackPanel>
+                </Button>
+                <Button Name="btnToggleEyeTracker" Style="{StaticResource MWood}" Click="btnToggleEyeTracker_Click"  HorizontalContentAlignment="Center">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0" FlowDirection="LeftToRight">
+                        <Border Name="indToggleEyeTracker" Style="{StaticResource Indicator}" />
+                        <Image Source="/Images/Icons/EyeTracker.png" Margin="10,5,0,5" />
+                    </StackPanel>
+                </Button>
+                <Button Name="btnToggleCursor" Style="{StaticResource MWood}" Click="btnNoCursor_Click"  HorizontalContentAlignment="Center">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0" FlowDirection="LeftToRight">
+                        <Border Name="indToggleCursor" Style="{StaticResource Indicator}" />
+                        <Image Source="/Images/Icons/NoCursor.png" Margin="10,8,0,8" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <!-- LAYOUT -->
+        <TabControl Grid.Row="1" x:Name="tabSolo" SelectionChanged="TabSolo_SelectionChanged" BorderBrush="Transparent" Background="Black" Grid.ColumnSpan="2">
+            <TabItem x:Name="tabNetychords" Header="Netychords" Visibility="Collapsed" BorderBrush="Transparent">
+                <Grid Background="Black">
+                    <ScrollViewer  x:Name="scrlNetychords" Width="Auto" Height="Auto" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" BorderBrush="Transparent">
+                        <Canvas x:Name="canvasNetychords" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,0" Width="2000" Height="2000">
+                            <Canvas.Background>
+                                <SolidColorBrush Color="Black" />
+                            </Canvas.Background>
+                        </Canvas>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <!-- SETTINGS panel -->
+        <Border Name="brdSettings" Grid.Row="1" HorizontalAlignment="Left" Width="750" Height="Auto" Margin="5,5,5,5" CornerRadius="10" Visibility="Visible">
             <Border.Background>
                 <ImageBrush ImageSource="/Images/Backgrounds/LightWood.jpg" TileMode="Tile" />
             </Border.Background>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="0.1*" />
+                    <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40*" />
-                    <RowDefinition Height="40*" />
-                    <RowDefinition Height="40*" />
-                    <RowDefinition Height="30*" />
-                    <RowDefinition Height="30*" />
-                    <RowDefinition Height="45*" />
-                    <RowDefinition Height="209*" />
-                    <RowDefinition Height="30*" />
-                    <RowDefinition Height="58*" />
-                    <RowDefinition Height="58*" />
-                    <RowDefinition Height="40*" />
-                    <RowDefinition Height="25*" />
-                    <RowDefinition Height="25*" />
-                    <RowDefinition Height="25*" />
-                </Grid.RowDefinitions>
 
-                <!-- START AND BLOWMETER -->
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="1*" />
-                    </Grid.ColumnDefinitions>
+                <!-- Left stackpanel -->
+                <StackPanel Grid.Column="0" Orientation="Vertical">
 
-                    <Border Grid.Column="1" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="5,5,5,5">
-                        <Button x:Name="btnStart" Foreground="White" Content="Start" Click="BtnStart_Click"  Width="Auto" Height="Auto"  FontFamily="Magneto" FontSize="20" IsCancel="True" VerticalAlignment="Stretch">
-                            <Button.Background>
-                                <ImageBrush ImageSource="Images/Backgrounds/MidWood.png" TileMode="Tile" Stretch="None"></ImageBrush>
-                            </Button.Background>
-                        </Button>
-                    </Border>
-                    <Border Grid.Column="0" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="5,5,5,5">
-                        <Button Name="btnExit" Foreground="White" Click="BtnExit_Click" Content="Exit" Width="Auto" Height="Auto" FontFamily="Magneto" FontSize="22" IsCancel="True">
-                            <!-- tobii:Behaviors.IsGazeAware="True" -->
-
-                            <Button.Background>
-                                <ImageBrush ImageSource="Images/Backgrounds/MidWood.png" TileMode="Tile" Stretch="None"></ImageBrush>
-                            </Button.Background>
-                        </Button>
-                    </Border>
-                </Grid>
-
-                <!-- MIDI CHANNEL SELECTOR -->
-                <Grid Grid.Row="1" Margin="5,1,5,1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width = "1*" />
-                        <ColumnDefinition Width = "1*" />
-                        <ColumnDefinition Width = "1*" />
-                    </Grid.ColumnDefinitions>
-                    <Border Background="Black" Grid.Column="0" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="1,1,1,1">
-                        <Button x:Name="btnMIDIchMinus" Foreground="White" Content="t"  Width="Auto" Height="Auto" Margin="0,1,1,0" FontFamily="Wingdings 3" FontSize="20" IsCancel="True" Click="BtnMIDIchMinus_Click">
-                            <Button.Background>
-                                <ImageBrush ImageSource="Images/Backgrounds/DarkWood.png" TileMode="Tile" Stretch="None"></ImageBrush>
-                            </Button.Background>
-                        </Button>
-                    </Border>
-                    <Border Name="brdMIDIch" Background="Black" Grid.Column="1" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="1,1,1,1">
-                        <TextBlock Name="lblMIDIch" Margin="0,0,0,0" VerticalAlignment="Center" Background="Black" Foreground="LightCoral" FontFamily="Digital-7 Italic" FontSize="25" TextAlignment="Center" Text="MP-">
-                        </TextBlock>
-                    </Border>
-                    <Border Background="Black" Grid.Column="2" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="1,1,1,1">
-                        <Button x:Name="btnMIDIchPlus" Foreground="White" Content="u"  Width="Auto" Height="Auto" FontFamily="Wingdings 3" FontSize="20" IsCancel="True" Click="BtnMIDIchPlus_Click">
-                            <Button.Background>
-                                <ImageBrush ImageSource="Images/Backgrounds/DarkWood.png" TileMode="Tile" Stretch="None"></ImageBrush>
-                            </Button.Background>
-                        </Button>
-                    </Border>
-                </Grid>
-
-                <Grid Grid.Row="2" Margin="5,5,5,5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width = "0*" />
-                        <ColumnDefinition Width="58*" />
-                        <ColumnDefinition Width = "57*" />
-                        <ColumnDefinition Width = "57*" />
-                    </Grid.ColumnDefinitions>
-                    <Border Visibility="Visible" Background="Black" Grid.Column="0" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="1,2,0.6,2.985" Grid.ColumnSpan="2">
-                        <Button Name="btnSensorPortMinus" Foreground="White" Content="t"  Width="Auto" Height="Auto" Margin="0,0,0,0" FontFamily="Wingdings 3" FontSize="20" IsCancel="True" Click="BtnSensorPortMinus_Click">
-                            <Button.Background>
-                                <ImageBrush ImageSource="Images/Backgrounds/DarkWood.png" TileMode="Tile" Stretch="None"></ImageBrush>
-                            </Button.Background>
-                        </Button>
-                    </Border>
-                    <Border Visibility="Visible" Background="Black" Grid.Column="2" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="1.4,2,1.462,2.985">
-                        <TextBlock Name="txtSensorPort"  Background="Black" Foreground="LightCoral" FontFamily="Digital-7 Italic" FontSize="25" TextAlignment="Center" VerticalAlignment="Center" Text="">
-                        </TextBlock>
-                    </Border>
-                    <Border Visibility="Visible"  Background="Black" Grid.Column="3" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="0.538,2,1.323,2.985">
-                        <Button Name="btnSensorPortPlus" Foreground="White" Content="u" Width="Auto" Height="Auto" Margin="0,0,0,0" FontFamily="Wingdings 3" FontSize="20" IsCancel="True" Click="BtnSensorPortPlus_Click">
-                            <Button.Background>
-                                <ImageBrush ImageSource="Images/Backgrounds/DarkWood.png" TileMode="Tile" Stretch="None"></ImageBrush>
-                            </Button.Background>
-                        </Button>
-                    </Border>
-                </Grid>
-
-                <Grid Grid.Row="3" Margin="5,1,5,1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width = "1*" />
-                        <ColumnDefinition Width = "1*" />
-                    </Grid.ColumnDefinitions>
-                    <ComboBox x:Name="lstNoteChanger" Grid.Column="0" Margin="5,5,5,5" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" SelectionChanged="LstNoteChanger_SelectionChanged" Background="Black" Foreground="Black">
-                        <ComboBoxItem Name="C">
-                            C
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            C#
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            D
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            D#
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            E
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            F
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            F#
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            G
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            G#
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            A
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            A#
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            B
-                        </ComboBoxItem>
-                    </ComboBox>
-                    <ComboBox x:Name="lstReeds" Grid.Column="2" Margin="5,5,5,5" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" SelectionChanged="LstOctaveChanger_SelectionChanged" Background="Black" Foreground="Black">
-                        <CheckBox x:Name="one" Checked="one_Checked" Unchecked="one_Unchecked">
-                            1
-                        </CheckBox>
-                        <CheckBox x:Name="two" Checked="two_Checked" Unchecked="two_Unchecked">
-                            2
-                        </CheckBox>
-                        <CheckBox x:Name="three" Checked="three_Checked" Unchecked="three_Unchecked">
-                            3
-                        </CheckBox>
-                        <CheckBox x:Name="four" Checked="four_Checked" Unchecked="four_Unchecked">
-                            4
-                        </CheckBox>
-                        <CheckBox x:Name="five" Checked="five_Checked" Unchecked="five_Unchecked">
-                            5
-                        </CheckBox>
-                    </ComboBox>
-                </Grid>
-
-                <Grid Grid.Row="4" Margin="5,1,5,1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width = "1*" />
-                        <ColumnDefinition Width = "1*" />
-                    </Grid.ColumnDefinitions>
-                    <Border Background="Black" Grid.Column="0" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="1,1,1,1">
-                        <TextBlock Name="lblIsPlaying" Margin="0,0,0,0" Background="Black" Foreground="LightCoral" FontFamily="Digital-7 Italic" FontSize="25" TextAlignment="Center" Text="">
-                        </TextBlock>
-                    </Border>
-                    <Border Background="Black" Grid.Column="1" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="1,1,1,1">
-                        <TextBlock Name="lblPlayedNote" Margin="0,0,0,0" Background="Black" Foreground="LightCoral" FontFamily="Digital-7 Italic" FontSize="25" TextAlignment="Center" Text="">
-                        </TextBlock>
-                    </Border>
-                </Grid>
-
-                <Grid Grid.Row="5" Margin="5,1,5,1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width = "1*" />
-                        <ColumnDefinition Width = "1*" />
-                        <ColumnDefinition Width = "1*" />
-                    </Grid.ColumnDefinitions>
-                    <Border Background="Black" Grid.Column="0" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="30" Margin="0,0,0,0">
-                        <TextBlock Name="falseMargin" Margin="0,5,0,0" Background="Black" Foreground="LightCoral" FontFamily="Digital-7 Italic" FontSize="12" TextAlignment="Center" Text="Vertical">
-                        </TextBlock>
-                    </Border>
-                    <Border HorizontalAlignment="Stretch" Margin="0,0,4,0" Width="Auto" Height="20" BorderThickness="0" BorderBrush="White" Grid.Column="1" Grid.RowSpan="2">
-                        <Slider Name="Margins" Maximum="1" Minimum="0" IsSnapToTickEnabled="True" TickFrequency="1" TickPlacement="None" ValueChanged="Margins_ValueChanged" Value="0" HorizontalAlignment="Left" Margin="0,0,-0.2,0" Width="53" />
-                    </Border>
-                    <Border Background="Black" Grid.Column="2" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="30" Margin="0,0,0,0">
-                        <TextBlock Name="trueMargin" Margin="0,5,0,0" Background="Black" Foreground="LightGreen" FontFamily="Digital-7 Italic" FontSize="12" TextAlignment="Center" Text="Grid">
-                        </TextBlock>
-                    </Border>
-                </Grid>
-                <Grid Grid.Row="6" Margin="5,1,5,1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width = "1*" />
-                        <ColumnDefinition Width = "1*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
-                        <ListBox x:Name="lstLayout" Grid.Column="0" Margin="5,1,5,1" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" SelectionChanged="LstLayout_SelectionChanged"  Background="Black" Foreground="WhiteSmoke">
-                            <ListBoxItem>
-                                Stradella
-                            </ListBoxItem>
-                            <ListBoxItem>
-                                Fifth Circle
-                            </ListBoxItem>
-                            <ListBoxItem>
-                                Arbitrary
-                            </ListBoxItem>
-                            <ListBoxItem>
-                                Pop
-                            </ListBoxItem>
-                            <ListBoxItem>
-                                Rock
-                            </ListBoxItem>
-                            <ListBoxItem>
-                                Jazz
-                            </ListBoxItem>
-                            <ListBoxItem>
-                                Only Major
-                            </ListBoxItem>
-                            <ListBoxItem>
-                                Only Minor
-                            </ListBoxItem>
-                            <ListBoxItem>
-                                Diatonic_3
-                            </ListBoxItem>
-                            <ListBoxItem>
-                                Diatonic_4
-                            </ListBoxItem>
-                            <ListBoxItem>
-                                Flower
-                            </ListBoxItem>
-                        </ListBox>
-                    </Grid>
-                    <Grid Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height = "1*" />
-                            <RowDefinition Height = "1*" />
-                            <RowDefinition Height = "1*" />
-                            <RowDefinition Height = "1*" />
-                            <RowDefinition Height = "1*" />
-                            <RowDefinition Height = "1*" />
-                            <RowDefinition Height = "1*" />
-                            <RowDefinition Height = "1*" />
-                            <RowDefinition Height = "1*" />
-                            <RowDefinition Height = "1*" />
-                            <RowDefinition Height = "1*" />
-                            <RowDefinition Height = "1*" />
-                        </Grid.RowDefinitions>
-                        <ComboBox Name="FirstRow" Grid.Row="0" Width="Auto" Height="Auto" IsEnabled="False" FontSize="10" SelectionChanged="SelectorRow_SelectionChanged" />
-                        <ComboBox Name="SecondRow" Grid.Row="1" Width="Auto" Height="Auto" IsEnabled="False" FontSize="10" SelectionChanged="SelectorRow_SelectionChanged" />
-                        <ComboBox Name="ThirdRow" Grid.Row="2" Width="Auto" Height="Auto" IsEnabled="False" FontSize="10" SelectionChanged="SelectorRow_SelectionChanged" />
-                        <ComboBox Name="FourthRow" Grid.Row="3" Width="Auto" Height="Auto" IsEnabled="False" FontSize="10" SelectionChanged="SelectorRow_SelectionChanged" />
-                        <ComboBox Name="FifthRow" Grid.Row="4" Width="Auto" Height="Auto" IsEnabled="False" FontSize="10" SelectionChanged="SelectorRow_SelectionChanged" />
-                        <ComboBox Name="SixthRow" Grid.Row="5" Width="Auto" Height="Auto" IsEnabled="False" FontSize="10" SelectionChanged="SelectorRow_SelectionChanged" />
-                        <ComboBox Name="SeventhRow" Grid.Row="6" Width="Auto" Height="Auto" IsEnabled="False" FontSize="10" SelectionChanged="SelectorRow_SelectionChanged" />
-                        <ComboBox Name="EighthRow" Grid.Row="7" Width="Auto" Height="Auto" IsEnabled="False" FontSize="10" SelectionChanged="SelectorRow_SelectionChanged" />
-                        <ComboBox Name="NinthRow" Grid.Row="8" Width="Auto" Height="Auto" IsEnabled="False" FontSize="10" SelectionChanged="SelectorRow_SelectionChanged" />
-                        <ComboBox Name="TenthRow" Grid.Row="9" Width="Auto" Height="Auto" IsEnabled="False" FontSize="10" SelectionChanged="SelectorRow_SelectionChanged" />
-                        <ComboBox Name="EleventhRow" Grid.Row="10" Width="Auto" Height="Auto" IsEnabled="False" FontSize="10" SelectionChanged="SelectorRow_SelectionChanged" />
-                        <Button x:Name="arbitraryStart" Grid.Row="11" Foreground="White" Content="Start"  Width="Auto" Height="Auto" Margin="0,1,1,0" FontSize="10" IsCancel="True" IsEnabled="False" Click="ArbitraryStart_Click">
-                            <Button.Background>
-                                <ImageBrush ImageSource="Images/Backgrounds/DarkWood.png" TileMode="Tile" Stretch="None"></ImageBrush>
-                            </Button.Background>
-                        </Button>
-                    </Grid>
-                </Grid>
-
-                <Grid Grid.Row="7" Margin="5,1,5,1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width = "1*" />
-                    </Grid.ColumnDefinitions>
-                    <ComboBox x:Name="lstFeedbackModeChanger" Grid.Column="0" Margin="5,5,5,5" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" SelectionChanged="lstFeedbackModeChanger_SelectionChanged" Background="Black" Foreground="Black">
-                        <ComboBoxItem>
-                            Bars
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            HalfButton
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            DeadZone
-                        </ComboBoxItem>
-                    </ComboBox>
-                </Grid>
-                <Grid Grid.Row="8" Grid.RowSpan="2" Margin="5,1,5,1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width = "2.5*" />
-                        <ColumnDefinition Width = "1*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="1*" />
-                    </Grid.RowDefinitions>
-
-                    <Border HorizontalAlignment="Stretch" Width="Auto" Height="auto" BorderThickness="0" BorderBrush="White" Grid.Row="0" Grid.Column="0">
-                        <Slider Name="sldCenterZone" Maximum="10" Minimum="1" TickPlacement="None" TickFrequency="1" Value="0" ValueChanged="centerZone_ValueChanged" />
-                    </Border>
-                    <Border Background="Black" Grid.Column="1" Grid.Row="0" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="30" Margin="0,0,0,0">
-                        <TextBlock Name="txtCenterValue" Margin="0,5,0,0" Background="Black" Foreground="LightGreen" FontFamily="Digital-7 Italic" FontSize="12" TextAlignment="Center" Text="">
-                        </TextBlock>
-                    </Border>
-
-                    <Border HorizontalAlignment="Stretch" Width="Auto" Height="Auto" BorderThickness="0" BorderBrush="White" Grid.Column="0" Grid.Row="1">
-                        <Slider Name="centerPitchZone" Maximum="40" Minimum="10" TickPlacement="None" TickFrequency="1" Value="0" />
-                    </Border>
-                    <Border Background="Black" Grid.Column="1" Grid.Row="1" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto">
-                        <TextBlock Name="txtCenterPitchValue" Margin="0,5,0,0" Background="Black" Foreground="LightGreen" FontFamily="Digital-7 Italic" FontSize="12" TextAlignment="Center" Text="">
-                        </TextBlock>
-                    </Border>
-
-                    <Border HorizontalAlignment="Stretch" Width="Auto" Height="Auto" BorderThickness="0" BorderBrush="White" Grid.Column="0" Grid.Row="2">
-                        <Slider Name="sldDistance" Thumb.DragCompleted="sldDistance_DragCompleted" Minimum="160" Maximum="400" TickPlacement="None" TickFrequency="1" Value="0" />
-                    </Border>
-                    <Border Background="Black" Grid.Column="1" Grid.Row="2" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto">
-                        <TextBlock Name="sldDistanceValue" Margin="0,5,0,0" Background="Black" Foreground="LightGreen" FontFamily="Digital-7 Italic" FontSize="12" TextAlignment="Center" Text="">
-                        </TextBlock>
-                    </Border>
-                    <Grid Grid.Row="3" Grid.ColumnSpan="2">
+                    <!-- Midi port selector -->
+                    <Label Content="Midi port" />
+                    <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="40" />
-                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width = "1*" />
+                            <ColumnDefinition Width = "1*" />
+                            <ColumnDefinition Width = "1*" />
                         </Grid.ColumnDefinitions>
-
-                        <Button
-                        Name="btnOnlyDiatonic"
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        Width="Auto"
-                        Height="27"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Top"
-                        BorderBrush="White"
-                        BorderThickness="2"
-                        Click="btnOnlyDiatonic_Click">
-                            <Button.Background>
-                                <ImageBrush
-                                ImageSource="Images/Backgrounds/MidWood.png"
-                                Stretch="None"
-                                TileMode="Tile" />
-                            </Button.Background>
-                        </Button>
-                        <Border
-                            Name="indOnlyDiatonic"
-                            Grid.Column="1"
-                            Width="20"
-                            Height="20"
-                            Margin="4,0,0,0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Stretch"
-                            Background="Black"
-                            BorderBrush="White"
-                            BorderThickness="2"
-                            CornerRadius="10" />
-                        <Label
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            Margin="22,0,0,0"
-                            Content="Only diatonic"
-                            FontFamily="Magneto"
-                            FontSize="15"
-                            Foreground="White" />
+                        <Button x:Name="btnMIDIchMinus" Content="⮜" Click="BtnMIDIchMinus_Click" Style="{StaticResource DWood}" />
+                        <Border Grid.Column="1" Name="brdMIDIch" Style="{StaticResource LCDBorder}">
+                            <TextBlock Name="lblMIDIch" Text="MP-" Style="{StaticResource LCDText}">
+                            </TextBlock>
+                        </Border>
+                        <Button Grid.Column="2" x:Name="btnMIDIchPlus" Content="⮞" Click="BtnMIDIchPlus_Click" Style="{StaticResource DWood}" />
                     </Grid>
 
-                    <Grid Grid.Row="4" Grid.ColumnSpan="2">
+                    <!-- Root note selector -->
+                    <Label Content="First root" />
+                    <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="40" />
-                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width = "1*" />
+                            <ColumnDefinition Width = "1*" />
+                            <ColumnDefinition Width = "1*" />
                         </Grid.ColumnDefinitions>
-
-                        <Button
-                        Name="btnBlinkPlay"
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        Width="Auto"
-                        Height="27"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Top"
-                        BorderBrush="White"
-                        BorderThickness="2"
-                        Click="btnBlinkPlay_Click">
-                            <Button.Background>
-                                <ImageBrush
-                                ImageSource="Images/Backgrounds/MidWood.png"
-                                Stretch="None"
-                                TileMode="Tile" />
-                            </Button.Background>
-                        </Button>
-                        <Border
-                            Name="indBlinkPlay"
-                            Grid.Column="1"
-                            Width="20"
-                            Height="20"
-                            Margin="4,0,0,0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Stretch"
-                            Background="Black"
-                            BorderBrush="White"
-                            BorderThickness="2"
-                            CornerRadius="10" />
-                        <Label
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            Margin="22,0,0,0"
-                            Content="Blink play"
-                            FontFamily="Magneto"
-                            FontSize="15"
-                            Foreground="White" />
+                        <Button Grid.Column="0" Name="btnRootNoteMinus" Content="⮜" Click="btnRootNoteMinus_Click"  Style="{StaticResource DWood}" />
+                        <Border Grid.Column="1" Style="{StaticResource LCDBorder}">
+                            <UniformGrid Columns="2">
+                                <TextBlock Name="txtRootNote" Text="N" Style="{StaticResource LCDText}" />
+                                <Border Name="indRootNoteColor" Style="{StaticResource Indicator}" Background="white" />
+                            </UniformGrid>
+                        </Border>
+                        <Button Grid.Column="2" Name="btnRootNotePlus" Content="⮞" Click="btnRootNotePlus_Click" Style="{StaticResource DWood}" />
                     </Grid>
-                </Grid>
 
-                <Grid Grid.Row="9" Margin="5,1,5,1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width = "61*" />
-                        <ColumnDefinition Width = "7*" />
-                        <ColumnDefinition Width="17*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="1*" />
-                    </Grid.RowDefinitions>
-                </Grid>
-
-                <Grid Grid.Row="10" Margin="5,5,5,5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width = "1*" />
-                        <ColumnDefinition Width = "1*" />
-                    </Grid.ColumnDefinitions>
-
-                    <Border Grid.Column="0" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto">
-                        <Button x:Name="btnCentering" Foreground="White" Content="Center" Click="BtnCenter_Click"  Width="Auto" Height="Auto" FontFamily="Magneto" FontSize="20" IsCancel="True">
-                            <Button.Background>
-                                <ImageBrush ImageSource="Images/Backgrounds/MidWood.png" TileMode="Tile" Stretch="None"></ImageBrush>
-                            </Button.Background>
+                    <!-- Reeds selectors -->
+                    <Label Content="Reeds" />
+                    <UniformGrid Columns="5">
+                        <Button x:Name="btnReed1" Style="{StaticResource DWood}" Click="btnReed1_Click">
+                            <Border x:Name="indReed1" Style="{StaticResource Indicator}" />
                         </Button>
-                    </Border>
-                    <Border Background="Black" Grid.Column="1" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto" Margin="1,1,1,1">
-                        <TextBlock Name="lblYaw" Margin="0,0,0,0" Background="Black" Foreground="LightCoral" FontFamily="Digital-7 Italic" FontSize="25" TextAlignment="Center" VerticalAlignment="Center"  Text="">
-                        </TextBlock>
-                    </Border>
-                </Grid>
+                        <Button x:Name="btnReed2" Style="{StaticResource DWood}" Click="btnReed2_Click">
+                            <Border x:Name="indReed2" Style="{StaticResource Indicator}" />
+                        </Button>
+                        <Button x:Name="btnReed3" Style="{StaticResource DWood}" Click="btnReed3_Click">
+                            <Border x:Name="indReed3" Style="{StaticResource Indicator}" />
+                        </Button>
+                        <Button x:Name="btnReed4" Style="{StaticResource DWood}" Click="btnReed4_Click">
+                            <Border x:Name="indReed4" Style="{StaticResource Indicator}" />
+                        </Button>
+                        <Button x:Name="btnReed5" Style="{StaticResource DWood}" Click="btnReed5_Click">
+                            <Border x:Name="indReed5" Style="{StaticResource Indicator}" />
+                        </Button>
+                    </UniformGrid>
 
-                <Grid Grid.Row="11" Grid.ColumnSpan="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
+                    <!-- Switchable settings -->
+                    <Label Content="" Height="20" />
 
-                    <Button
-                        Name="btnSustain"
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        Width="Auto"
-                        Height="27"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Top"
-                        BorderBrush="White"
-                        BorderThickness="2"
-                        Click="btnSustain_Click">
-                        <Button.Background>
-                            <ImageBrush
-                                ImageSource="Images/Backgrounds/MidWood.png"
-                                Stretch="None"
-                                TileMode="Tile" />
-                        </Button.Background>
-                    </Button>
-                    <Border
-                            Name="indSustain"
-                            Grid.Column="1"
-                            Width="20"
-                            Height="20"
-                            Margin="4,0,0,0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Stretch"
-                            Background="Black"
-                            BorderBrush="White"
-                            BorderThickness="2"
-                            CornerRadius="10" />
-                    <Label
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            Margin="22,0,0,0"
-                            Content="Sustain"
-                            FontFamily="Magneto"
-                            FontSize="15"
-                            Foreground="White" />
-                </Grid>
+                    <!-- Only Diatonic-->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Button Name="btnOnlyDiatonic" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnOnlyDiatonic_Click">
+                            <Border Name="indOnlyDiatonic" Style="{StaticResource Indicator}" />
+                        </Button>
+                        <Label VerticalAlignment="Center" Content="Only diatonic" />
+                    </StackPanel>
 
-                <Grid Grid.Row="12" Grid.ColumnSpan="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
+                    <!-- Blink Play -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Button Name="btnBlinkPlay" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnBlinkPlay_Click">
+                            <Border Name="indBlinkPlay" Style="{StaticResource Indicator}" />
+                        </Button>
+                        <Label VerticalAlignment="Center" Content="Blink play" />
+                    </StackPanel>
 
-                    <Button
-                        Name="btnAutoStrum"
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        Width="Auto"
-                        HorizontalAlignment="Stretch"
-                        BorderBrush="White"
-                        BorderThickness="2"
-                        Click="btnAutoStrum_Click" Grid.ColumnSpan="2" Margin="0,0,128.6,-1.4" Height="27" VerticalAlignment="Bottom" RenderTransformOrigin="0.502,0.5">
-                        <Button.Background>
-                            <ImageBrush
-                                ImageSource="Images/Backgrounds/MidWood.png"
-                                Stretch="None"
-                                TileMode="Tile" />
-                        </Button.Background>
-                    </Button>
-                    <Border
-                            Name="indAutoStrum"
-                            Grid.Column="1"
-                            Width="20"
-                            Height="20"
-                            Margin="4,0,0,0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Stretch"
-                            Background="Black"
-                            BorderBrush="White"
-                            BorderThickness="2"
-                            CornerRadius="10" />
-                    <Label
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            Margin="22,0,0,0"
-                            Content="Auto strum"
-                            FontFamily="Magneto"
-                            FontSize="15"
-                            Foreground="White" />
-                </Grid>
+                    <!-- Sustain -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Button Name="btnSustain" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnSustain_Click">
+                            <Border Name="indSustain" Style="{StaticResource Indicator}" />
+                        </Button>
+                        <Label VerticalAlignment="Center" Content="Sustain" />
+                    </StackPanel>
 
-                <!-- Autostrum bar -->
-                <Grid Grid.Row="13" Grid.RowSpan="2" Margin="5,1,5,1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width = "2.5*" />
-                        <ColumnDefinition Width = "1*" />
-                    </Grid.ColumnDefinitions>
+                    <Label Content="" />
 
-                    <Border HorizontalAlignment="Stretch" Width="Auto" Height="Auto" BorderThickness="0" BorderBrush="White" Grid.Column="0" Grid.Row="2">
-                        <Slider Name="sldAutoStrum" ValueChanged="sldAutoStrum_ValueChanged"     Minimum="50" Maximum="250" IsSnapToTickEnabled="True" TickPlacement="None" TickFrequency="1" Value="120" />
-                    </Border>
-                    <Border Background="Black" Grid.Column="1" Grid.Row="2" BorderThickness="2" BorderBrush="WhiteSmoke" Width="Auto" Height="Auto">
-                        <TextBlock Name="indAutoStrumValue" Margin="0,5,0,0" Background="Black" Foreground="LightGreen" FontFamily="Digital-7 Italic" FontSize="12" TextAlignment="Center" Text="">
-                        </TextBlock>
-                    </Border>
-                </Grid>
+                    <!-- Autostrum -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Button Name="btnAutoStrum" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnAutoStrum_Click">
+                            <Border Name="indAutoStrum" Style="{StaticResource Indicator}" />
+                        </Button>
+                        <Label VerticalAlignment="Center" Content="Auto strum" />
+                    </StackPanel>
+                    <UniformGrid Columns="5">
+                        <Button Name="btnAutoStrumMM" Content="- 10" FontSize="18" Style="{StaticResource DWood}"  Click="btnAutoStrumMM_Click" />
+                        <Button Name="btnAutoStrumM" Content="- 1" FontSize="18" Style="{StaticResource DWood}"  Click="btnAutoStrumM_Click" />
+                        <Border Name="brdAutoStrum" Style="{StaticResource LCDBorder}">
+                            <TextBlock Name="lblAutoStrum" Text="200" Style="{StaticResource LCDText}" />
+                        </Border>
+                        <Button Name="btnAutoStrumP" Content="+ 1" FontSize="18" Style="{StaticResource DWood}"  Click="btnAutoStrumP_Click" />
+                        <Button Name="btnAutoStrumPP" Content="+ 10" FontSize="18" Style="{StaticResource DWood}"  Click="btnAutoStrumPP_Click" />
+                    </UniformGrid>
+                </StackPanel>
+
+                <!-- Right stackpanel-->
+                <StackPanel Grid.Column="2" Orientation="Vertical">
+
+                    <!-- Com port selector -->
+                    <Label Content="Sensor port" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width = "1*" />
+                            <ColumnDefinition Width = "1*" />
+                            <ColumnDefinition Width = "1*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Name="btnSensorPortMinus" Content="⮜" Click="BtnSensorPortMinus_Click" Style="{StaticResource DWood}" />
+                        <Border Grid.Column="1" Style="{StaticResource LCDBorder}">
+                            <TextBlock Name="txtSensorPort" Text="COM" Style="{StaticResource LCDText}">
+                            </TextBlock>
+                        </Border>
+                        <Button Grid.Column="2" Name="btnSensorPortPlus" Content="⮞" Click="BtnSensorPortPlus_Click" Style="{StaticResource DWood}" HorizontalAlignment="Left" Margin="5,5,0,5" Width="109" />
+                    </Grid>
+
+                    <!-- SensorControl -->
+                    <Label Content="Sensor control" />
+                    <UniformGrid Columns="3">
+                        <Button x:Name="btnCentering" Content="Center" FontSize="20" Click="BtnCenter_Click" Style="{StaticResource DWood}" />
+                        <Border Grid.Column="1" Style="{StaticResource LCDBorder}">
+                            <TextBlock Name="lblYaw" Text="" Width="100" Style="{StaticResource LCDText}">
+                            </TextBlock>
+                        </Border>
+                        <Label Content="Angle" VerticalAlignment="Center" />
+                    </UniformGrid>
+
+                    <!-- Keys Distance -->
+                    <Label Content="Keys distance" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width = "1*" />
+                            <ColumnDefinition Width = "1*" />
+                            <ColumnDefinition Width = "1*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Name="btnDistanceM10" FontSize="20" Content="- 10" Click="btnDistanceM10_Click" Style="{StaticResource DWood}" />
+                        <Border Grid.Column="1" Style="{StaticResource LCDBorder}">
+                            <TextBlock Name="txtDistance" Text="" Style="{StaticResource LCDText}">
+                            </TextBlock>
+                        </Border>
+                        <Button Grid.Column="2" Name="btnDistanceP10" FontSize="20" Content="+ 10" Click="btnDistanceP10_Click"  Style="{StaticResource DWood}" />
+                    </Grid>
+
+                    <!-- Layout -->
+                    <Label Content="Layout" />
+                    <UniformGrid Columns="2" Rows="2">
+                        <Button Name="btnLayout_Stradella" Style="{StaticResource DWoodLeft}" Click="btnLayout_Stradella_Click">
+
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0">
+                                <Border Name="indLayout_Stradella" Style="{StaticResource Indicator}" />
+                                <Label Content="Stradella" VerticalAlignment="Center" FontSize="18" />
+                            </StackPanel>
+                        </Button>
+                        <Button Name="btnLayout_FifthCirc" Style="{StaticResource DWoodLeft}" Click="btnLayout_FifthCirc_Click">
+
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0">
+                                <Border Name="indLayout_FifthCirc" Style="{StaticResource Indicator}" />
+                                <Label Content="Fifth C." VerticalAlignment="Center" FontSize="18" />
+                            </StackPanel>
+                        </Button>
+                        <Button Name="btnLayout_Custom" Style="{StaticResource DWoodLeft}" Click="btnLayout_Custom_Click">
+
+                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="4,0,0,0">
+                                <Border Name="indLayout_Custom" Style="{StaticResource Indicator}" />
+                                <Label Content="Custom" VerticalAlignment="Center" FontSize="18" />
+                            </StackPanel>
+                        </Button>
+                        <Button Name="btnLayout_Flowerpot" Style="{StaticResource DWoodLeft}" Click="btnLayout_Flowerpot_Click" Visibility="Hidden">
+
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0">
+                                <Border Name="indLayout_Flowerpot" Style="{StaticResource Indicator}" />
+                                <Label Content="Flowerpot" VerticalAlignment="Center" FontSize="18" />
+                            </StackPanel>
+                        </Button>
+                        
+                    </UniformGrid>
+
+                    <Label Content="" Height="10" />
+
+                    <!-- Grid/Slanted -->
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="1.4*" />
+                            <ColumnDefinition Width="1.4*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" VerticalAlignment="Center" Content="Grid" HorizontalAlignment="Center" />
+                        <Button Grid.Column="1" Name="btnLayoutGrid" Style="{StaticResource DWood}"  Click="btnLayoutGrid_Click">
+                            <Border Name="indLayoutGrid" Style="{StaticResource Indicator}" />
+                        </Button>
+                        <Button Grid.Column="2" Name="btnLayoutSlant" Style="{StaticResource DWood}"  Click="btnLayoutSlant_Click">
+                            <Border Name="indLayoutSlant" Style="{StaticResource Indicator}" />
+                        </Button>
+                        <Label Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Slant" />
+                    </Grid>
+
+                    <Label Content="" Height="20" />
+                </StackPanel>
             </Grid>
         </Border>
 
-        <Border VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10,60,20,0" Width="Auto" Height="Auto" BorderThickness="4" BorderBrush="White" Grid.Column="1">
+        <!-- LAYOUT CUSTOMIZATION panel -->
+        <Border Name="brdCustom" Grid.Row="1" HorizontalAlignment="Left" Width="400" Height="Auto" CornerRadius="10" Margin="760,5,5,5" Visibility="Visible">
             <Border.Background>
-                <ImageBrush ImageSource="Images/Backgrounds/LightWood.jpg" TileMode="Tile" />
+                <ImageBrush ImageSource="/Images/Backgrounds/LightWood.jpg" TileMode="Tile" />
             </Border.Background>
 
-            <TabControl x:Name="tabSolo" Margin="0,0,0,0" SelectionChanged="TabSolo_SelectionChanged">
-                <TabItem x:Name="tabNetychords"  Header="Netychords" Visibility="Collapsed">
-                    <Grid>
-                        <Grid.Background>
-                            <SolidColorBrush Color="Black"></SolidColorBrush>
-                        </Grid.Background>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="12*" />
-                        </Grid.RowDefinitions>
-                        <ScrollViewer x:Name="scrlNetychords" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,0" Width="Auto" Height="Auto" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" Grid.Row="0">
-                            <Canvas x:Name="canvasNetychords" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,0" Width="2000" Height="2000" MouseMove="CanvasNetytchords_MouseMove">
-                                <Canvas.Background>
+            <!-- Custom stackpanel -->
+            <StackPanel Orientation="Vertical">
+                <Label Content="Custom rows" />
 
-                                    <SolidColorBrush Color="Black" Opacity="0" />
-                                </Canvas.Background>
-                            </Canvas>
-                        </ScrollViewer>
-                    </Grid>
-                </TabItem>
-            </TabControl>
+                <!-- CR 1 -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button x:Name="btnCR1_Switch" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR1_Switch_Click">
+                        <Border x:Name="indCR1_Switch" Style="{StaticResource Indicator}" />
+                    </Button>
+                    <Button x:Name="btnCR1_M" Content="⮜" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR1_M_Click" />
+                    <Border Style="{StaticResource LCDBorder}">
+                        <TextBlock Name="txtCR1" Style="{StaticResource LCDText}" Width="{StaticResource CRWidth}">
+                        </TextBlock>
+                    </Border>
+                    <Button x:Name="btnCR1_P" Content="⮞" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR1_P_Click" />
+                </StackPanel>
+                <!-- CR 2 -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button x:Name="btnCR2_Switch" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR2_Switch_Click">
+                        <Border x:Name="indCR2_Switch" Style="{StaticResource Indicator}" />
+                    </Button>
+                    <Button x:Name="btnCR2_M" Content="⮜" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR2_M_Click" />
+                    <Border Style="{StaticResource LCDBorder}">
+                        <TextBlock Name="txtCR2" Style="{StaticResource LCDText}" Width="{StaticResource CRWidth}">
+                        </TextBlock>
+                    </Border>
+                    <Button x:Name="btnCR2_P" Content="⮞" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR2_P_Click" />
+                </StackPanel>
+                <!-- CR 3 -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button x:Name="btnCR3_Switch" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR3_Switch_Click">
+                        <Border x:Name="indCR3_Switch" Style="{StaticResource Indicator}" />
+                    </Button>
+                    <Button x:Name="btnCR3_M" Content="⮜" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR3_M_Click" />
+                    <Border Style="{StaticResource LCDBorder}">
+                        <TextBlock Name="txtCR3" Style="{StaticResource LCDText}" Width="{StaticResource CRWidth}">
+                        </TextBlock>
+                    </Border>
+                    <Button x:Name="btnCR3_P" Content="⮞" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR3_P_Click" />
+                </StackPanel>
+                <!-- CR 4 -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button x:Name="btnCR4_Switch" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR4_Switch_Click">
+                        <Border x:Name="indCR4_Switch" Style="{StaticResource Indicator}" />
+                    </Button>
+                    <Button x:Name="btnCR4_M" Content="⮜" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR4_M_Click" />
+                    <Border Style="{StaticResource LCDBorder}">
+                        <TextBlock Name="txtCR4" Style="{StaticResource LCDText}" Width="{StaticResource CRWidth}">
+                        </TextBlock>
+                    </Border>
+                    <Button x:Name="btnCR4_P" Content="⮞" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR4_P_Click" />
+                </StackPanel>
+                <!-- CR 5 -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button x:Name="btnCR5_Switch" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR5_Switch_Click">
+                        <Border x:Name="indCR5_Switch" Style="{StaticResource Indicator}" />
+                    </Button>
+                    <Button x:Name="btnCR5_M" Content="⮜" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR5_M_Click" />
+                    <Border Style="{StaticResource LCDBorder}">
+                        <TextBlock Name="txtCR5" Style="{StaticResource LCDText}" Width="{StaticResource CRWidth}">
+                        </TextBlock>
+                    </Border>
+                    <Button x:Name="btnCR5_P" Content="⮞" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR5_P_Click" />
+                </StackPanel>
+                <!-- CR 6 -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button x:Name="btnCR6_Switch" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR6_Switch_Click">
+                        <Border x:Name="indCR6_Switch" Style="{StaticResource Indicator}" />
+                    </Button>
+                    <Button x:Name="btnCR6_M" Content="⮜" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR6_M_Click" />
+                    <Border Style="{StaticResource LCDBorder}">
+                        <TextBlock Name="txtCR6" Style="{StaticResource LCDText}" Width="{StaticResource CRWidth}">
+                        </TextBlock>
+                    </Border>
+                    <Button x:Name="btnCR6_P" Content="⮞" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR6_P_Click" />
+                </StackPanel>
+                <!-- CR 7 -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button x:Name="btnCR7_Switch" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR7_Switch_Click">
+                        <Border x:Name="indCR7_Switch" Style="{StaticResource Indicator}" />
+                    </Button>
+                    <Button x:Name="btnCR7_M" Content="⮜" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR7_M_Click" />
+                    <Border Style="{StaticResource LCDBorder}">
+                        <TextBlock Name="txtCR7" Style="{StaticResource LCDText}" Width="{StaticResource CRWidth}">
+                        </TextBlock>
+                    </Border>
+                    <Button x:Name="btnCR7_P" Content="⮞" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR7_P_Click" />
+                </StackPanel>
+                <!-- CR 8 -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button x:Name="btnCR8_Switch" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR8_Switch_Click">
+                        <Border x:Name="indCR8_Switch" Style="{StaticResource Indicator}" />
+                    </Button>
+                    <Button x:Name="btnCR8_M" Content="⮜" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR8_M_Click" />
+                    <Border Style="{StaticResource LCDBorder}">
+                        <TextBlock Name="txtCR8" Style="{StaticResource LCDText}" Width="{StaticResource CRWidth}">
+                        </TextBlock>
+                    </Border>
+                    <Button x:Name="btnCR8_P" Content="⮞" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR8_P_Click" />
+                </StackPanel>
+                <!-- CR 9 -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button x:Name="btnCR9_Switch" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR9_Switch_Click">
+                        <Border x:Name="indCR9_Switch" Style="{StaticResource Indicator}" />
+                    </Button>
+                    <Button x:Name="btnCR9_M" Content="⮜" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR9_M_Click" />
+                    <Border Style="{StaticResource LCDBorder}">
+                        <TextBlock Name="txtCR9" Style="{StaticResource LCDText}" Width="{StaticResource CRWidth}">
+                        </TextBlock>
+                    </Border>
+                    <Button x:Name="btnCR9_P" Content="⮞" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR9_P_Click" />
+                </StackPanel>
+
+                <!-- Presets -->
+                <!-- Com port selector -->
+                <Label Content="Presets" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width = "1*" />
+                        <ColumnDefinition Width = "2*" />
+                        <ColumnDefinition Width = "1*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Name="btnPresetMinus" Content="⮜" Click="btnPresetMinus_Click" Style="{StaticResource DWood}" />
+                    <Border Grid.Column="1" Style="{StaticResource LCDBorder}">
+                        <TextBlock Name="txtPreset" Text="-" Style="{StaticResource LCDText}">
+                        </TextBlock>
+                    </Border>
+                    <Button Grid.Column="2" Name="btnPresetPlus" Content="⮞" Click="btnPresetPlus_Click"  Style="{StaticResource DWood}" />
+                </Grid>
+            </StackPanel>
         </Border>
-
-        <Label x:Name="lblRhythm" Content="Settings" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" FontFamily="/Netychords;component/Fonts/#Magneto" FontSize="28" Foreground="White" Height="44" Width="162" />
-        <Label x:Name="lblSolo" Content="Netychords" HorizontalAlignment="Right" Margin="0,5,5,0" VerticalAlignment="Top" FontFamily="Magneto" FontSize="28" Foreground="White" Grid.Column="1" Height="44" Width="200" />
     </Grid>
 </Window>

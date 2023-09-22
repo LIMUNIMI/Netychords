@@ -1,6 +1,6 @@
 ﻿using Eyerpheus.Controllers.Graphics;
-using NeeqDMIs.Headtracking.NeeqHT;
-using NeeqDMIs.Music;
+using NITHdmis.Headtracking.NeeqHT;
+using NITHdmis.Music;
 using Netychords.Surface;
 using Netychords.Utils;
 using System;
@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using NITHdmis.Headtracking;
 
 namespace Netychords
 {
@@ -52,8 +53,9 @@ namespace Netychords
         public void DrawButtons()
         {
             // CHIAMATA AL LAYOUTDRAWER
-            firstChord = MidiChord.StandardAbsStringToChordFactory(R.UserSettings.FirstNote, "2", ChordType.Major);
-            R.UserSettings.Layout.Draw(firstChord, Canvas, NetychordsButtons);
+            FirstChord = MidiChord.StandardAbsStringToChordFactory(R.UserSettings.FirstRoot.ToStandardString(), "2", ChordType.Maj);
+            NetychordsButtons = new NetychordsButton[R.UserSettings.NRows, R.UserSettings.NCols];
+            R.UserSettings.Layout.Draw(FirstChord, Canvas, NetychordsButtons);
             DrawHighlighter();
             HtFeedbackModule.Mode = HTFeedbackModule.HTFeedbackModes.Bars;
         }
@@ -87,20 +89,17 @@ namespace Netychords
             }
         }
 
-        public void UpdateHeadTrackerFeedback(NeeqHTData neeqHTData)
+        public void UpdateHeadTrackerFeedback(Polar3DData position, Polar3DData acceleration, HeadTrackerModes headTrackerMode)
         {
-            if (neeqHTData != null)
+            switch (headTrackerMode)
             {
-                switch (neeqHTData.HeadTrackerMode)
-                {
-                    case NeeqHTModes.Absolute:
-                        HtFeedbackModule.UpdateGraphics(neeqHTData.CenteredPosition.Yaw, checkedButton);
-                        break;
-                    case NeeqHTModes.Acceleration:
-                        HtFeedbackModule.UpdateGraphics(R.NDB.FilteredVelocity * Math.Sign(neeqHTData.Acceleration.Yaw) * UPDATERACCMULTIPLIER, checkedButton);
-                        break;
-                }
-                
+                case HeadTrackerModes.Absolute:
+                    HtFeedbackModule.UpdateGraphics(position.Yaw, checkedButton);
+                    break;
+
+                case HeadTrackerModes.Acceleration:
+                    HtFeedbackModule.UpdateGraphics(R.NDB.FilteredVelocity * Math.Sign(acceleration.Yaw) * UPDATERACCMULTIPLIER, checkedButton);
+                    break;
             }
         }
 
@@ -109,7 +108,7 @@ namespace Netychords
             highlighter = new Ellipse();
             highlighter.Width = R.UserSettings.ButtonWidth + 10;
             highlighter.Height = R.UserSettings.ButtonHeight + 10;
-            highlighter.StrokeThickness = 3;
+            highlighter.StrokeThickness = R.UserSettings.HighlightStrokeThickness;
             highlighter.Stroke = new SolidColorBrush(Colors.White);
             highlighter.Fill = new SolidColorBrush(Colors.Transparent);
             highlighter.HorizontalAlignment = HorizontalAlignment.Center;
@@ -120,7 +119,7 @@ namespace Netychords
 
         #region Settings
 
-        public MidiChord firstChord;
+        public MidiChord FirstChord;
 
         private MidiChord actualChord;
 
@@ -141,11 +140,10 @@ namespace Netychords
 
         #region Surface components
 
-        public NetychordsButton[,] NetychordsButtons;
+        public NetychordsButton[,] NetychordsButtons { get; set; }
+        private readonly double UPDATERACCMULTIPLIER = 2f; // OLD 80
         private List<Ellipse> drawnEllipses = new List<Ellipse>();
         private List<Line> drawnLines = new List<Line>();
-        private readonly double UPDATERACCMULTIPLIER = 80f;
-
         public Canvas Canvas { get; set; }
 
         #endregion Surface components
@@ -161,6 +159,10 @@ namespace Netychords
             Canvas.SetTop(highlighter, Canvas.GetTop(checkedButton.Occluder) - 5);
         }
 
+        /// <summary>
+        /// Deprecated
+        /// </summary>
+        /// <param name="button"></param>
         private void NoteToColor(NetychordsButton button)
         {
             string n = actualChord.rootNote.ToStandardString();

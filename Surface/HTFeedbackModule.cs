@@ -1,6 +1,4 @@
-﻿using NeeqDMIs.Headtracking.NeeqHT;
-using NeeqDMIs.Utils;
-using Netychords;
+﻿using NITHdmis.Utils;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -31,6 +29,24 @@ namespace Netychords.Surface
         private Rectangle Half_rightRect;
         private double Half_VLHeight;
         private HTFeedbackModes mode;
+
+        public HTFeedbackModule(Canvas canvas, HTFeedbackModes mode)
+        {
+            Canvas = canvas;
+            Mode = mode;
+
+            DisposeElements();
+            CreateElements();
+        }
+
+        public enum HTFeedbackModes
+        {
+            Bars,
+            HalfButton,
+            DeadZone,
+            None
+        }
+
         public Canvas Canvas { get; set; }
 
         public HTFeedbackModes Mode
@@ -42,15 +58,6 @@ namespace Netychords.Surface
                 DisposeElements();
                 CreateElements();
             }
-        }
-
-        public HTFeedbackModule(Canvas canvas, HTFeedbackModes mode)
-        {
-            Canvas = canvas;
-            Mode = mode;
-
-            DisposeElements();
-            CreateElements();
         }
 
         public void UpdateGraphics(double TrackedValue, NetychordsButton checkedButton)
@@ -67,6 +74,9 @@ namespace Netychords.Surface
 
                 case HTFeedbackModes.DeadZone:
                     Update_DeadZone(TrackedValue, checkedButton);
+                    break;
+
+                case HTFeedbackModes.None:
                     break;
             }
         }
@@ -121,6 +131,9 @@ namespace Netychords.Surface
                     Dead_midLine.Opacity = 0;
                     Panel.SetZIndex(Dead_midLine, 2001);
                     Canvas.Children.Add(Dead_midLine);
+                    break;
+
+                case HTFeedbackModes.None:
                     break;
             }
         }
@@ -230,12 +243,5 @@ namespace Netychords.Surface
         }
 
         #endregion Update resolvers
-
-        public enum HTFeedbackModes
-        {
-            Bars,
-            HalfButton,
-            DeadZone
-        }
     }
 }
