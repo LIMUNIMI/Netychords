@@ -29,7 +29,7 @@
             <Label Grid.Column="0" Content="Netychords" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Magneto" FontSize="28" Foreground="White" Width="200" Grid.ColumnSpan="2" Margin="5,0,1337,0" />
             <StackPanel Grid.Column="1" Orientation="Horizontal" FlowDirection="RightToLeft" Grid.ColumnSpan="2">
                 <Button Name="btnExit" Style="{StaticResource RWood}" Click="BtnExit_Click" HorizontalContentAlignment="Center">
-                        <Image Source="/Images/Icons/Cross.png" Margin="10,10,10,10" />
+                    <Image Source="/Images/Icons/Cross.png" Margin="10,10,10,10" />
                 </Button>
                 <Button Name="btnSettings" Style="{StaticResource MWood}" Click="btnSettings_Click" HorizontalContentAlignment="Center">
                     <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0" FlowDirection="LeftToRight">
@@ -158,7 +158,7 @@
                         <Button Name="btnBlinkPlay" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnBlinkPlay_Click">
                             <Border Name="indBlinkPlay" Style="{StaticResource Indicator}" />
                         </Button>
-                        <Label VerticalAlignment="Center" Content="Blink play" />
+                        <Label VerticalAlignment="Center" Content="Blink left to stop" />
                     </StackPanel>
 
                     <!-- Sustain -->
@@ -192,6 +192,35 @@
                 <!-- Right stackpanel-->
                 <StackPanel Grid.Column="2" Orientation="Vertical">
 
+                    <!-- Control methods -->
+                    <Label Content="Interaction method" />
+                    <UniformGrid Columns="2" Rows="2">
+                        <Button Name="btnControl_Head_Yaw" Style="{StaticResource DWoodLeft}" Click="btnControl_Head_Yaw_Click">
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0">
+                                <Border Name="indControl_Head_Yaw" Style="{StaticResource Indicator}" />
+                                <Label Content="Head&#x0a;Yaw" FontSize="15" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Button Name="btnControl_Head_Pitch" Style="{StaticResource DWoodLeft}" Click="btnControl_Head_Pitch_Click">
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0">
+                                <Border Name="indControl_Head_Pitch" Style="{StaticResource Indicator}" />
+                                <Label Content="Head&#x0a;Pitch" FontSize="15" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Button Name="btnControl_Pressure_Blink" Style="{StaticResource DWoodLeft}" Click="btnControl_Pressure_Blink_Click">
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0">
+                                <Border Name="indControl_Pressure_Blink" Style="{StaticResource Indicator}" />
+                                <Label Content="Pressure&#x0a;+ Blink" FontSize="15" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Button Name="btnControl_Blink" Style="{StaticResource DWoodLeft}" Click="btnControl_Blink_Click">
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0">
+                                <Border Name="indControl_Blink" Style="{StaticResource Indicator}" />
+                                <Label Content="Blink alone" FontSize="15" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                    </UniformGrid>
+
                     <!-- Com port selector -->
                     <Label Content="Sensor port" />
                     <Grid>
@@ -211,12 +240,12 @@
                     <!-- SensorControl -->
                     <Label Content="Sensor control" />
                     <UniformGrid Columns="3">
-                        <Button x:Name="btnCentering" Content="Center" FontSize="20" Click="BtnCenter_Click" Style="{StaticResource DWood}" />
+                        <Button x:Name="btnCentering" Content="Center&#x0a;Head" FontSize="20" Click="BtnCenter_Click" Style="{StaticResource DWood}" />
                         <Border Grid.Column="1" Style="{StaticResource LCDBorder}">
                             <TextBlock Name="lblYaw" Text="" Width="100" Style="{StaticResource LCDText}">
                             </TextBlock>
                         </Border>
-                        <Label Content="Angle" VerticalAlignment="Center" />
+                        <Label Content="Value" VerticalAlignment="Center" />
                     </UniformGrid>
 
                     <!-- Keys Distance -->
@@ -266,7 +295,6 @@
                                 <Label Content="Flowerpot" VerticalAlignment="Center" FontSize="18" />
                             </StackPanel>
                         </Button>
-                        
                     </UniformGrid>
 
                     <Label Content="" Height="10" />

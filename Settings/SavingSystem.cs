@@ -1,5 +1,6 @@
 ﻿using CsvHelper;
 using Netychords.DMIbox.CustomRows;
+using Netychords.Settings;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;

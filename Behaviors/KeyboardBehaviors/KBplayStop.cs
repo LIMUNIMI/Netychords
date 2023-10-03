@@ -15,13 +15,13 @@ namespace Netychords.DMIBox.KeyboardBehaviors
             {
                 if (e.VirtualKey == (ushort)space && e.KeyPressState == KeyPressState.Down && !isDown)
                 {
-                    R.NDB.KeyDown = true;
+                    R.NDB.PlayKeyDown = true;
                     isDown = true;
                     return 0;
                 }
                 if (e.VirtualKey == (ushort)space && e.KeyPressState == KeyPressState.Up)
                 {
-                    R.NDB.KeyDown = false;
+                    R.NDB.PlayKeyDown = false;
                     isDown = false;
                     return 0;
                 };

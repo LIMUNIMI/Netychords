@@ -74,7 +74,7 @@ namespace Netychords
         {
             if (sender != CheckedButton)
             {
-                R.NDB.lastChord = R.NDB.Chord;
+                R.NDB.LastChord = R.NDB.Chord;
                 R.NDB.KeyNodeChange(sender.Chord);
 
                 lastCheckedButton = checkedButton;

@@ -224,8 +224,10 @@
     <Compile Include="Behaviors\Eyetracker\BBDoubleCloseClick.cs" />
     <Compile Include="Behaviors\Eyetracker\BBDoubleClosePlayChord.cs" />
     <Compile Include="Behaviors\Eyetracker\BBLeftCloseStopNotes.cs" />
-    <Compile Include="Behaviors\NithHT\NithBeh_HT_ElaborateStrum.cs" />
+    <Compile Include="Behaviors\NithHT\NithBeh_HT_Pitch.cs" />
+    <Compile Include="Behaviors\NithHT\NithBeh_HT_Yaw.cs" />
     <Compile Include="Behaviors\NithHT\NithBeh_HT_ReceiveData.cs" />
+    <Compile Include="Behaviors\NithHT\NithBeh_Pressure.cs" />
     <Compile Include="ControlMode.cs" />
     <Compile Include="DMIbox\CustomRows\CustomRowsManager.cs" />
     <Compile Include="DMIbox\CustomRows\CustomRow.cs" />
@@ -237,6 +239,8 @@
     <Compile Include="Behaviors\KeyboardBehaviors\KBstopAutoScroller.cs" />
     <Compile Include="Behaviors\KeyboardBehaviors\KBautoScroller.cs" />
     <Compile Include="Behaviors\KeyboardBehaviors\KBstopEmulateMouse.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Settings\NetychordsInteractionMethod.cs" />
     <Compile Include="Settings\SavingSystem.cs" />
     <Compile Include="Settings\KeyChangeModes.cs" />
     <Compile Include="Settings\Presets.cs" />

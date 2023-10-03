@@ -1,19 +1,18 @@
-﻿using NITHdmis.Eyetracking.PointFilters;
-using NITHdmis.Eyetracking.Tobii;
-using NITHdmis.Headtracking.NeeqHT;
-using NITHdmis.Keyboard;
-using NITHdmis.MIDI;
-using Netychords.Behaviors.Eyetracker;
+﻿using Netychords.Behaviors.Eyetracker;
 using Netychords.Behaviors.HeadSensor;
 using Netychords.Behaviors.KeyboardBehaviors;
+using Netychords.Behaviors.NithHT;
 using Netychords.DMIBox.KeyboardBehaviors;
 using Netychords.Surface;
+using NITHdmis.Eyetracking.PointFilters;
+using NITHdmis.Eyetracking.Tobii;
+using NITHdmis.Keyboard;
+using NITHdmis.MIDI;
+using NITHdmis.NithSensors;
 using System;
 using System.Windows;
 using System.Windows.Interop;
 using Tobii.Interaction.Framework;
-using NITHdmis.NithSensors;
-using Netychords.Behaviors.NithHT;
 
 namespace Netychords.DMIBox
 {
@@ -62,7 +61,9 @@ namespace Netychords.DMIBox
             R.NDB.KeyboardModule.KeyboardBehaviors.Add(new KBsimulateClick());
 
             R.NDB.NithModule.SensorBehaviors.Add(new NithBeh_HT_ReceiveData());
-            R.NDB.NithModule.SensorBehaviors.Add(new NithBeh_HT_ElaborateStrum());
+            R.NDB.NithModule.SensorBehaviors.Add(new NithBeh_HT_Yaw());
+            R.NDB.NithModule.SensorBehaviors.Add(new NithBeh_HT_Pitch());
+            R.NDB.NithModule.SensorBehaviors.Add(new NithBeh_Pressure(1f, 1.5f));
 
             R.NDB.TobiiModule.BlinkBehaviors.Add(new BBDoubleClosePlayChord());
             R.NDB.TobiiModule.BlinkBehaviors.Add(new BBLeftCloseStopNotes());
@@ -74,7 +75,7 @@ namespace Netychords.DMIBox
             R.NDB.AutoScroller = new AutoScroller_ButtonFollower(R.NDB.MainWindow.scrlNetychords, 0, 140, new PointFilterMAExpDecaying(0.1f));
 
             R.NDB.NetychordsSurface = new NetychordsSurface(R.NDB.MainWindow.canvasNetychords);
-            R.NDB.NetychordsSurface.HtFeedbackModule = new HTFeedbackModule(R.NDB.NetychordsSurface.Canvas, HTFeedbackModule.HTFeedbackModes.Bars);
+            R.NDB.NetychordsSurface.HtFeedbackModule = new HTFeedbackModule(R.NDB.NetychordsSurface.Canvas, HTFeedbackModule.HTFeedbackModes.None); // Disabled feedback! Imho it's better.
             R.NDB.NetychordsSurface.DrawButtons();
 
             R.NDB.NetychordsSurface.HighLightMode = NetychordsSurfaceHighlightModes.CurrentNote;

@@ -19,7 +19,7 @@ namespace Netychords.Behaviors.Eyetracker
 
         public override void Event_leftClose()
         {
-            if (!R.UserSettings.BlinkPlay)
+            if (!R.UserSettings.BlinkLeftStop)
                 R.NDB.StopNotes();
         }
 

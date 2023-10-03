@@ -22,7 +22,7 @@ namespace Netychords.Behaviors.HeadSensor
         {
             if (nithData.ContainsArguments(accRequiredArgs))
             {
-                R.NDB.HThelper.Acceleration = new Polar3DData
+                R.NDB.HeadData.Acceleration = new Polar3DData
                 {
                     Yaw = double.Parse(nithData.GetArgument(NithArguments.acc_yaw).Value.Base, CultureInfo.InvariantCulture),
                     Pitch = double.Parse(nithData.GetArgument(NithArguments.acc_pitch).Value.Base, CultureInfo.InvariantCulture),
@@ -32,7 +32,7 @@ namespace Netychords.Behaviors.HeadSensor
 
             if (nithData.ContainsArguments(posRequiredArgs))
             {
-                R.NDB.HThelper.Position = new Polar3DData
+                R.NDB.HeadData.Position = new Polar3DData
                 {
                     Yaw = double.Parse(nithData.GetArgument(NithArguments.pos_yaw).Value.Base, CultureInfo.InvariantCulture),
                     Pitch = double.Parse(nithData.GetArgument(NithArguments.pos_pitch).Value.Base, CultureInfo.InvariantCulture),

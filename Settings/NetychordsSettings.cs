@@ -5,7 +5,7 @@ using Netychords.Surface;
 using System;
 using System.Collections.Generic;
 
-namespace Netychords
+namespace Netychords.Settings
 {
     [Serializable]
     public class NetychordsSettings
@@ -15,7 +15,7 @@ namespace Netychords
 
         }
 
-        public NetychordsSettings(int verticalSpacer, int horizontalSpacer, int buttonHeight, int buttonWidth, int occluderOffset, int ellipseStrokeDim, int ellipseStrokeSpacer, int lineThickness, int highlightStrokeThickness, int highlightRadius, int nCols, int nRows, int spacing, int generativeNote, int startPositionX, int startPositionY, int occluderAlpha, AbsNotes firstRoot, bool onlyDiatonic, Layouts layout, bool blinkPlay, bool keyboardSustain, int autoStrumBPM, bool autoStrum, KeyChangeModes keyChangeMode, int mIDIPort, int sensorPort, bool reed0, bool reed1, bool reed2, bool reed3, bool reed4, MarginModes margins, HTFeedbackModule.HTFeedbackModes hTFeedbackMode, Presets preset)
+        public NetychordsSettings(int verticalSpacer, int horizontalSpacer, int buttonHeight, int buttonWidth, int occluderOffset, int ellipseStrokeDim, int ellipseStrokeSpacer, int lineThickness, int highlightStrokeThickness, int highlightRadius, int nCols, int nRows, int spacing, int generativeNote, int startPositionX, int startPositionY, int occluderAlpha, AbsNotes firstRoot, bool onlyDiatonic, Layouts layout, bool keyboardSustain, int autoStrumBPM, bool autoStrum, KeyChangeModes keyChangeMode, int mIDIPort, int sensorPort, bool reed0, bool reed1, bool reed2, bool reed3, bool reed4, MarginModes margins, HTFeedbackModule.HTFeedbackModes hTFeedbackMode, Presets preset, NetychordsInteractionMethod interactionMethod, bool blinkPlay)
         {
             VerticalSpacer = verticalSpacer;
             HorizontalSpacer = horizontalSpacer;
@@ -37,7 +37,6 @@ namespace Netychords
             FirstRoot = firstRoot;
             OnlyDiatonic = onlyDiatonic;
             Layout = layout;
-            BlinkPlay = blinkPlay;
             KeyboardSustain = keyboardSustain;
             AutoStrumBPM = autoStrumBPM;
             AutoStrum = autoStrum;
@@ -52,6 +51,8 @@ namespace Netychords
             Margins = margins;
             HTFeedbackMode = hTFeedbackMode;
             Preset = preset;
+            InteractionMethod = interactionMethod;
+            BlinkLeftStop = blinkPlay;
         }
 
         public int VerticalSpacer { get; set; }
@@ -74,7 +75,6 @@ namespace Netychords
         public AbsNotes FirstRoot { get; set; }
         public bool OnlyDiatonic { get; set; }
         public Layouts Layout { get; set; }
-        public bool BlinkPlay { get; set; }
         public bool KeyboardSustain { get; set; }
         public int AutoStrumBPM { get; set; }
         public bool AutoStrum { get; set; }
@@ -99,5 +99,8 @@ namespace Netychords
             if (Reed4) { reeds.Add(4); }
             return reeds;
         }
+
+        public NetychordsInteractionMethod InteractionMethod { get; set; }
+        public bool BlinkLeftStop { get; set; }
     }
 }

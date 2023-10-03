@@ -1,17 +1,16 @@
-﻿using NITHdmis.Music;
-using Netychords.DMIbox.CustomRows;
-using Netychords.DMIbox.Settings;
+﻿using Netychords.DMIbox.Settings;
 using Netychords.Surface;
-using Netychords.Utils;
+using NITHdmis.Music;
 using System;
 
-namespace Netychords
+namespace Netychords.Settings
 {
     [Serializable]
     internal class DefaultSettings : NetychordsSettings
     {
         public DefaultSettings() : base()
         {
+            BlinkLeftStop = true;
             HighlightStrokeThickness = 6;
             HighlightRadius = 65;
             VerticalSpacer = 150;
@@ -32,7 +31,6 @@ namespace Netychords
             FirstRoot = AbsNotes.C;
             OnlyDiatonic = false;
             Layout = Layouts.FifthCircle;
-            BlinkPlay = false;
             KeyboardSustain = false;
             AutoStrum = false;
             KeyChangeMode = KeyChangeModes.Sustain;
@@ -43,6 +41,7 @@ namespace Netychords
             Margins = MarginModes.Grid;
             HTFeedbackMode = HTFeedbackModule.HTFeedbackModes.None;
             Preset = Presets.Empty;
+            InteractionMethod = NetychordsInteractionMethod.HeadYaw;
         }
     }
 }

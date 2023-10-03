@@ -40,13 +40,13 @@ namespace Netychords
 
         public bool keyboardEmulator = true;
 
-        public MidiChord lastChord;
+        public MidiChord LastChord;
 
         public string octaveNumber = "2";
 
         private MidiChord chord = new MidiChord(MidiNotes.C4, ChordType.Maj);
 
-        private bool keyDown = false;
+        private bool playKeyDown = false;
 
         private int modulation = 0;
 
@@ -63,26 +63,25 @@ namespace Netychords
             }
         }
 
-        public bool KeyDown
+        public bool PlayKeyDown
         {
-            get { return keyDown; }
+            get { return playKeyDown; }
             set
             {
-                if (keyDown && !value)
+                if (playKeyDown && !value)
                 {
                     if (!R.UserSettings.KeyboardSustain)
                     {
                         StopNotes();
                     }
 
-                    keyDown = value;
+                    playKeyDown = value;
                     isPlaying = "";
                 }
-                else
-                if (!keyDown && value)
+                else if (!playKeyDown && value)
                 {
                     PlayChord(chord);
-                    keyDown = value;
+                    playKeyDown = value;
                     isPlaying = "Playing";
                 }
             }
@@ -245,7 +244,6 @@ namespace Netychords
         #region HeadSensor
 
         public bool isCentered = true;
-        private const double STRUMTHRESHOLD = 1.5f;
         private DirectionStrum dirStrum;
 
         private double endStrum;
@@ -260,13 +258,7 @@ namespace Netychords
 
         public bool AutoStrumStarted = false;
 
-        private IDoubleFilter VelocityFilter = new DoubleFilterMAExpDecaying(0.08f); // OLD 0.04f
 
-        private IDoubleFilter ThresholdFilter = new DoubleFilterMAExpDecaying(0.25f);
-
-        private double lastVelocity = 0f;
-
-        private ValueMapperDouble Mapper_AccToVelocity = new ValueMapperDouble(25f, 127);
 
         public enum DirectionStrum
         {
@@ -284,7 +276,7 @@ namespace Netychords
         public double Distance { get; private set; }
 
         public NithModule NithModule { get; set; }
-        public HeadtrackerCenteringHelper HThelper { get; set; } = new HeadtrackerCenteringHelper();
+        public HeadtrackerCenteringHelper HeadData { get; set; } = new HeadtrackerCenteringHelper();
 
         public HeadTrackerModes HeadTrackerMode { get; set; } = HeadTrackerModes.Acceleration;
 
@@ -303,17 +295,18 @@ namespace Netychords
 
         public void CalibrationHeadSensor()
         {
-            HThelper.SetCenterToCurrentPosition();
+            HeadData.SetCenterToCurrentPosition();
             isCentered = true;
         }
 
+        [System.Obsolete("Moved into specific behaviors")]
         public void ElaborateStrumming(float accelMultiplier)
         {
             if (isCentered && MainWindow.NetychordsStarted)
             {
                 if (HeadTrackerMode == HeadTrackerModes.Absolute)
                 {
-                    if (HThelper.CenteredPosition.Yaw <= deadzoneTop && HThelper.CenteredPosition.Yaw >= deadzoneBottom)
+                    if (HeadData.CenteredPosition.Yaw <= deadzoneTop && HeadData.CenteredPosition.Yaw >= deadzoneBottom)
                     {
                         //startStrum = HeadTrackerData.CenteredPosition.Yaw;
                         isEndedStrum = false;
@@ -322,19 +315,19 @@ namespace Netychords
                     else if (!isStartedStrum && !isEndedStrum)
                     {
                         InDeadZone = false;
-                        if (HThelper.CenteredPosition.Yaw < deadzoneBottom)
+                        if (HeadData.CenteredPosition.Yaw < deadzoneBottom)
                         {
                             dirStrum = DirectionStrum.Left;
                             isStartedStrum = true;
                             isEndedStrum = false;
-                            lastYaw = HThelper.CenteredPosition.Yaw;
+                            lastYaw = HeadData.CenteredPosition.Yaw;
                         }
-                        if (HThelper.CenteredPosition.Yaw > deadzoneTop)
+                        if (HeadData.CenteredPosition.Yaw > deadzoneTop)
                         {
                             dirStrum = DirectionStrum.Right;
                             isStartedStrum = true;
                             isEndedStrum = false;
-                            lastYaw = HThelper.CenteredPosition.Yaw;
+                            lastYaw = HeadData.CenteredPosition.Yaw;
                         }
                     }
                     else if (!isEndedStrum)
@@ -343,7 +336,7 @@ namespace Netychords
                         switch (dirStrum)
                         {
                             case DirectionStrum.Left:
-                                if (HThelper.CenteredPosition.Yaw > lastYaw)
+                                if (HeadData.CenteredPosition.Yaw > lastYaw)
                                 {
                                     endStrum = lastYaw;
                                     Distance = endStrum - deadzoneBottom;
@@ -352,21 +345,21 @@ namespace Netychords
                                     isStartedStrum = false;
                                     Velocity = midiVelocity;
 
-                                    if (lastChord != null)
+                                    if (LastChord != null)
                                     {
                                         StopNotes();
                                     }
                                     PlayChord(Chord);
-                                    lastChord = Chord;
+                                    LastChord = Chord;
                                 }
                                 else
                                 {
-                                    lastYaw = HThelper.CenteredPosition.Yaw;
+                                    lastYaw = HeadData.CenteredPosition.Yaw;
                                 }
                                 break;
 
                             case DirectionStrum.Right:
-                                if (HThelper.CenteredPosition.Yaw < lastYaw)
+                                if (HeadData.CenteredPosition.Yaw < lastYaw)
                                 {
                                     endStrum = lastYaw;
                                     Distance = endStrum - deadzoneTop;
@@ -374,16 +367,16 @@ namespace Netychords
                                     isEndedStrum = true;
                                     isStartedStrum = false;
                                     Velocity = midiVelocity;
-                                    if (lastChord != null)
+                                    if (LastChord != null)
                                     {
                                         StopNotes();
                                     }
                                     PlayChord(Chord);
-                                    lastChord = Chord;
+                                    LastChord = Chord;
                                 }
                                 else
                                 {
-                                    lastYaw = HThelper.CenteredPosition.Yaw;
+                                    lastYaw = HeadData.CenteredPosition.Yaw;
                                 }
                                 break;
                         }
@@ -391,21 +384,7 @@ namespace Netychords
                 }
                 else if (HeadTrackerMode == HeadTrackerModes.Acceleration)
                 {
-                    VelocityFilter.Push(Math.Abs(HThelper.Acceleration.Yaw * accelMultiplier));
 
-                    FilteredVelocity = (VelocityFilter.Pull());
-                    Velocity = (int)Mapper_AccToVelocity.Map(FilteredVelocity);
-
-                    if (Math.Sign(lastVelocity) != Math.Sign(HThelper.Acceleration.Yaw) && Math.Abs(lastVelocity - HThelper.Acceleration.Yaw) > STRUMTHRESHOLD)
-                    {
-                        if (lastChord != null)
-                        {
-                            StopNotes();
-                        }
-                        PlayChord(Chord);
-                    }
-
-                    lastVelocity = HThelper.Acceleration.Yaw;
                 }
             }
         }

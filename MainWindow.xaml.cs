@@ -1,20 +1,19 @@
-﻿using NITHdmis.ErrorLogging;
-using NITHdmis.Headtracking.NeeqHT;
-using NITHdmis.Music;
-using Netychords.DMIbox.CustomRows;
+﻿using Netychords.DMIbox.CustomRows;
 using Netychords.DMIbox.Settings;
 using Netychords.DMIBox;
 using Netychords.Surface;
 using Netychords.Utils;
+using NITHdmis.ErrorLogging;
+using NITHdmis.Headtracking.NeeqHT;
+using NITHdmis.Music;
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
+using Netychords.Settings;
 
 namespace Netychords
 {
@@ -164,7 +163,7 @@ namespace Netychords
 
         private void BtnCenter_Click(object sender, RoutedEventArgs e)
         {
-            R.NDB.HThelper.SetCenterToCurrentPosition();
+            R.NDB.HeadData.SetCenterToCurrentPosition();
             R.NDB.CalibrationHeadSensor();
             UpdateButtonVisuals();
         }
@@ -295,16 +294,18 @@ namespace Netychords
         {
             if (netychordsStarted)
             {
-                switch (R.NDB.HeadTrackerMode)
-                {
-                    case HeadTrackerModes.Absolute:
-                        lblYaw.Text = R.NDB.HThelper.CenteredPosition.Yaw.ToString();
-                        break;
+                lblYaw.Text = R.NDB.Velocity.ToString();
 
-                    case HeadTrackerModes.Acceleration:
-                        lblYaw.Text = R.NDB.Velocity.ToString();
-                        break;
-                }
+                //switch (R.NDB.HeadTrackerMode)
+                //{
+                //    case HeadTrackerModes.Absolute:
+                //        lblYaw.Text = R.NDB.HeadData.CenteredPosition.Yaw.ToString();
+                //        break;
+
+                //    case HeadTrackerModes.Acceleration:
+                //        lblYaw.Text = R.NDB.Velocity.ToString();
+                //        break;
+                //}
 
                 //txtCenterValue.Text = Math.Round(R.NDB.CenterZone, 0).ToString();
                 //txtCenterPitchValue.Text = Math.Round(centerPitchZone.Value, 0).ToString();
@@ -320,7 +321,7 @@ namespace Netychords
                         break;
                 }
 
-                R.NDB.NetychordsSurface.UpdateHeadTrackerFeedback(R.NDB.HThelper.Position, R.NDB.HThelper.Acceleration, R.NDB.HeadTrackerMode);
+                R.NDB.NetychordsSurface.UpdateHeadTrackerFeedback(R.NDB.HeadData.Position, R.NDB.HeadData.Acceleration, R.NDB.HeadTrackerMode);
 
                 if (R.RaiseClickEvent)
                 {
@@ -336,8 +337,13 @@ namespace Netychords
         {
             if (netychordsStarted)
             {
+                indControl_Head_Yaw.Background = R.UserSettings.InteractionMethod == NetychordsInteractionMethod.HeadYaw ? ActiveBrush : BlankBrush;
+                indControl_Head_Pitch.Background = R.UserSettings.InteractionMethod == NetychordsInteractionMethod.HeadPitch ? ActiveBrush : BlankBrush;
+                indControl_Pressure_Blink.Background = R.UserSettings.InteractionMethod == NetychordsInteractionMethod.PressureBlink ? ActiveBrush : BlankBrush;
+                indControl_Blink.Background = R.UserSettings.InteractionMethod == NetychordsInteractionMethod.Blink ? ActiveBrush : BlankBrush;
+
                 indOnlyDiatonic.Background = R.UserSettings.OnlyDiatonic ? ActiveBrush : BlankBrush;
-                indBlinkPlay.Background = R.UserSettings.BlinkPlay ? ActiveBrush : BlankBrush;
+                indBlinkPlay.Background = R.UserSettings.BlinkLeftStop ? ActiveBrush : BlankBrush;
                 indSustain.Background = R.UserSettings.KeyboardSustain ? ActiveBrush : BlankBrush;
                 indSettings.Background = IsSettingsShown ? ActiveBrush : BlankBrush;
                 indToggleAutoScroll.Background = R.NDB.AutoScroller.Enabled ? ActiveBrush : BlankBrush;
@@ -447,7 +453,7 @@ namespace Netychords
 
         private void btnBlinkPlay_Click(object sender, RoutedEventArgs e)
         {
-            R.UserSettings.BlinkPlay = !R.UserSettings.BlinkPlay;
+            R.UserSettings.BlinkLeftStop = !R.UserSettings.BlinkLeftStop;
             UpdateButtonVisuals();
         }
 
@@ -1091,5 +1097,50 @@ namespace Netychords
         }
 
         public Button LastSettingsGazedButton { get; set; } = null;
+
+        private void btnControl_Head_Yaw_Click(object sender, RoutedEventArgs e)
+        {
+            if (netychordsStarted)
+            {
+                R.UserSettings.InteractionMethod = NetychordsInteractionMethod.HeadYaw;
+                ProcessInteractionMethodChange();
+                UpdateButtonVisuals();
+            }
+        }
+
+        private void ProcessInteractionMethodChange()
+        {
+            //TODO (o anche no)
+        }
+
+        private void btnControl_Head_Pitch_Click(object sender, RoutedEventArgs e)
+        {
+            if (netychordsStarted)
+            {
+                R.UserSettings.InteractionMethod = NetychordsInteractionMethod.HeadPitch;
+                ProcessInteractionMethodChange();
+                UpdateButtonVisuals();
+            }
+        }
+
+        private void btnControl_Pressure_Blink_Click(object sender, RoutedEventArgs e)
+        {
+            if (netychordsStarted)
+            {
+                R.UserSettings.InteractionMethod = NetychordsInteractionMethod.PressureBlink;
+                ProcessInteractionMethodChange();
+                UpdateButtonVisuals();
+            }
+        }
+
+        private void btnControl_Blink_Click(object sender, RoutedEventArgs e)
+        {
+            if (netychordsStarted)
+            {
+                R.UserSettings.InteractionMethod = NetychordsInteractionMethod.Blink;
+                ProcessInteractionMethodChange();
+                UpdateButtonVisuals();
+            }
+        }
     }
 }

@@ -1,9 +1,5 @@
-﻿using NITHdmis.Eyetracking.Tobii;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Netychords.Settings;
+using NITHdmis.Eyetracking.Tobii;
 
 namespace Netychords.Behaviors.Eyetracker
 {
@@ -15,7 +11,7 @@ namespace Netychords.Behaviors.Eyetracker
         }
         public override void Event_doubleClose()
         {
-            if (R.UserSettings.BlinkPlay)
+            if (R.UserSettings.InteractionMethod == NetychordsInteractionMethod.PressureBlink || R.UserSettings.InteractionMethod == NetychordsInteractionMethod.Blink)
             {
                 R.NDB.PlayChord(R.NDB.Chord);
             }

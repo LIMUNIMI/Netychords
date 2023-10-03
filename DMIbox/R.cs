@@ -1,5 +1,6 @@
-﻿using NITHdmis.Music;
-using Netychords.DMIbox.CustomRows;
+﻿using Netychords.DMIbox.CustomRows;
+using Netychords.Settings;
+using NITHdmis.Music;
 using System.Collections.Generic;
 using System.Windows.Media;
 
@@ -7,13 +8,15 @@ namespace Netychords
 {
     internal static class R
     {
-        public const int MINDISTANCE = 200;
+        public const int MAX_BPM = 300;
         public const int MAXDISTANCE = 600;
         public const int MIN_BPM = 10;
-        public const int MAX_BPM = 300;
+        public const int MINDISTANCE = 200;
+        public const bool TEST_SWITCH = false;
+        public static SavingSystem SavingSystem = new SavingSystem();
         private static NetychordsDMIBox netychordsdmibox = new NetychordsDMIBox();
-        public static NetychordsDMIBox NDB { get => netychordsdmibox; set => netychordsdmibox = value; }
-        public static NetychordsSettings UserSettings { get; set; } = new DefaultSettings();
+        public static CustomRowsManager CustomRowsManager { get; set; } = new CustomRowsManager();
+
         public static List<Color> KeysColorMode { get; set; } = new List<Color>
         {
             Colors.Red,
@@ -29,6 +32,11 @@ namespace Netychords
             Colors.Pink,
             Colors.Coral
         };
+
+        public static NetychordsDMIBox NDB { get => netychordsdmibox; set => netychordsdmibox = value; }
+        public static bool RaiseClickEvent { get; internal set; } = false;
+        public static NetychordsSettings UserSettings { get; set; } = new DefaultSettings();
+        public static int DisplayValue { get; set; } = 0;
 
         public static Brush GetNoteColor(AbsNotes v)
         {
@@ -74,10 +82,6 @@ namespace Netychords
                     return new SolidColorBrush(Color.FromArgb(255, 0xFF, 0xFF, 0xFF));
             }
         }
-        public static SavingSystem SavingSystem = new SavingSystem();
-        public static CustomRowsManager CustomRowsManager { get; set; } = new CustomRowsManager();
-        public static bool RaiseClickEvent { get; internal set; } = false;
 
-        public const bool TEST_SWITCH = false;
     }
 }
