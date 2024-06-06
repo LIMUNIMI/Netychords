@@ -1,0 +1,463 @@
+﻿<Window x:Class="Netychords.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Netychords" WindowStyle="None" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized" Width="1537" Height="865" Loaded="Window_Loaded" Unloaded="Window_Unloaded">
+    <!-- MAIN GRID -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/Backgrounds/DarkWood.png" TileMode="Tile" />
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70" />
+            <RowDefinition Height="20*" />
+        </Grid.RowDefinitions>
+
+        <!-- HEADBAR -->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Content="Netychords" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Magneto" FontSize="28" Foreground="White" Width="200" Grid.ColumnSpan="2" Margin="5,0,1337,0" />
+            <StackPanel Grid.Column="1" Orientation="Horizontal" FlowDirection="RightToLeft" Grid.ColumnSpan="2">
+                <Button Name="btnExit" Style="{StaticResource RWood}" Click="BtnExit_Click" HorizontalContentAlignment="Center">
+                    <Image Source="Images/Icons/Cross.png" Margin="10,10,10,10" />
+                </Button>
+                <Button Name="btnSettings" Style="{StaticResource MWood}" Click="btnSettings_Click" HorizontalContentAlignment="Center">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0" FlowDirection="LeftToRight">
+                        <Border Name="indSettings" Style="{StaticResource Indicator}" />
+                        <Image Source="Images/Icons/Settings.png" Margin="10,8,0,8" />
+                    </StackPanel>
+                </Button>
+                <Button Name="btnToggleAutoScroll" Style="{StaticResource MWood}" Click="btnToggleAutoScroll_Click"  HorizontalContentAlignment="Center">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0" FlowDirection="LeftToRight">
+                        <Border Name="indToggleAutoScroll" Style="{StaticResource Indicator}" />
+                        <Image Source="Images/Icons/AutoScroll.png" Margin="10,5,0,5" />
+                    </StackPanel>
+                </Button>
+                <Button Name="btnToggleEyeTracker" Style="{StaticResource MWood}" Click="btnToggleEyeTracker_Click"  HorizontalContentAlignment="Center">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0" FlowDirection="LeftToRight">
+                        <Border Name="indToggleEyeTracker" Style="{StaticResource Indicator}" />
+                        <Image Source="Images/Icons/EyeTracker.png" Margin="10,5,0,5" />
+                    </StackPanel>
+                </Button>
+                <Button Name="btnToggleCursor" Style="{StaticResource MWood}" Click="btnNoCursor_Click"  HorizontalContentAlignment="Center">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0" FlowDirection="LeftToRight">
+                        <Border Name="indToggleCursor" Style="{StaticResource Indicator}" />
+                        <Image Source="Images/Icons/NoCursor.png" Margin="10,8,0,8" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <!-- LAYOUT -->
+        <TabControl Grid.Row="1" x:Name="tabSolo" SelectionChanged="TabSolo_SelectionChanged" BorderBrush="Transparent" Background="Black" Grid.ColumnSpan="2">
+            <TabItem x:Name="tabNetychords" Header="Netychords" Visibility="Collapsed" BorderBrush="Transparent">
+                <Grid Background="Black">
+                    <ScrollViewer  x:Name="scrlNetychords" Width="Auto" Height="Auto" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" BorderBrush="Transparent">
+                        <Canvas x:Name="canvasNetychords" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,0" Width="2000" Height="2000">
+                            <Canvas.Background>
+                                <SolidColorBrush Color="Black" />
+                            </Canvas.Background>
+                        </Canvas>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <!-- SETTINGS panel -->
+        <Border Name="brdSettings" Grid.Row="1" HorizontalAlignment="Left" Width="750" Height="Auto" Margin="5,5,5,5" CornerRadius="10" Visibility="Visible">
+            <Border.Background>
+                <ImageBrush ImageSource="Images/Backgrounds/LightWood.jpg" TileMode="Tile" />
+            </Border.Background>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="0.1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Left stackpanel -->
+                <StackPanel Grid.Column="0" Orientation="Vertical">
+
+                    <!-- Midi port selector -->
+                    <Label Content="Midi port" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width = "1*" />
+                            <ColumnDefinition Width = "1*" />
+                            <ColumnDefinition Width = "1*" />
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btnMIDIchMinus" Content="⮜" Click="BtnMIDIchMinus_Click" Style="{StaticResource DWood}" />
+                        <Border Grid.Column="1" Name="brdMIDIch" Style="{StaticResource LCDBorder}">
+                            <TextBlock Name="lblMIDIch" Text="MP-" Style="{StaticResource LCDText}">
+                            </TextBlock>
+                        </Border>
+                        <Button Grid.Column="2" x:Name="btnMIDIchPlus" Content="⮞" Click="BtnMIDIchPlus_Click" Style="{StaticResource DWood}" />
+                    </Grid>
+
+                    <!-- Root note selector -->
+                    <Label Content="First root" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width = "1*" />
+                            <ColumnDefinition Width = "1*" />
+                            <ColumnDefinition Width = "1*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Name="btnRootNoteMinus" Content="⮜" Click="btnRootNoteMinus_Click"  Style="{StaticResource DWood}" />
+                        <Border Grid.Column="1" Style="{StaticResource LCDBorder}">
+                            <UniformGrid Columns="2">
+                                <TextBlock Name="txtRootNote" Text="N" Style="{StaticResource LCDText}" />
+                                <Border Name="indRootNoteColor" Style="{StaticResource Indicator}" Background="white" />
+                            </UniformGrid>
+                        </Border>
+                        <Button Grid.Column="2" Name="btnRootNotePlus" Content="⮞" Click="btnRootNotePlus_Click" Style="{StaticResource DWood}" />
+                    </Grid>
+
+                    <!-- Reeds selectors -->
+                    <Label Content="Reeds" />
+                    <UniformGrid Columns="5">
+                        <Button x:Name="btnReed1" Style="{StaticResource DWood}" Click="btnReed1_Click">
+                            <Border x:Name="indReed1" Style="{StaticResource Indicator}" />
+                        </Button>
+                        <Button x:Name="btnReed2" Style="{StaticResource DWood}" Click="btnReed2_Click">
+                            <Border x:Name="indReed2" Style="{StaticResource Indicator}" />
+                        </Button>
+                        <Button x:Name="btnReed3" Style="{StaticResource DWood}" Click="btnReed3_Click">
+                            <Border x:Name="indReed3" Style="{StaticResource Indicator}" />
+                        </Button>
+                        <Button x:Name="btnReed4" Style="{StaticResource DWood}" Click="btnReed4_Click">
+                            <Border x:Name="indReed4" Style="{StaticResource Indicator}" />
+                        </Button>
+                        <Button x:Name="btnReed5" Style="{StaticResource DWood}" Click="btnReed5_Click">
+                            <Border x:Name="indReed5" Style="{StaticResource Indicator}" />
+                        </Button>
+                    </UniformGrid>
+
+                    <!-- Switchable settings -->
+                    <Label Content="" Height="20" />
+
+                    <!-- Only Diatonic-->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Button Name="btnOnlyDiatonic" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnOnlyDiatonic_Click">
+                            <Border Name="indOnlyDiatonic" Style="{StaticResource Indicator}" />
+                        </Button>
+                        <Label VerticalAlignment="Center" Content="Only diatonic" />
+                    </StackPanel>
+
+                    <!-- Blink Play -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Button Name="btnBlinkPlay" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnBlinkPlay_Click">
+                            <Border Name="indBlinkPlay" Style="{StaticResource Indicator}" />
+                        </Button>
+                        <Label VerticalAlignment="Center" Content="Blink left to stop" />
+                    </StackPanel>
+
+                    <!-- Sustain -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Button Name="btnSustain" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnSustain_Click">
+                            <Border Name="indSustain" Style="{StaticResource Indicator}" />
+                        </Button>
+                        <Label VerticalAlignment="Center" Content="Sustain" />
+                    </StackPanel>
+
+                    <Label Content="" />
+
+                    <!-- Autostrum -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Button Name="btnAutoStrum" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnAutoStrum_Click">
+                            <Border Name="indAutoStrum" Style="{StaticResource Indicator}" />
+                        </Button>
+                        <Label VerticalAlignment="Center" Content="Auto strum" />
+                    </StackPanel>
+                    <UniformGrid Columns="5">
+                        <Button Name="btnAutoStrumMM" Content="- 10" FontSize="18" Style="{StaticResource DWood}"  Click="btnAutoStrumMM_Click" />
+                        <Button Name="btnAutoStrumM" Content="- 1" FontSize="18" Style="{StaticResource DWood}"  Click="btnAutoStrumM_Click" />
+                        <Border Name="brdAutoStrum" Style="{StaticResource LCDBorder}">
+                            <TextBlock Name="lblAutoStrum" Text="200" Style="{StaticResource LCDText}" />
+                        </Border>
+                        <Button Name="btnAutoStrumP" Content="+ 1" FontSize="18" Style="{StaticResource DWood}"  Click="btnAutoStrumP_Click" />
+                        <Button Name="btnAutoStrumPP" Content="+ 10" FontSize="18" Style="{StaticResource DWood}"  Click="btnAutoStrumPP_Click" />
+                    </UniformGrid>
+                </StackPanel>
+
+                <!-- Right stackpanel-->
+                <StackPanel Grid.Column="2" Orientation="Vertical">
+
+                    <!-- Control methods -->
+                    <Label Content="Interaction method" />
+                    <UniformGrid Columns="2" Rows="2">
+                        <Button Name="btnControl_Head_Yaw" Style="{StaticResource DWoodLeft}" Click="btnControl_Head_Yaw_Click">
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0">
+                                <Border Name="indControl_Head_Yaw" Style="{StaticResource Indicator}" />
+                                <Label Content="Head&#x0a;Yaw" FontSize="15" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Button Name="btnControl_Head_Pitch" Style="{StaticResource DWoodLeft}" Click="btnControl_Head_Pitch_Click">
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0">
+                                <Border Name="indControl_Head_Pitch" Style="{StaticResource Indicator}" />
+                                <Label Content="Head&#x0a;Pitch" FontSize="15" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Button Name="btnControl_Pressure_Blink" Style="{StaticResource DWoodLeft}" Click="btnControl_Pressure_Blink_Click">
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0">
+                                <Border Name="indControl_Pressure_Blink" Style="{StaticResource Indicator}" />
+                                <Label Content="Pressure&#x0a;+ Blink" FontSize="15" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Button Name="btnControl_Blink" Style="{StaticResource DWoodLeft}" Click="btnControl_Blink_Click">
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0">
+                                <Border Name="indControl_Blink" Style="{StaticResource Indicator}" />
+                                <Label Content="Blink alone" FontSize="15" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                    </UniformGrid>
+
+                    <!-- Com port selector -->
+                    <Label Content="Sensor port" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width = "1*" />
+                            <ColumnDefinition Width = "1*" />
+                            <ColumnDefinition Width = "1*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Name="btnSensorPortMinus" Content="⮜" Click="BtnSensorPortMinus_Click" Style="{StaticResource DWood}" />
+                        <Border Grid.Column="1" Style="{StaticResource LCDBorder}">
+                            <TextBlock Name="txtSensorPort" Text="COM" Style="{StaticResource LCDText}">
+                            </TextBlock>
+                        </Border>
+                        <Button Grid.Column="2" Name="btnSensorPortPlus" Content="⮞" Click="BtnSensorPortPlus_Click" Style="{StaticResource DWood}" HorizontalAlignment="Left" Margin="5,5,0,5" Width="109" />
+                    </Grid>
+
+                    <!-- SensorControl -->
+                    <Label Content="Sensor control" />
+                    <UniformGrid Columns="3">
+                        <Button x:Name="btnCentering" Content="Center&#x0a;Head" FontSize="20" Click="BtnCenter_Click" Style="{StaticResource DWood}" />
+                        <Border Grid.Column="1" Style="{StaticResource LCDBorder}">
+                            <TextBlock Name="lblVelocityScreen" Text="" Width="100" Style="{StaticResource LCDText}">
+                            </TextBlock>
+                        </Border>
+                        <Label Content="Value" VerticalAlignment="Center" />
+                    </UniformGrid>
+
+                    <!-- Keys Distance -->
+                    <Label Content="Keys distance" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width = "1*" />
+                            <ColumnDefinition Width = "1*" />
+                            <ColumnDefinition Width = "1*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Name="btnDistanceM10" FontSize="20" Content="- 10" Click="btnDistanceM10_Click" Style="{StaticResource DWood}" />
+                        <Border Grid.Column="1" Style="{StaticResource LCDBorder}">
+                            <TextBlock Name="txtDistance" Text="" Style="{StaticResource LCDText}">
+                            </TextBlock>
+                        </Border>
+                        <Button Grid.Column="2" Name="btnDistanceP10" FontSize="20" Content="+ 10" Click="btnDistanceP10_Click"  Style="{StaticResource DWood}" />
+                    </Grid>
+
+                    <!-- Layout -->
+                    <Label Content="Layout" />
+                    <UniformGrid Columns="2" Rows="2">
+                        <Button Name="btnLayout_Stradella" Style="{StaticResource DWoodLeft}" Click="btnLayout_Stradella_Click">
+
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0">
+                                <Border Name="indLayout_Stradella" Style="{StaticResource Indicator}" />
+                                <Label Content="Stradella" VerticalAlignment="Center" FontSize="18" />
+                            </StackPanel>
+                        </Button>
+                        <Button Name="btnLayout_FifthCirc" Style="{StaticResource DWoodLeft}" Click="btnLayout_FifthCirc_Click">
+
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0">
+                                <Border Name="indLayout_FifthCirc" Style="{StaticResource Indicator}" />
+                                <Label Content="Fifth C." VerticalAlignment="Center" FontSize="18" />
+                            </StackPanel>
+                        </Button>
+                        <Button Name="btnLayout_Custom" Style="{StaticResource DWoodLeft}" Click="btnLayout_Custom_Click">
+
+                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="4,0,0,0">
+                                <Border Name="indLayout_Custom" Style="{StaticResource Indicator}" />
+                                <Label Content="Custom" VerticalAlignment="Center" FontSize="18" />
+                            </StackPanel>
+                        </Button>
+                        <Button Name="btnLayout_Flowerpot" Style="{StaticResource DWoodLeft}" Click="btnLayout_Flowerpot_Click" Visibility="Hidden">
+
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0">
+                                <Border Name="indLayout_Flowerpot" Style="{StaticResource Indicator}" />
+                                <Label Content="Flowerpot" VerticalAlignment="Center" FontSize="18" />
+                            </StackPanel>
+                        </Button>
+                    </UniformGrid>
+
+                    <Label Content="" Height="10" />
+
+                    <!-- Grid/Slanted -->
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="1.4*" />
+                            <ColumnDefinition Width="1.4*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" VerticalAlignment="Center" Content="Grid" HorizontalAlignment="Center" />
+                        <Button Grid.Column="1" Name="btnLayoutGrid" Style="{StaticResource DWood}"  Click="btnLayoutGrid_Click">
+                            <Border Name="indLayoutGrid" Style="{StaticResource Indicator}" />
+                        </Button>
+                        <Button Grid.Column="2" Name="btnLayoutSlant" Style="{StaticResource DWood}"  Click="btnLayoutSlant_Click">
+                            <Border Name="indLayoutSlant" Style="{StaticResource Indicator}" />
+                        </Button>
+                        <Label Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Slant" />
+                    </Grid>
+
+                    <Label Content="" Height="20" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- LAYOUT CUSTOMIZATION panel -->
+        <Border Name="brdCustom" Grid.Row="1" HorizontalAlignment="Left" Width="400" Height="Auto" CornerRadius="10" Margin="760,5,5,5" Visibility="Visible">
+            <Border.Background>
+                <ImageBrush ImageSource="Images/Backgrounds/LightWood.jpg" TileMode="Tile" />
+            </Border.Background>
+
+            <!-- Custom stackpanel -->
+            <StackPanel Orientation="Vertical">
+                <Label Content="Custom rows" />
+
+                <!-- CR 1 -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button x:Name="btnCR1_Switch" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR1_Switch_Click">
+                        <Border x:Name="indCR1_Switch" Style="{StaticResource Indicator}" />
+                    </Button>
+                    <Button x:Name="btnCR1_M" Content="⮜" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR1_M_Click" />
+                    <Border Style="{StaticResource LCDBorder}">
+                        <TextBlock Name="txtCR1" Style="{StaticResource LCDText}" Width="{StaticResource CRWidth}">
+                        </TextBlock>
+                    </Border>
+                    <Button x:Name="btnCR1_P" Content="⮞" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR1_P_Click" />
+                </StackPanel>
+                <!-- CR 2 -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button x:Name="btnCR2_Switch" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR2_Switch_Click">
+                        <Border x:Name="indCR2_Switch" Style="{StaticResource Indicator}" />
+                    </Button>
+                    <Button x:Name="btnCR2_M" Content="⮜" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR2_M_Click" />
+                    <Border Style="{StaticResource LCDBorder}">
+                        <TextBlock Name="txtCR2" Style="{StaticResource LCDText}" Width="{StaticResource CRWidth}">
+                        </TextBlock>
+                    </Border>
+                    <Button x:Name="btnCR2_P" Content="⮞" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR2_P_Click" />
+                </StackPanel>
+                <!-- CR 3 -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button x:Name="btnCR3_Switch" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR3_Switch_Click">
+                        <Border x:Name="indCR3_Switch" Style="{StaticResource Indicator}" />
+                    </Button>
+                    <Button x:Name="btnCR3_M" Content="⮜" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR3_M_Click" />
+                    <Border Style="{StaticResource LCDBorder}">
+                        <TextBlock Name="txtCR3" Style="{StaticResource LCDText}" Width="{StaticResource CRWidth}">
+                        </TextBlock>
+                    </Border>
+                    <Button x:Name="btnCR3_P" Content="⮞" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR3_P_Click" />
+                </StackPanel>
+                <!-- CR 4 -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button x:Name="btnCR4_Switch" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR4_Switch_Click">
+                        <Border x:Name="indCR4_Switch" Style="{StaticResource Indicator}" />
+                    </Button>
+                    <Button x:Name="btnCR4_M" Content="⮜" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR4_M_Click" />
+                    <Border Style="{StaticResource LCDBorder}">
+                        <TextBlock Name="txtCR4" Style="{StaticResource LCDText}" Width="{StaticResource CRWidth}">
+                        </TextBlock>
+                    </Border>
+                    <Button x:Name="btnCR4_P" Content="⮞" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR4_P_Click" />
+                </StackPanel>
+                <!-- CR 5 -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button x:Name="btnCR5_Switch" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR5_Switch_Click">
+                        <Border x:Name="indCR5_Switch" Style="{StaticResource Indicator}" />
+                    </Button>
+                    <Button x:Name="btnCR5_M" Content="⮜" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR5_M_Click" />
+                    <Border Style="{StaticResource LCDBorder}">
+                        <TextBlock Name="txtCR5" Style="{StaticResource LCDText}" Width="{StaticResource CRWidth}">
+                        </TextBlock>
+                    </Border>
+                    <Button x:Name="btnCR5_P" Content="⮞" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR5_P_Click" />
+                </StackPanel>
+                <!-- CR 6 -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button x:Name="btnCR6_Switch" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR6_Switch_Click">
+                        <Border x:Name="indCR6_Switch" Style="{StaticResource Indicator}" />
+                    </Button>
+                    <Button x:Name="btnCR6_M" Content="⮜" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR6_M_Click" />
+                    <Border Style="{StaticResource LCDBorder}">
+                        <TextBlock Name="txtCR6" Style="{StaticResource LCDText}" Width="{StaticResource CRWidth}">
+                        </TextBlock>
+                    </Border>
+                    <Button x:Name="btnCR6_P" Content="⮞" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR6_P_Click" />
+                </StackPanel>
+                <!-- CR 7 -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button x:Name="btnCR7_Switch" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR7_Switch_Click">
+                        <Border x:Name="indCR7_Switch" Style="{StaticResource Indicator}" />
+                    </Button>
+                    <Button x:Name="btnCR7_M" Content="⮜" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR7_M_Click" />
+                    <Border Style="{StaticResource LCDBorder}">
+                        <TextBlock Name="txtCR7" Style="{StaticResource LCDText}" Width="{StaticResource CRWidth}">
+                        </TextBlock>
+                    </Border>
+                    <Button x:Name="btnCR7_P" Content="⮞" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR7_P_Click" />
+                </StackPanel>
+                <!-- CR 8 -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button x:Name="btnCR8_Switch" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR8_Switch_Click">
+                        <Border x:Name="indCR8_Switch" Style="{StaticResource Indicator}" />
+                    </Button>
+                    <Button x:Name="btnCR8_M" Content="⮜" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR8_M_Click" />
+                    <Border Style="{StaticResource LCDBorder}">
+                        <TextBlock Name="txtCR8" Style="{StaticResource LCDText}" Width="{StaticResource CRWidth}">
+                        </TextBlock>
+                    </Border>
+                    <Button x:Name="btnCR8_P" Content="⮞" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR8_P_Click" />
+                </StackPanel>
+                <!-- CR 9 -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button x:Name="btnCR9_Switch" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR9_Switch_Click">
+                        <Border x:Name="indCR9_Switch" Style="{StaticResource Indicator}" />
+                    </Button>
+                    <Button x:Name="btnCR9_M" Content="⮜" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR9_M_Click" />
+                    <Border Style="{StaticResource LCDBorder}">
+                        <TextBlock Name="txtCR9" Style="{StaticResource LCDText}" Width="{StaticResource CRWidth}">
+                        </TextBlock>
+                    </Border>
+                    <Button x:Name="btnCR9_P" Content="⮞" Style="{StaticResource DWood}" Width="{StaticResource HG}" Click="btnCR9_P_Click" />
+                </StackPanel>
+
+                <!-- Presets -->
+                <!-- Com port selector -->
+                <Label Content="Presets" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width = "1*" />
+                        <ColumnDefinition Width = "2*" />
+                        <ColumnDefinition Width = "1*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Name="btnPresetMinus" Content="⮜" Click="btnPresetMinus_Click" Style="{StaticResource DWood}" />
+                    <Border Grid.Column="1" Style="{StaticResource LCDBorder}">
+                        <TextBlock Name="txtPreset" Text="-" Style="{StaticResource LCDText}">
+                        </TextBlock>
+                    </Border>
+                    <Button Grid.Column="2" Name="btnPresetPlus" Content="⮞" Click="btnPresetPlus_Click"  Style="{StaticResource DWood}" />
+                </Grid>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

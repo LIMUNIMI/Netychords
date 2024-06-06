@@ -1,0 +1,61 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>NetychordsIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Backgrounds\DarkWood.png" />
+    <None Remove="Images\Backgrounds\LightWood.jpg" />
+    <None Remove="Images\Backgrounds\MidWood.png" />
+    <None Remove="Images\Backgrounds\PanWood.png" />
+    <None Remove="Images\Icons\AutoScroll.png" />
+    <None Remove="Images\Icons\Cross.png" />
+    <None Remove="Images\Icons\EyeTracker.png" />
+    <None Remove="Images\Icons\flash.png" />
+    <None Remove="Images\Icons\NetychordsIcon.ico" />
+    <None Remove="Images\Icons\NetychordsIcon.png" />
+    <None Remove="Images\Icons\NoCursor.png" />
+    <None Remove="Images\Icons\Settings.png" />
+    <None Remove="Images\Sparks\source.gif" />
+    <None Remove="Images\Sparks\spark1.gif" />
+    <None Remove="Images\Sparks\spark3.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="NetychordsIcon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="32.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NITHdmis\NITHdmis.csproj" />
+    <ProjectReference Include="..\NITHlibrary\NITHlibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Backgrounds\DarkWood.png" />
+    <Resource Include="Images\Backgrounds\LightWood.jpg" />
+    <Resource Include="Images\Backgrounds\MidWood.png" />
+    <Resource Include="Images\Backgrounds\PanWood.png" />
+    <Resource Include="Images\Icons\AutoScroll.png" />
+    <Resource Include="Images\Icons\Cross.png" />
+    <Resource Include="Images\Icons\EyeTracker.png" />
+    <Resource Include="Images\Icons\flash.png" />
+    <Resource Include="Images\Icons\NetychordsIcon.ico" />
+    <Resource Include="Images\Icons\NetychordsIcon.png" />
+    <Resource Include="Images\Icons\NoCursor.png" />
+    <Resource Include="Images\Icons\Settings.png" />
+    <Resource Include="Images\Sparks\source.gif" />
+    <Resource Include="Images\Sparks\spark1.gif" />
+    <Resource Include="Images\Sparks\spark3.gif" />
+  </ItemGroup>
+
+</Project>
