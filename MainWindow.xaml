@@ -26,7 +26,7 @@
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Column="0" Content="Netychords" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Magneto" FontSize="28" Foreground="White" Width="200" Grid.ColumnSpan="2" Margin="5,0,1337,0" />
+            <Label Grid.Column="0" Content="Netychords" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="{StaticResource TitleFont}" FontSize="35" Foreground="White" Width="200" Grid.ColumnSpan="2" Margin="5,0,1337,0" />
             <StackPanel Grid.Column="1" Orientation="Horizontal" FlowDirection="RightToLeft" Grid.ColumnSpan="2">
                 <Button Name="btnExit" Style="{StaticResource RWood}" Click="BtnExit_Click" HorizontalContentAlignment="Center">
                     <Image Source="Images/Icons/Cross.png" Margin="10,10,10,10" />
@@ -198,25 +198,25 @@
                         <Button Name="btnControl_Head_Yaw" Style="{StaticResource DWoodLeft}" Click="btnControl_Head_Yaw_Click">
                             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0">
                                 <Border Name="indControl_Head_Yaw" Style="{StaticResource Indicator}" />
-                                <Label Content="Head&#x0a;Yaw" FontSize="15" VerticalAlignment="Center" />
+                                <Label Content="Head Yaw" FontSize="15" VerticalAlignment="Center" Style="{StaticResource ButtonLabel}" />
                             </StackPanel>
                         </Button>
                         <Button Name="btnControl_Head_Pitch" Style="{StaticResource DWoodLeft}" Click="btnControl_Head_Pitch_Click">
                             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0">
                                 <Border Name="indControl_Head_Pitch" Style="{StaticResource Indicator}" />
-                                <Label Content="Head&#x0a;Pitch" FontSize="15" VerticalAlignment="Center" />
+                                <Label Content="Head Pitch" FontSize="15" VerticalAlignment="Center" Style="{StaticResource ButtonLabel}" />
                             </StackPanel>
                         </Button>
                         <Button Name="btnControl_Pressure_Blink" Style="{StaticResource DWoodLeft}" Click="btnControl_Pressure_Blink_Click">
                             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0">
                                 <Border Name="indControl_Pressure_Blink" Style="{StaticResource Indicator}" />
-                                <Label Content="Pressure&#x0a;+ Blink" FontSize="15" VerticalAlignment="Center" />
+                                <Label Content="Pressure&#x0a;+ Blink" FontSize="15" VerticalAlignment="Center" Style="{StaticResource ButtonLabel}" />
                             </StackPanel>
                         </Button>
                         <Button Name="btnControl_Blink" Style="{StaticResource DWoodLeft}" Click="btnControl_Blink_Click">
                             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0">
                                 <Border Name="indControl_Blink" Style="{StaticResource Indicator}" />
-                                <Label Content="Blink alone" FontSize="15" VerticalAlignment="Center" />
+                                <Label Content="Blink alone" FontSize="15" VerticalAlignment="Center" Style="{StaticResource ButtonLabel}" />
                             </StackPanel>
                         </Button>
                     </UniformGrid>
@@ -240,7 +240,7 @@
                     <!-- SensorControl -->
                     <Label Content="Sensor control" />
                     <UniformGrid Columns="3">
-                        <Button x:Name="btnCentering" Content="Center&#x0a;Head" FontSize="20" Click="BtnCenter_Click" Style="{StaticResource DWood}" />
+                        <Button x:Name="btnCentering" Content="Center&#x0a;Head" Click="BtnCenter_Click" FontSize="16" Style="{StaticResource DWood}" />
                         <Border Grid.Column="1" Style="{StaticResource LCDBorder}">
                             <TextBlock Name="lblVelocityScreen" Text="" Width="100" Style="{StaticResource LCDText}">
                             </TextBlock>
@@ -271,21 +271,21 @@
 
                             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0">
                                 <Border Name="indLayout_Stradella" Style="{StaticResource Indicator}" />
-                                <Label Content="Stradella" VerticalAlignment="Center" FontSize="18" />
+                                <Label Content="Stradella" VerticalAlignment="Center" FontSize="18" Style="{StaticResource ButtonLabel}" />
                             </StackPanel>
                         </Button>
                         <Button Name="btnLayout_FifthCirc" Style="{StaticResource DWoodLeft}" Click="btnLayout_FifthCirc_Click">
 
                             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="4,0,0,0">
                                 <Border Name="indLayout_FifthCirc" Style="{StaticResource Indicator}" />
-                                <Label Content="Fifth C." VerticalAlignment="Center" FontSize="18" />
+                                <Label Content="Fifth C." VerticalAlignment="Center" FontSize="18" Style="{StaticResource ButtonLabel}" />
                             </StackPanel>
                         </Button>
                         <Button Name="btnLayout_Custom" Style="{StaticResource DWoodLeft}" Click="btnLayout_Custom_Click">
 
                             <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="4,0,0,0">
                                 <Border Name="indLayout_Custom" Style="{StaticResource Indicator}" />
-                                <Label Content="Custom" VerticalAlignment="Center" FontSize="18" />
+                                <Label Content="Custom" VerticalAlignment="Center" FontSize="18" Style="{StaticResource ButtonLabel}" />
                             </StackPanel>
                         </Button>
                         <Button Name="btnLayout_Flowerpot" Style="{StaticResource DWoodLeft}" Click="btnLayout_Flowerpot_Click" Visibility="Hidden">

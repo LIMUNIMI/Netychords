@@ -10,6 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\BrigestScript.ttf" />
+    <None Remove="Fonts\Exo2.ttf" />
     <None Remove="Images\Backgrounds\DarkWood.png" />
     <None Remove="Images\Backgrounds\LightWood.jpg" />
     <None Remove="Images\Backgrounds\MidWood.png" />
@@ -41,6 +43,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Fonts\BrigestScript.ttf" />
+    <Resource Include="Fonts\Exo2.ttf" />
     <Resource Include="Images\Backgrounds\DarkWood.png" />
     <Resource Include="Images\Backgrounds\LightWood.jpg" />
     <Resource Include="Images\Backgrounds\MidWood.png" />

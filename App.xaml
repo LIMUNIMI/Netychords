@@ -6,7 +6,11 @@
              StartupUri="MainWindow.xaml">
 
     <Application.Resources>
-        
+        <!-- Fonts -->
+        <FontFamily x:Key="ScreenFont">Fonts/Exo2.ttf #Exo 2</FontFamily>
+        <FontFamily x:Key="TitleFont">Fonts/BrigestScript.ttf #Brigest Script</FontFamily>
+        <FontFamily x:Key="LabelsFont">Fonts/Exo2.ttf #Exo 2</FontFamily>
+
         <!-- GAZE HEIGHT -->
         <sys:Double x:Key="HG">60</sys:Double>
 
@@ -15,10 +19,20 @@
 
         <!-- LABEL -->
         <Style TargetType="Label">
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Margin" Value="5,0,5,0" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="FontFamily" Value="{StaticResource LabelsFont}" />
+        </Style>
+
+        <!-- BUTTONLABEL -->
+        <Style TargetType="Label" x:Key="ButtonLabel">
             <Setter Property="Foreground" Value="White" />
             <Setter Property="Margin" Value="5,0,5,0" />
             <Setter Property="FontSize" Value="20" />
-            <Setter Property="FontFamily" Value="Magneto" />
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="FontFamily" Value="{StaticResource LabelsFont}" />
         </Style>
 
         <!-- INDICATOR -->
@@ -34,14 +48,17 @@
         <!-- MIDWOOD BUTTON -->
         <Style TargetType="Button" x:Key="MWood">
             <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="FontFamily" Value="{StaticResource LabelsFont}" />
             <Setter Property="Background">
                 <Setter.Value>
                     <ImageBrush ImageSource="Images/Backgrounds/MidWood.png" TileMode="Tile" Stretch="None"></ImageBrush>
                 </Setter.Value>
             </Setter>
             <Setter Property="Margin" Value="5,5,5,5" />
-            <Setter Property="FontSize" Value="25" />
-            <Setter Property="FontFamily" Value="Magneto" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="LabelsFont" />
             <Setter Property="Padding" Value="10,0,10,0" />
             <Setter Property="Width" Value="Auto" />
             <Setter Property="Height" Value="{StaticResource HG}" />
@@ -93,9 +110,9 @@
         <Style TargetType="TextBlock" x:Key="LCDText">
             <Setter Property="Background" Value="Black" />
             <Setter Property="Foreground" Value="LightCoral" />
-            <Setter Property="FontFamily" Value="Digital-7 Italic" />
+            <Setter Property="FontFamily" Value="{StaticResource ScreenFont}" />
             <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="FontSize" Value="25" />
+            <Setter Property="FontSize" Value="20" />
             <Setter Property="TextAlignment" Value="Center" />
         </Style>
 
@@ -107,6 +124,5 @@
             <Setter Property="Height" Value="Auto" />
             <Setter Property="CornerRadius" Value="10" />
         </Style>
-        
     </Application.Resources>
 </Application>

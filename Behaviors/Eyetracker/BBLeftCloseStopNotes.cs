@@ -1,4 +1,5 @@
 ﻿using Netychords.Modules;
+using NITHlibrary.Nith.Behaviors;
 using NITHlibrary.Nith.Preprocessors;
 
 namespace Netychords.Behaviors.Eyetracker

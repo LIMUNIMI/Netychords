@@ -1,6 +1,6 @@
 ﻿using Netychords.Modules;
 using Netychords.Settings;
-using NITHlibrary.Nith.Preprocessors;
+using NITHlibrary.Nith.Behaviors;
 
 namespace Netychords.Behaviors.Eyetracker
 {
