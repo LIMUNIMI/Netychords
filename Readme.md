@@ -1,5 +1,6 @@
 # Netychords
 *An Accessible Digital Musical Instrument for playing chords through gaze and head movement.*
+[![GitHub release](https://img.shields.io/github/release/LIMUNIMI/Netychords.svg)](https://github.com/LIMUNIMI/Netychords/releases)
 
 Please refer to the [Netychords page](https://neeqstock.notion.site/Netychords-3a666176e99545b2b022e56b863ba277) on Nicola Davanzo's personal website for more informations, instrument description and usage guide.
 
@@ -22,7 +23,7 @@ If you don't possess any of these sensors you will still be able to try Netychor
 
 ## Installation and running
 
-1. Download the latest release from the [![GitHub release](https://img.shields.io/github/release/LIMUNIMI/Netychords.svg)](https://github.com/LIMUNIMI/Netychords/releases)
+1. Download the latest release from the [Releases](https://github.com/LIMUNIMI/Netychords/releases)
  page
 2. Unzip the archive
 3. Run Netychords.exe
