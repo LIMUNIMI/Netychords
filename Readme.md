@@ -1,4 +1,4 @@
-<h1>
+<h1 align="center">
   <img src="Netychords.svg" alt="Netychords" width="300">
 </h1>
 *An Accessible Digital Musical Instrument for playing chords through gaze and head movement.*
