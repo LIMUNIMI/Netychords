@@ -31,7 +31,7 @@ If you don't possess any of these sensors you will still be able to try Netychor
 
 Netychords is licensed through a GNU GPL-v3 Free Open-Source software license. Feel free to fork this repository and contribute!
 ### Dependencies
-- [.NET 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0), which SDK can be automatically downloaded by the [Visual Studio](https://visualstudio.microsoft.com/it/downloads/) installer
+- [.NET 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0), which SDK and development tools can be automatically downloaded within the [Visual Studio](https://visualstudio.microsoft.com/it/downloads/) installer
 - Netychords depends on [NITHlibrary](https://github.com/LIMUNIMI/NITHlibrary) and [NITHdmis](https://github.com/LIMUNIMI/NITHdmis). Please clone both of them, and place them in an adjacent folder to your Netychords folder. Visual Studio should automatically locate them after opening `Netychords.sln`
 
 ## Issues
