@@ -730,6 +730,54 @@ namespace Netychords
             }
         }
 
+        private void BtnSensingIntensityMinus_OnClick(object sender, RoutedEventArgs e)
+        {
+            switch (Rack.UserSettings.InteractionMethod)
+            {
+                case NetychordsInteractionMethod.PressureBlink:
+                    Rack.UserSettings.SensorIntensityPressure -= 0.1f;
+                    break;
+
+                case NetychordsInteractionMethod.HeadYaw:
+                    Rack.UserSettings.SensorIntensityYaw -= 0.1f;
+                    break;
+
+                case NetychordsInteractionMethod.HeadPitch:
+                    Rack.UserSettings.SensorIntensityPitch -= 0.1f;
+                    break;
+
+                case NetychordsInteractionMethod.Blink:
+                    break;
+            }
+
+            ChangeInteractionMethod();
+            UpdateButtonVisuals();
+        }
+
+        private void BtnSensingIntensityPlus_OnClick(object sender, RoutedEventArgs e)
+        {
+            switch (Rack.UserSettings.InteractionMethod)
+            {
+                case NetychordsInteractionMethod.PressureBlink:
+                    Rack.UserSettings.SensorIntensityPressure += 0.1f;
+                    break;
+
+                case NetychordsInteractionMethod.HeadYaw:
+                    Rack.UserSettings.SensorIntensityYaw += 0.1f;
+                    break;
+
+                case NetychordsInteractionMethod.HeadPitch:
+                    Rack.UserSettings.SensorIntensityPitch += 0.1f;
+                    break;
+
+                case NetychordsInteractionMethod.Blink:
+                    break;
+            }
+
+            ChangeInteractionMethod();
+            UpdateButtonVisuals();
+        }
+
         private void BtnSensorPortMinus_Click(object sender, RoutedEventArgs e)
         {
             if (netychordsStarted)
@@ -808,6 +856,30 @@ namespace Netychords
             }
 
             UpdateButtonVisuals();
+        }
+
+        private void ChangeInteractionMethod()
+        {
+            Rack.NithModuleSensor.SensorBehaviors.Clear();
+
+            switch (Rack.UserSettings.InteractionMethod)
+            {
+                case NetychordsInteractionMethod.HeadYaw:
+                    Rack.NithModuleSensor.SensorBehaviors.Add(new NithBeh_HT_Yaw(Rack.UserSettings.SensorIntensityYaw));
+                    break;
+
+                case NetychordsInteractionMethod.HeadPitch:
+                    Rack.NithModuleSensor.SensorBehaviors.Add(new NithBeh_HT_Pitch(Rack.UserSettings.SensorIntensityPitch));
+                    break;
+
+                case NetychordsInteractionMethod.Blink:
+
+                    break;
+
+                case NetychordsInteractionMethod.PressureBlink:
+                    Rack.NithModuleSensor.SensorBehaviors.Add(new NithBeh_Pressure(1f, Rack.UserSettings.SensorIntensityPressure));
+                    break;
+            }
         }
 
         /// <summary>
@@ -892,30 +964,6 @@ namespace Netychords
             if (netychordsStarted)
             {
                 Rack.Surface.DrawButtons();
-            }
-        }
-
-        private void ChangeInteractionMethod()
-        {
-            Rack.NithModuleSensor.SensorBehaviors.Clear();
-
-            switch (Rack.UserSettings.InteractionMethod)
-            {
-                case NetychordsInteractionMethod.HeadYaw:
-                    Rack.NithModuleSensor.SensorBehaviors.Add(new NithBeh_HT_Yaw(Rack.UserSettings.SensorIntensityYaw));
-                    break;
-
-                case NetychordsInteractionMethod.HeadPitch:
-                    Rack.NithModuleSensor.SensorBehaviors.Add(new NithBeh_HT_Pitch(Rack.UserSettings.SensorIntensityPitch));
-                    break;
-
-                case NetychordsInteractionMethod.Blink:
-                    
-                    break;
-
-                case NetychordsInteractionMethod.PressureBlink:
-                    Rack.NithModuleSensor.SensorBehaviors.Add(new NithBeh_Pressure(1f,Rack.UserSettings.SensorIntensityPressure));
-                    break;
             }
         }
 
@@ -1052,6 +1100,27 @@ namespace Netychords
             txtRootNote.Text = Rack.UserSettings.FirstRoot.ToStandardString();
         }
 
+        private void Update_SensorIntensity()
+        {
+            switch (Rack.UserSettings.InteractionMethod)
+            {
+                case NetychordsInteractionMethod.PressureBlink:
+                    txtSensingIntensity.Text = Rack.UserSettings.SensorIntensityPressure.ToString("F1");
+                    break;
+
+                case NetychordsInteractionMethod.HeadYaw:
+                    txtSensingIntensity.Text = Rack.UserSettings.SensorIntensityYaw.ToString("F1");
+                    break;
+
+                case NetychordsInteractionMethod.HeadPitch:
+                    txtSensingIntensity.Text = Rack.UserSettings.SensorIntensityPitch.ToString("F1");
+                    break;
+
+                case NetychordsInteractionMethod.Blink:
+                    break;
+            }
+        }
+
         private void UpdateButtonVisuals()
         {
             if (netychordsStarted)
@@ -1093,24 +1162,6 @@ namespace Netychords
 
             lblMIDIch.Text = "MP " + Rack.UserSettings.MIDIPort.ToString();
             CheckMidiPort();
-        }
-
-        private void Update_SensorIntensity()
-        {
-            switch(Rack.UserSettings.InteractionMethod)
-            { 
-                case NetychordsInteractionMethod.PressureBlink:
-                    txtSensingIntensity.Text = Rack.UserSettings.SensorIntensityPressure.ToString("F1");
-                    break;
-                case NetychordsInteractionMethod.HeadYaw:
-                    txtSensingIntensity.Text = Rack.UserSettings.SensorIntensityYaw.ToString("F1");
-                    break;
-                case NetychordsInteractionMethod.HeadPitch:
-                    txtSensingIntensity.Text = Rack.UserSettings.SensorIntensityPitch.ToString("F1");
-                    break;
-                case NetychordsInteractionMethod.Blink:
-                    break;
-            }
         }
 
         // [Corrente]
@@ -1167,48 +1218,6 @@ namespace Netychords
         private void Window_Unloaded(object sender, RoutedEventArgs e)
         {
             netychordsSetup.Dispose();
-        }
-
-        private void BtnSensingIntensityMinus_OnClick(object sender, RoutedEventArgs e)
-        {
-            switch(Rack.UserSettings.InteractionMethod)
-            {
-                case NetychordsInteractionMethod.PressureBlink:
-                    Rack.UserSettings.SensorIntensityPressure -= 0.1f;
-                    break;
-                case NetychordsInteractionMethod.HeadYaw:
-                    Rack.UserSettings.SensorIntensityYaw -= 0.1f;
-                    break;
-                case NetychordsInteractionMethod.HeadPitch:
-                    Rack.UserSettings.SensorIntensityPitch -= 0.1f;
-                    break;
-                case NetychordsInteractionMethod.Blink:
-                    break;
-            }
-
-            ChangeInteractionMethod();
-            UpdateButtonVisuals();
-        }
-
-        private void BtnSensingIntensityPlus_OnClick(object sender, RoutedEventArgs e)
-        {
-            switch (Rack.UserSettings.InteractionMethod)
-            {
-                case NetychordsInteractionMethod.PressureBlink:
-                    Rack.UserSettings.SensorIntensityPressure += 0.1f;
-                    break;
-                case NetychordsInteractionMethod.HeadYaw:
-                    Rack.UserSettings.SensorIntensityYaw += 0.1f;
-                    break;
-                case NetychordsInteractionMethod.HeadPitch:
-                    Rack.UserSettings.SensorIntensityPitch += 0.1f;
-                    break;
-                case NetychordsInteractionMethod.Blink:
-                    break;
-            }
-
-            ChangeInteractionMethod();
-            UpdateButtonVisuals();
         }
     }
 }
