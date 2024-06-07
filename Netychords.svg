@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="117.24196mm"
-   height="24.671728mm"
-   viewBox="0 0 117.24196 24.671728"
+   width="119.24196mm"
+   height="26.671728mm"
+   viewBox="0 0 119.24196 26.671728"
    version="1.1"
    id="svg5"
    inkscape:version="1.1 (c68e22c387, 2021-05-23)"
@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.69397447"
-     inkscape:cx="190.92921"
-     inkscape:cy="225.51262"
+     inkscape:zoom="1.3879489"
+     inkscape:cx="242.44408"
+     inkscape:cy="171.11581"
      inkscape:window-width="1920"
      inkscape:window-height="1051"
      inkscape:window-x="-9"
@@ -42,16 +42,16 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-54.556262,-88.921963)">
+     transform="translate(-53.556262,-87.921963)">
     <text
        xml:space="preserve"
-       style="font-size:25.4px;line-height:1.25;font-family:Legibility;-inkscape-font-specification:Legibility;stroke-width:0.264583"
+       style="font-size:25.4px;line-height:1.25;font-family:Legibility;-inkscape-font-specification:Legibility;mix-blend-mode:difference;stroke:#ffffff;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
        x="54.519894"
        y="107.51476"
        id="text2630"><tspan
          sodipodi:role="line"
          id="tspan2628"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Brigest Script';-inkscape-font-specification:'Brigest Script';stroke-width:0.264583"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Brigest Script';-inkscape-font-specification:'Brigest Script';stroke:#ffffff;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
          x="54.519894"
          y="107.51476">Netychords</tspan></text>
   </g>
