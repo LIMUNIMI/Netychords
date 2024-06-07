@@ -1097,7 +1097,6 @@ namespace Netychords
 
         private void Update_SensorIntensity()
         {
-            // ^^ all these ToString should have a format string to limit the number of decimals to 1
             switch(Rack.UserSettings.InteractionMethod)
             { 
                 case NetychordsInteractionMethod.PressureBlink:
