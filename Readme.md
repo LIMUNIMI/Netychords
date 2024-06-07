@@ -33,7 +33,7 @@ Netychords is licensed through a GNU GPL-v3 Free Open-Source software license. F
 
 ## Issues
 
-If you have any issue and/or proposal related to Netychords, please open a GitHub issue on this repository, or write an e-mail to: *nicola(dot)davanzo(at)unimi(dot)it*
+If you have any issue and/or proposal related to Netychords, please open a GitHub issue on the [Issues page](https://github.com/LIMUNIMI/Netychords/issues) of this repository, or write an e-mail to: *nicola(dot)davanzo(at)unimi(dot)it*
 
 ## Acknowledgements
 
