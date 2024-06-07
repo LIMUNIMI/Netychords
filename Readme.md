@@ -22,10 +22,9 @@ If you don't possess any of these sensors you will still be able to try Netychor
 
 ## Installation and running
 
-1. Download the latest release from the Releases page
-
+1. Download the latest release from the [![GitHub release](https://img.shields.io/github/release/LIMUNIMI/Netychords.svg)](https://github.com/LIMUNIMI/Netychords/releases)
+ page
 2. Unzip the archive
-
 3. Run Netychords.exe
 
 ## Contribution
