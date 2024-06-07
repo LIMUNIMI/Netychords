@@ -96,7 +96,7 @@ namespace Netychords
                 netychordsSetup.Setup();
 
                 // Initialize sensor behavior
-                ProcessInteractionMethodChange();
+                ChangeInteractionMethod();
 
                 // Checks the selected MIDI port is available
                 CheckMidiPort();
@@ -206,7 +206,7 @@ namespace Netychords
             if (netychordsStarted)
             {
                 Rack.UserSettings.InteractionMethod = NetychordsInteractionMethod.Blink;
-                ProcessInteractionMethodChange();
+                ChangeInteractionMethod();
                 UpdateButtonVisuals();
             }
         }
@@ -216,7 +216,7 @@ namespace Netychords
             if (netychordsStarted)
             {
                 Rack.UserSettings.InteractionMethod = NetychordsInteractionMethod.HeadPitch;
-                ProcessInteractionMethodChange();
+                ChangeInteractionMethod();
                 UpdateButtonVisuals();
             }
         }
@@ -227,7 +227,7 @@ namespace Netychords
             {
                 Rack.UserSettings.InteractionMethod = NetychordsInteractionMethod.HeadYaw;
 
-                ProcessInteractionMethodChange();
+                ChangeInteractionMethod();
                 UpdateButtonVisuals();
             }
         }
@@ -237,7 +237,7 @@ namespace Netychords
             if (netychordsStarted)
             {
                 Rack.UserSettings.InteractionMethod = NetychordsInteractionMethod.PressureBlink;
-                ProcessInteractionMethodChange();
+                ChangeInteractionMethod();
                 UpdateButtonVisuals();
             }
         }
@@ -895,18 +895,18 @@ namespace Netychords
             }
         }
 
-        private void ProcessInteractionMethodChange()
+        private void ChangeInteractionMethod()
         {
             Rack.NithModuleSensor.SensorBehaviors.Clear();
 
             switch (Rack.UserSettings.InteractionMethod)
             {
                 case NetychordsInteractionMethod.HeadYaw:
-                    Rack.NithModuleSensor.SensorBehaviors.Add(new NithBeh_HT_Yaw());
+                    Rack.NithModuleSensor.SensorBehaviors.Add(new NithBeh_HT_Yaw(Rack.UserSettings.SensorIntensityYaw));
                     break;
 
                 case NetychordsInteractionMethod.HeadPitch:
-                    Rack.NithModuleSensor.SensorBehaviors.Add(new NithBeh_HT_Pitch());
+                    Rack.NithModuleSensor.SensorBehaviors.Add(new NithBeh_HT_Pitch(Rack.UserSettings.SensorIntensityPitch));
                     break;
 
                 case NetychordsInteractionMethod.Blink:
@@ -914,7 +914,7 @@ namespace Netychords
                     break;
 
                 case NetychordsInteractionMethod.PressureBlink:
-                    Rack.NithModuleSensor.SensorBehaviors.Add(new NithBeh_Pressure(1f,1.5f));
+                    Rack.NithModuleSensor.SensorBehaviors.Add(new NithBeh_Pressure(1f,Rack.UserSettings.SensorIntensityPressure));
                     break;
             }
         }
@@ -1077,6 +1077,7 @@ namespace Netychords
                 Update_Layout();
                 Update_Distance();
                 Update_CustomRows();
+                Update_SensorIntensity();
 
                 if (Rack.UserSettings.Layout == Layouts.Custom && IsSettingsShown)
                 {
@@ -1092,6 +1093,25 @@ namespace Netychords
 
             lblMIDIch.Text = "MP " + Rack.UserSettings.MIDIPort.ToString();
             CheckMidiPort();
+        }
+
+        private void Update_SensorIntensity()
+        {
+            // ^^ all these ToString should have a format string to limit the number of decimals to 1
+            switch(Rack.UserSettings.InteractionMethod)
+            { 
+                case NetychordsInteractionMethod.PressureBlink:
+                    txtSensingIntensity.Text = Rack.UserSettings.SensorIntensityPressure.ToString("F1");
+                    break;
+                case NetychordsInteractionMethod.HeadYaw:
+                    txtSensingIntensity.Text = Rack.UserSettings.SensorIntensityYaw.ToString("F1");
+                    break;
+                case NetychordsInteractionMethod.HeadPitch:
+                    txtSensingIntensity.Text = Rack.UserSettings.SensorIntensityPitch.ToString("F1");
+                    break;
+                case NetychordsInteractionMethod.Blink:
+                    break;
+            }
         }
 
         // [Corrente]
@@ -1119,9 +1139,6 @@ namespace Netychords
         {
             if (netychordsStarted)
             {
-                //lblVelocityScreen.Text = Rack.MappingModule.Velocity.ToString(); // TODO
-                lblVelocityScreen.Text = Rack.TestString;
-
                 switch (Rack.MappingModule.Mute)
                 {
                     case true:
@@ -1151,6 +1168,48 @@ namespace Netychords
         private void Window_Unloaded(object sender, RoutedEventArgs e)
         {
             netychordsSetup.Dispose();
+        }
+
+        private void BtnSensingIntensityMinus_OnClick(object sender, RoutedEventArgs e)
+        {
+            switch(Rack.UserSettings.InteractionMethod)
+            {
+                case NetychordsInteractionMethod.PressureBlink:
+                    Rack.UserSettings.SensorIntensityPressure -= 0.1f;
+                    break;
+                case NetychordsInteractionMethod.HeadYaw:
+                    Rack.UserSettings.SensorIntensityYaw -= 0.1f;
+                    break;
+                case NetychordsInteractionMethod.HeadPitch:
+                    Rack.UserSettings.SensorIntensityPitch -= 0.1f;
+                    break;
+                case NetychordsInteractionMethod.Blink:
+                    break;
+            }
+
+            ChangeInteractionMethod();
+            UpdateButtonVisuals();
+        }
+
+        private void BtnSensingIntensityPlus_OnClick(object sender, RoutedEventArgs e)
+        {
+            switch (Rack.UserSettings.InteractionMethod)
+            {
+                case NetychordsInteractionMethod.PressureBlink:
+                    Rack.UserSettings.SensorIntensityPressure += 0.1f;
+                    break;
+                case NetychordsInteractionMethod.HeadYaw:
+                    Rack.UserSettings.SensorIntensityYaw += 0.1f;
+                    break;
+                case NetychordsInteractionMethod.HeadPitch:
+                    Rack.UserSettings.SensorIntensityPitch += 0.1f;
+                    break;
+                case NetychordsInteractionMethod.Blink:
+                    break;
+            }
+
+            ChangeInteractionMethod();
+            UpdateButtonVisuals();
         }
     }
 }

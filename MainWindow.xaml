@@ -237,16 +237,21 @@
                         <Button Grid.Column="2" Name="btnSensorPortPlus" Content="⮞" Click="BtnSensorPortPlus_Click" Style="{StaticResource DWood}" HorizontalAlignment="Left" Margin="5,5,0,5" Width="109" />
                     </Grid>
 
-                    <!-- SensorControl -->
-                    <Label Content="Sensor control" />
-                    <UniformGrid Columns="3">
-                        <Button x:Name="btnCentering" Content="Center&#x0a;Head" Click="BtnCenter_Click" FontSize="16" Style="{StaticResource DWood}" />
+                    <!-- Sensing intensity -->
+                    <Label Content="Sensing intensity" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width = "1*" />
+                            <ColumnDefinition Width = "1*" />
+                            <ColumnDefinition Width = "1*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Name="btnSensingIntensityMinus" Content="⮜" Click="BtnSensingIntensityMinus_OnClick"  Style="{StaticResource DWood}" />
                         <Border Grid.Column="1" Style="{StaticResource LCDBorder}">
-                            <TextBlock Name="lblVelocityScreen" Text="" Width="100" Style="{StaticResource LCDText}">
+                            <TextBlock Name="txtSensingIntensity" Text="" Style="{StaticResource LCDText}">
                             </TextBlock>
                         </Border>
-                        <Label Content="Value" VerticalAlignment="Center" />
-                    </UniformGrid>
+                        <Button Grid.Column="2" Name="btnSensingIntensityPlus" Content="⮞" Click="BtnSensingIntensityPlus_OnClick"  Style="{StaticResource DWood}" HorizontalAlignment="Left" Margin="5,5,0,5" Width="109" />
+                    </Grid>
 
                     <!-- Keys Distance -->
                     <Label Content="Keys distance" />

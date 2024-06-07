@@ -41,6 +41,9 @@ namespace Netychords.Settings
             HTFeedbackMode = HTFeedbackModule.HTFeedbackModes.None;
             Preset = Presets.Empty;
             InteractionMethod = NetychordsInteractionMethod.HeadYaw;
+            SensorIntensityYaw = 1f;
+            SensorIntensityPitch = 1f;
+            SensorIntensityPressure = 1f;
         }
     }
 }
