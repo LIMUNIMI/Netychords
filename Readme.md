@@ -1,7 +1,4 @@
 # Netychords
-
----
-
 *An Accessible Digital Musical Instrument for playing chords through gaze and head movement.*
 
 Please refer to the [Netychords page](https://neeqstock.notion.site/Netychords-3a666176e99545b2b022e56b863ba277) on Nicola Davanzo's personal website for more informations, instrument description and usage guide.
